@@ -27,6 +27,7 @@ export type Translation = {
         title: string;
         name: string;
         email: string;
+        tel: string;
         message: string;
         submit: string;
     };
@@ -60,6 +61,7 @@ export const translations: Record<Language, Translation> = {
             title: "Get in Touch",
             name: "Name",
             email: "Email",
+            tel: "Phone",
             message: "Message",
             submit: "Send Message",
         },
@@ -91,6 +93,7 @@ export const translations: Record<Language, Translation> = {
             title: "联系我们",
             name: "姓名",
             email: "邮箱",
+            tel: "电话",
             message: "留言",
             submit: "发送信息",
         },
@@ -122,6 +125,7 @@ export const translations: Record<Language, Translation> = {
             title: "Hubungi Kami",
             name: "Nama",
             email: "E-mel",
+            tel: "Telefon",
             message: "Mesej",
             submit: "Hantar Mesej",
         },

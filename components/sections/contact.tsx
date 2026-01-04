@@ -15,6 +15,7 @@ export function Contact() {
         const data = {
             name: formData.get('name'),
             email: formData.get('email'),
+            tel: formData.get('tel'),
             message: formData.get('message'),
             created_at: new Date().toISOString(),
         }
@@ -72,6 +73,16 @@ export function Contact() {
                                 type="email"
                                 className="w-full bg-secondary/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-neon-cyan transition-colors"
                                 placeholder="hello@example.com"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">{t.contact.tel}</label>
+                            <input
+                                name="tel"
+                                required
+                                type="tel"
+                                className="w-full bg-secondary/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-neon-cyan transition-colors"
+                                placeholder={t.contact.tel}
                             />
                         </div>
                         <div>
