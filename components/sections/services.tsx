@@ -26,7 +26,7 @@ export function Services() {
 
     return (
         <section id="services" className="py-24 bg-background relative overflow-hidden">
-            <div className="container px-6 relative z-10">
+            <div className="container mx-auto px-6 relative z-10">
                 <h2 className="font-display text-3xl md:text-5xl font-bold mb-16 text-center">
                     {t.services.title}
                 </h2>

@@ -16,7 +16,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
             </div>
 
-            <div className="container px-6 relative z-10 text-center">
+            <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,9 @@ export function Hero() {
                         EST. 2026 // KOTA KINABALU
                     </span>
                     <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-tight">
-                        {t.hero.title}
+                        {t.hero.titleLine1}{" "}
+                        <br className="md:hidden" />
+                        {t.hero.titleLine2}
                     </h1>
                     <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 font-light">
                         {t.hero.subtitle}

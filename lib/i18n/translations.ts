@@ -9,7 +9,8 @@ export type Translation = {
         about: string;
     };
     hero: {
-        title: string;
+        titleLine1: string;
+        titleLine2: string;
         subtitle: string;
         cta: string;
     };
@@ -41,7 +42,8 @@ export const translations: Record<Language, Translation> = {
             about: "About",
         },
         hero: {
-            title: "Future-Ready Web Design",
+            titleLine1: "Future-Ready",
+            titleLine2: "Web Design",
             subtitle: "Elevate your business with minimalist, high-performance landing pages.",
             cta: "Get Started",
         },
@@ -71,7 +73,8 @@ export const translations: Record<Language, Translation> = {
             about: "关于我们",
         },
         hero: {
-            title: "面向未来的网页设计",
+            titleLine1: "面向未来的",
+            titleLine2: "网页设计",
             subtitle: "以极简、高性能的着陆页提升您的业务。",
             cta: "立即开始",
         },
@@ -101,7 +104,8 @@ export const translations: Record<Language, Translation> = {
             about: "Tentang Kami",
         },
         hero: {
-            title: "Reka Bentuk Web Masa Depan",
+            titleLine1: "Reka Bentuk Web",
+            titleLine2: "Masa Depan",
             subtitle: "Tingkatkan perniagaan anda dengan halaman pendaratan minimalis dan berprestasi tinggi.",
             cta: "Mula Sekarang",
         },
