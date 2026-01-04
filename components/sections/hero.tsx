@@ -7,6 +7,13 @@ import { ArrowRight } from "lucide-react"
 export function Hero() {
     const { t } = useLanguage()
 
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             {/* Background Effects */}
@@ -35,11 +42,17 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button className="px-8 py-4 bg-foreground text-background font-bold rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 group">
+                        <button
+                            onClick={() => scrollToSection('contact')}
+                            className="px-8 py-4 bg-foreground text-background font-bold rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                        >
                             {t.hero.cta}
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
-                        <button className="px-8 py-4 border border-white/10 hover:border-neon-cyan hover:bg-neon-cyan/5 rounded-lg transition-all duration-300 backdrop-blur-sm">
+                        <button
+                            onClick={() => scrollToSection('showcase')}
+                            className="px-8 py-4 border border-white/10 hover:border-neon-cyan hover:bg-neon-cyan/5 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                        >
                             {t.nav.showcase}
                         </button>
                     </div>
