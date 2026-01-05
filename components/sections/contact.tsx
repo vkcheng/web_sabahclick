@@ -12,10 +12,11 @@ export function Contact() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const form = e.currentTarget
         setStatus('loading')
         setErrorMessage('')
 
-        const formData = new FormData(e.currentTarget)
+        const formData = new FormData(form)
         const data = {
             name: formData.get('name'),
             email: formData.get('email'),
@@ -53,7 +54,7 @@ export function Contact() {
 
             setStatus('success')
             // Reset form
-            e.currentTarget.reset()
+            form.reset()
         } catch (error) {
             console.error('Error submitting form:', error)
             setStatus('error')
