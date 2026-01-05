@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import { useLanguage } from "@/lib/i18n/language-context"
+import { supabase } from "@/lib/supabase"
+import { sendContactEmail } from "@/app/actions/contact"
 
 export function Contact() {
     const { t } = useLanguage()
@@ -20,9 +22,9 @@ export function Contact() {
             created_at: new Date().toISOString(),
         }
 
-        // Dynamic import to avoid build errors if env vars are missing during build time
-        const { supabase } = await import('@/lib/supabase')
-        const { sendContactEmail } = await import('@/app/actions/contact')
+        // Imports moved to top level for better stability
+        // const { supabase } = await import('@/lib/supabase')
+        // const { sendContactEmail } = await import('@/app/actions/contact')
 
         try {
             // 1. Send email via Resend
@@ -123,6 +125,14 @@ export function Contact() {
                 </div>
 
                 <footer className="mt-24 text-center text-muted-foreground text-sm">
+                    <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mb-8">
+                        <a href="mailto:sabahclick.my@gmail.com" className="hover:text-neon-cyan transition-colors">
+                            Email: sabahclick.my@gmail.com
+                        </a>
+                        <a href="https://wa.me/60128131441" target="_blank" rel="noopener noreferrer" className="hover:text-neon-cyan transition-colors">
+                            WhatsApp: 012-813 1441 (Text Only)
+                        </a>
+                    </div>
                     <p>© 2026 SabahClick. All rights reserved.</p>
                 </footer>
             </div>
