@@ -8,10 +8,12 @@ import { sendContactEmail } from "@/app/actions/contact"
 export function Contact() {
     const { t } = useLanguage()
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+    const [errorMessage, setErrorMessage] = React.useState<string>('')
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setStatus('loading')
+        setErrorMessage('')
 
         const formData = new FormData(e.currentTarget)
         const data = {
@@ -31,13 +33,7 @@ export function Contact() {
             const emailResult = await sendContactEmail(formData)
             if (emailResult.error) {
                 console.error('Email sending error:', emailResult.error)
-                // We typically still want to save to database even if email fails, 
-                // but let's log it or maybe decide if we want to show error.
-                // For now, let's treat email failure as a non-blocking error for DB save, 
-                // BUT if email is the main goal, maybe we should show error?
-                // The user request is specifically to send email. 
-                // Let's throw if email fails so the user knows.
-                throw new Error(emailResult.error)
+                throw new Error(`Email Error: ${emailResult.error}`)
             }
 
             // 2. Save to Supabase (keeping existing logic)
@@ -45,7 +41,10 @@ export function Contact() {
                 .from('contacts')
                 .insert([data])
 
-            if (error) throw error
+            if (error) {
+                console.error('Supabase error:', error)
+                throw new Error(`Database Error: ${error.message}`)
+            }
 
             setStatus('success')
             // Reset form
@@ -53,6 +52,7 @@ export function Contact() {
         } catch (error) {
             console.error('Error submitting form:', error)
             setStatus('error')
+            setErrorMessage(error instanceof Error ? error.message : 'Unknown error occurred')
         } finally {
             // Reset loading state after 3 seconds
             if (status !== 'error') {
@@ -120,7 +120,12 @@ export function Contact() {
                             {status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent!' : status === 'error' ? 'Failed' : t.contact.submit}
                         </button>
                         {status === 'success' && <p className="text-green-500 text-sm text-center">Message sent successfully!</p>}
-                        {status === 'error' && <p className="text-red-500 text-sm text-center">Failed to send message. Please try again.</p>}
+                        {status === 'error' && (
+                            <div className="text-red-500 text-sm text-center">
+                                <p>Failed to send message.</p>
+                                <p className="text-xs mt-1 opacity-80">{errorMessage}</p>
+                            </div>
+                        )}
                     </form>
                 </div>
 
