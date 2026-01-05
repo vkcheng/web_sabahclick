@@ -22,8 +22,23 @@ export function Contact() {
 
         // Dynamic import to avoid build errors if env vars are missing during build time
         const { supabase } = await import('@/lib/supabase')
+        const { sendContactEmail } = await import('@/app/actions/contact')
 
         try {
+            // 1. Send email via Resend
+            const emailResult = await sendContactEmail(formData)
+            if (emailResult.error) {
+                console.error('Email sending error:', emailResult.error)
+                // We typically still want to save to database even if email fails, 
+                // but let's log it or maybe decide if we want to show error.
+                // For now, let's treat email failure as a non-blocking error for DB save, 
+                // BUT if email is the main goal, maybe we should show error?
+                // The user request is specifically to send email. 
+                // Let's throw if email fails so the user knows.
+                throw new Error(emailResult.error)
+            }
+
+            // 2. Save to Supabase (keeping existing logic)
             const { error } = await supabase
                 .from('contacts')
                 .insert([data])
