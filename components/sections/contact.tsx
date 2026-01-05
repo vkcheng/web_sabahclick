@@ -36,14 +36,19 @@ export function Contact() {
                 throw new Error(`Email Error: ${emailResult.error}`)
             }
 
-            // 2. Save to Supabase (keeping existing logic)
-            const { error } = await supabase
-                .from('contacts')
-                .insert([data])
+            // 2. Save to Supabase (keeping existing logic, but non-blocking)
+            try {
+                const { error } = await supabase
+                    .from('contacts')
+                    .insert([data])
 
-            if (error) {
-                console.error('Supabase error:', error)
-                throw new Error(`Database Error: ${error.message}`)
+                if (error) {
+                    console.error('Supabase error (non-fatal):', error)
+                    // We don't throw here anymore so the user still sees "Sent!"
+                    // failing to save to DB should not block the user experience if email succeeded
+                }
+            } catch (dbError) {
+                console.error('Supabase exception (non-fatal):', dbError)
             }
 
             setStatus('success')
