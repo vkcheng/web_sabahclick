@@ -26,6 +26,13 @@ export function Showcase() {
             url: "https://www.jesseltonstay.com",
             color: "from-blue-900/40 to-indigo-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175129.png"
+        },
+        {
+            title: "Ezzy HomeStay",
+            category: "Hospitality / Homestay",
+            url: "https://www.ezzyhomestay.com",
+            color: "from-purple-900/40 to-violet-900/40",
+            image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/ezzyhomestay.png"
         }
     ]
 
