@@ -14,9 +14,9 @@ export function Showcase() {
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175225.png"
         },
         {
-            title: "Sheng Yong Dim Sum",
+            title: "Seng Yong Dim Sum",
             category: "F&B / Restaurant",
-            url: "https://website-sheng-yong-dim-sum.vercel.app/",
+            url: "https://www.sengyongdimsum.com",
             color: "from-orange-900/40 to-red-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175202.png"
         },
