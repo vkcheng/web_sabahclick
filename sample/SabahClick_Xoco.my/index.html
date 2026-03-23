@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XOCO — Crafted. Perfected.</title>
+  <meta name="description" content="XOCO is a refined café experience at City Mall, Kota Kinabalu, Sabah. Discover exceptional coffee, modern Asian fusion cuisine, and an unforgettable warm ambiance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #C4692A;
+      --terracotta-dark: #A3521E;
+      --cream: #F5EFE6;
+      --off-white: #FAF6F0;
+      --dark-brown: #2A1A0E;
+      --mid-brown: #5C3D2E;
+      --warm-gray: #D4C9BC;
+      --gold: #C9A84C;
+      --text-main: #2A1A0E;
+      --text-light: #7A6050;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--off-white);
+      color: var(--text-main);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      transition: background 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(245, 239, 230, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 1rem 3rem;
+      border-bottom: 1px solid var(--warm-gray);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      color: var(--off-white);
+      text-decoration: none;
+      transition: color 0.4s;
+    }
+    nav.scrolled .nav-logo { color: var(--dark-brown); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav.scrolled .nav-links a { color: var(--text-light); }
+    .nav-links a:hover { color: var(--terracotta); }
+
+    .nav-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 0.5rem 1.4rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    nav.scrolled .nav-cta { border-color: var(--terracotta); color: var(--terracotta); }
+    .nav-cta:hover { background: var(--terracotta); border-color: var(--terracotta); color: white; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 110;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: white;
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+    nav.scrolled .hamburger span { background: var(--dark-brown); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); background: var(--dark-brown); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); background: var(--dark-brown); }
+
+    /* ── MOBILE MENU DRAWER ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 105;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--dark-brown);
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      transition: color 0.2s;
+      text-align: center;
+    }
+    .mobile-menu a:hover { color: var(--terracotta); }
+    .mobile-menu .mobile-cta {
+      margin-top: 2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--terracotta);
+      color: white;
+      padding: 0.85rem 2.5rem;
+      font-weight: 400;
+      font-size: 0.65rem;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--terracotta-dark); color: white; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/594457638_1390893502698447_1732735745077008508_n.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(30, 14, 5, 0.85) 0%,
+        rgba(30, 14, 5, 0.4) 45%,
+        rgba(30, 14, 5, 0.15) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      padding: 0 4rem 6rem;
+      max-width: 700px;
+    }
+    .hero-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 0.95;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(245, 239, 230, 0.7);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+    .btn-primary {
+      background: var(--terracotta);
+      color: white;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+    .hero-scroll {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(245,239,230,0.5);
+      text-decoration: none;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 7rem 3rem; }
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--dark-brown);
+    }
+    .section-title em { font-style: italic; color: var(--terracotta); }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--terracotta);
+      margin: 2rem 0;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--dark-brown);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .about-visual {
+      position: relative;
+      min-height: 580px;
+      overflow: hidden;
+    }
+    .about-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .about-visual:hover img { transform: scale(1.04); }
+    .about-text {
+      padding: 6rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-text .section-label { color: var(--gold); }
+    .about-text .section-title { color: var(--cream); }
+    .about-text .divider { background: var(--gold); }
+    .about-body {
+      font-size: 0.88rem;
+      line-height: 1.9;
+      color: rgba(245, 239, 230, 0.65);
+      font-weight: 300;
+      max-width: 420px;
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      padding: 6rem 3rem;
+      background: var(--cream);
+    }
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto 3.5rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+      min-height: 200px;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,14,5,0);
+      transition: background 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { background: rgba(30,14,5,0.2); }
+
+    /* ── MENU HIGHLIGHTS ── */
+    .menu-section {
+      background: var(--off-white);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .menu-section-wrap {
+      padding: 7rem 3rem;
+      background: var(--off-white);
+    }
+    .menu-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .menu-header .divider { margin: 1.5rem auto; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .menu-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-brown);
+      cursor: default;
+    }
+    .menu-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      opacity: 0.9;
+    }
+    .menu-card:hover img { transform: scale(1.05); opacity: 0.7; }
+    .menu-card-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.8rem;
+      background: linear-gradient(to top, rgba(30,14,5,0.9) 0%, transparent 100%);
+      transform: translateY(8px);
+      transition: transform 0.4s;
+    }
+    .menu-card:hover .menu-card-info { transform: translateY(0); }
+    .menu-card-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .menu-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-wrap {
+      background: var(--cream);
+      padding: 7rem 3rem;
+    }
+    .experience {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .experience-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .experience-img img {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      display: block;
+    }
+    .experience-img::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px;
+      right: 12px; bottom: 12px;
+      border: 1px solid var(--terracotta);
+      z-index: -1;
+    }
+    .experience-body { font-size: 0.88rem; line-height: 1.9; color: var(--text-light); max-width: 420px; }
+    .experience-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--terracotta);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 0.3rem;
+    }
+
+    /* ── VISIT / FIND US ── */
+    .visit-wrap {
+      background: var(--dark-brown);
+      padding: 7rem 3rem;
+    }
+    .visit {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .visit-info { display: block; }
+    .visit-info .section-label { color: var(--gold); }
+    .visit-info .section-title { color: var(--cream); }
+    .visit-info .divider { background: var(--gold); }
+    .visit-details {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .visit-block-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .visit-block-text {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: rgba(245,239,230,0.65);
+    }
+    .visit-block-text a {
+      color: rgba(245,239,230,0.65);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .visit-block-text a:hover { color: var(--terracotta); }
+    .visit-map {
+      width: 100%;
+      height: 420px;
+      filter: grayscale(20%) sepia(15%);
+      border: 1px solid rgba(245,239,230,0.1);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #170D06;
+      padding: 3rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.45em;
+      color: var(--cream);
+      font-weight: 300;
+    }
+    .footer-tagline {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      color: rgba(245,239,230,0.3);
+      letter-spacing: 0.1em;
+    }
+    .footer-credit {
+      font-size: 0.6rem;
+      color: rgba(245,239,230,0.2);
+      letter-spacing: 0.12em;
+    }
+    .footer-credit a {
+      color: rgba(245,239,230,0.35);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-credit a:hover { color: var(--terracotta); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 52px;
+      height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 200;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 0.8rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+
+      .hero-content { padding: 0 2rem 5rem; }
+      .hero-title { font-size: clamp(2.8rem, 10vw, 5rem); }
+
+      section { padding: 5rem 1.5rem; }
+
+      .about { grid-template-columns: 1fr; }
+      .about-visual { min-height: 320px; }
+      .about-text { padding: 3.5rem 2rem; }
+
+      .gallery { padding: 5rem 1.5rem; }
+      .gallery-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-card img { height: 280px; }
+
+      .experience-wrap { padding: 5rem 1.5rem; }
+      .experience { grid-template-columns: 1fr; gap: 3rem; }
+      .experience-img img { height: 300px; }
+      .experience-img::before { display: none; }
+
+      .visit-wrap { padding: 5rem 1.5rem; }
+      .visit { grid-template-columns: 1fr; gap: 3rem; }
+      .visit-map { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">XOCO</a>
+    <ul class="nav-links">
+      <li><a href="#about">Story</a></li>
+      <li><a href="#gallery">Space</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Find Us</a></li>
+    </ul>
+    <a href="https://wa.me/601159756828" class="nav-cta" target="_blank" rel="noopener">Reserve</a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-nav-link">Story</a>
+    <a href="#gallery" class="mobile-nav-link">Space</a>
+    <a href="#menu" class="mobile-nav-link">Menu</a>
+    <a href="#visit" class="mobile-nav-link">Find Us</a>
+    <a href="https://wa.me/601159756828" class="mobile-cta" target="_blank" rel="noopener">WhatsApp Us</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">City Mall, Kota Kinabalu</p>
+      <h1 class="hero-title">Crafted.<br><em>Perfected.</em></h1>
+      <p class="hero-sub">A space where every sip and every bite is a moment of intention.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">Explore Menu</a>
+        <a href="#gallery" class="hero-scroll">View Space ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-visual">
+      <img src="img/547623808_1457023035460051_8610299140626155054_n.jpg" alt="XOCO signature chocolate coffee" loading="lazy">
+    </div>
+    <div class="about-text reveal">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">Where coffee<br>meets <em>craft</em></h2>
+      <div class="divider"></div>
+      <p class="about-body">
+        XOCO is born from a belief that exceptional food and drink deserve exceptional surroundings. Nestled within City Mall, Sabah, we have curated a sanctuary that invites you to slow down — to savour rich, nuanced flavours and the warmth of a space designed for lingering.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-header">
+      <div class="reveal">
+        <p class="section-label">Our Space</p>
+        <h2 class="section-title">A room designed<br>to <em>remember</em></h2>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="img/594457638_1390893502698447_1732735745077008508_n.jpg" alt="XOCO interior with gold mirror balls" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/597629246_1390893736031757_6222147975754864415_n.jpg" alt="XOCO dishes" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/597392415_1390893189365145_6456061683302850319_n.jpg" alt="XOCO drinks" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/597392974_1390893352698462_5610602773563226651_n.jpg" alt="XOCO plating" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/597893588_1390893209365143_7872732494791341584_n.jpg" alt="XOCO food" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU HIGHLIGHTS -->
+  <div class="menu-section-wrap" id="menu">
+    <div class="menu-header reveal">
+      <p class="section-label">The Menu</p>
+      <h2 class="section-title">Savour every <em>detail</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <img src="img/595163676_1390893269365137_5716594907452637882_n.jpg" alt="XOCO bowls" loading="lazy">
+        <div class="menu-card-info">
+          <p class="menu-card-label">Signature</p>
+          <p class="menu-card-name">Signature<br>Bowls</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <img src="img/596290067_1390893792698418_141932936330785395_n.jpg" alt="XOCO salmon dish" loading="lazy">
+        <div class="menu-card-info">
+          <p class="menu-card-label">Mains</p>
+          <p class="menu-card-name">Crafted<br>Plates</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <img src="img/597276565_1390893172698480_3638551766356807363_n.jpg" alt="XOCO flight coffee tasting" loading="lazy">
+        <div class="menu-card-info">
+          <p class="menu-card-label">Beverages</p>
+          <p class="menu-card-name">XOCO<br>Flight</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="experience-wrap">
+    <div class="experience">
+      <div class="experience-img reveal">
+        <img src="img/597386173_1390893219365142_5430192327117920439_n.jpg" alt="XOCO grand platter" loading="lazy">
+      </div>
+      <div class="reveal">
+        <p class="section-label">The Experience</p>
+        <h2 class="section-title">Gather,<br>feast, <em>celebrate</em></h2>
+        <div class="divider"></div>
+        <p class="experience-body">
+          From intimate lunches to grand celebrations, XOCO is built for moments. Our grand sharing platters and artisanal beverages are made to be experienced together — surrounded by the warmth of golden light and good company.
+        </p>
+        <div class="experience-stats">
+          <div>
+            <div class="stat-num">100+</div>
+            <div class="stat-label">Menu Items</div>
+          </div>
+          <div>
+            <div class="stat-num">GA1–3</div>
+            <div class="stat-label">City Mall</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISIT / FIND US -->
+  <div class="visit-wrap" id="visit">
+    <div class="visit">
+      <div class="visit-info reveal">
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">Come visit<br><em>XOCO</em></h2>
+        <div class="divider"></div>
+        <div class="visit-details">
+          <div>
+            <p class="visit-block-label">Address</p>
+            <p class="visit-block-text">City Mall, GA1–GA3<br>Jln Lintas, 88300<br>Kota Kinabalu, Sabah</p>
+          </div>
+          <div>
+            <p class="visit-block-label">Contact</p>
+            <p class="visit-block-text">
+              <a href="tel:+601159756828">011 5975 6828</a>
+            </p>
+          </div>
+          <div>
+            <p class="visit-block-label">Connect</p>
+            <p class="visit-block-text">
+              <a href="https://wa.me/601159756828" target="_blank" rel="noopener">WhatsApp Us →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <iframe
+          class="visit-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d528.3233946025008!2d116.09702742154873!3d5.961874816744941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b6911ee7fc4c3%3A0x16f9ed43183a12e4!2sXOCO!5e1!3m2!1sen!2smy!4v1773382678351!5m2!1sen!2smy"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="XOCO Location Map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">XOCO</div>
+    <div class="footer-tagline">Crafted. Perfected.</div>
+    <div class="footer-copy">&copy; 2025 XOCO. City Mall, Kota Kinabalu, Sabah.</div>
+    <div class="footer-credit">Designed by <a href="https://www.sabahclick.com" target="_blank" rel="noopener">SabahClick</a></div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/601159756828" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    // Hero BG load animation
+    window.addEventListener('load', () => {
+      document.getElementById('heroBg').classList.add('loaded');
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Hamburger (mobile)
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu(forceClose) {
+      const isOpen = hamburger.classList.contains('open');
+      if (forceClose || isOpen) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      } else {
+        hamburger.classList.add('open');
+        mobileMenu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    hamburger.addEventListener('click', () => toggleMenu(false));
+    hamburger.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') toggleMenu(false); });
+
+    // Close menu when a link is tapped
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => toggleMenu(true));
+    });
+  </script>
+</body>
+</html>
