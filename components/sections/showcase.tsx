@@ -33,6 +33,34 @@ export function Showcase() {
             url: "https://www.ezzyhomestay.com",
             color: "from-purple-900/40 to-violet-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/ezzyhomestay.png"
+        },
+        {
+            title: "Fika JTT",
+            category: "Sample Page",
+            url: "/sample/FikaJTT/index.html",
+            color: "from-amber-900/40 to-stone-900/40",
+            image: "/sample/FikaJTT/img/Screenshot%202026-03-12%20134455.png"
+        },
+        {
+            title: "Happy Place",
+            category: "Sample Page",
+            url: "/sample/Happyplace/index.html",
+            color: "from-rose-900/40 to-pink-900/40",
+            image: "/sample/Happyplace/img/Screenshot%202026-03-13%20214952.png"
+        },
+        {
+            title: "Lumiere Coffee",
+            category: "Sample Page",
+            url: "/sample/Lumierecoffee/index.html",
+            color: "from-yellow-900/40 to-neutral-900/40",
+            image: "/sample/Lumierecoffee/img/Screenshot%202026-03-13%20082338.png"
+        },
+        {
+            title: "Xoco.my",
+            category: "Sample Page",
+            url: "/sample/Xoco.my/index.html",
+            color: "from-fuchsia-900/40 to-zinc-900/40",
+            image: "/sample/Xoco.my/img/Screenshot%202026-03-13%20141144.png"
         }
     ]
 

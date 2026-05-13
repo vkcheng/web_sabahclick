@@ -30,6 +30,8 @@
   /* Sci-fi specific */
   --neon-cyan: #00f0ff;
   --neon-purple: #bd00ff;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 .dark {
