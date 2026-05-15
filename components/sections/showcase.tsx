@@ -7,25 +7,11 @@ export function Showcase() {
 
     const projects = [
         {
-            title: "Lanny Bigu",
-            category: "Wellness Academy",
-            url: "https://www.lannybigu.com",
-            color: "from-emerald-900/40 to-teal-900/40",
-            image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175225.png"
-        },
-        {
             title: "Seng Yong Dim Sum",
             category: "F&B / Restaurant",
             url: "https://www.sengyongdimsum.com",
             color: "from-orange-900/40 to-red-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175202.png"
-        },
-        {
-            title: "Jesselton Stay",
-            category: "Hospitality / Homestay",
-            url: "https://www.jesseltonstay.com",
-            color: "from-blue-900/40 to-indigo-900/40",
-            image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175129.png"
         },
         {
             title: "Ezzy HomeStay",
