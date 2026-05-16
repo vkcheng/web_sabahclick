@@ -12,7 +12,10 @@ export type Translation = {
         titleLine1: string;
         titleLine2: string;
         subtitle: string;
+        localSubtitle: string;
         cta: string;
+        ctaWhatsapp: string;
+        ctaShowcase: string;
     };
     services: {
         title: string;
@@ -51,7 +54,10 @@ export const translations: Record<Language, Translation> = {
             titleLine1: "Future-Ready",
             titleLine2: "Web Design",
             subtitle: "Elevate your business with minimalist, high-performance landing pages.",
+            localSubtitle: "Serving 10+ Sabah businesses — from Kota Kinabalu to beyond",
             cta: "Get Started",
+            ctaWhatsapp: "WhatsApp Us",
+            ctaShowcase: "View Our Work",
         },
         services: {
             title: "Our Services",
@@ -88,7 +94,10 @@ export const translations: Record<Language, Translation> = {
             titleLine1: "面向未来的",
             titleLine2: "网页设计",
             subtitle: "以极简、高性能的着陆页提升您的业务。",
+            localSubtitle: "服务沙巴10+家企业 — 从亚庇到更远的地方",
             cta: "立即开始",
+            ctaWhatsapp: "WhatsApp 联系",
+            ctaShowcase: "查看案例",
         },
         services: {
             title: "我们的服务",
@@ -125,7 +134,10 @@ export const translations: Record<Language, Translation> = {
             titleLine1: "Reka Bentuk Web",
             titleLine2: "Masa Depan",
             subtitle: "Tingkatkan perniagaan anda dengan halaman pendaratan minimalis dan berprestasi tinggi.",
+            localSubtitle: "Melayani 10+ perniagaan Sabah — dari Kota Kinabalu ke seluruh negeri",
             cta: "Mula Sekarang",
+            ctaWhatsapp: "WhatsApp Kami",
+            ctaShowcase: "Lihat Kerja Kami",
         },
         services: {
             title: "Perkhidmatan Kami",

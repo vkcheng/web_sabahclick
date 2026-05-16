@@ -72,7 +72,7 @@ export function Contact() {
             <div className="container mx-auto px-6">
                 <div className="max-w-2xl mx-auto text-center mb-16">
                     <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-                        {t.contact.title}
+                        Ready to grow your business online? Let&apos;s talk.
                     </h2>
                 </div>
 

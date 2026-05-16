@@ -9,6 +9,7 @@ export function Showcase() {
         {
             title: "Seng Yong Dim Sum",
             category: "F&B / Restaurant",
+            problem: "Helped a 3rd-generation dim sum shop attract walk-in customers through Google Search.",
             url: "https://www.sengyongdimsum.com",
             color: "from-orange-900/40 to-red-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/Screenshot%202026-01-04%20175202.png"
@@ -16,34 +17,39 @@ export function Showcase() {
         {
             title: "Ezzy HomeStay",
             category: "Hospitality / Homestay",
+            problem: "Replaced reliance on Airbnb fees with a direct-booking website that drives more revenue.",
             url: "https://www.ezzyhomestay.com",
             color: "from-purple-900/40 to-violet-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/SabahClick/ezzyhomestay.png"
         },
         {
             title: "Fika JTT",
-            category: "Sample Page",
+            category: "Concept Demo",
+            problem: "Demo: A specialty café needed an elegant site to showcase its menu and ambience online.",
             url: "/sample/FikaJTT/index.html",
             color: "from-amber-900/40 to-stone-900/40",
             image: "/sample/FikaJTT/img/Screenshot%202026-03-12%20134455.png"
         },
         {
             title: "Happy Place",
-            category: "Sample Page",
+            category: "Concept Demo",
+            problem: "Demo: A wellness brand needed a calming, trust-building page to convert visitors into customers.",
             url: "/sample/Happyplace/index.html",
             color: "from-rose-900/40 to-pink-900/40",
             image: "/sample/Happyplace/img/Screenshot%202026-03-13%20214952.png"
         },
         {
             title: "Lumiere Coffee",
-            category: "Sample Page",
+            category: "Concept Demo",
+            problem: "Demo: A coffee brand wanted a premium digital presence to compete with big-city competitors.",
             url: "/sample/Lumierecoffee/index.html",
             color: "from-yellow-900/40 to-neutral-900/40",
             image: "/sample/Lumierecoffee/img/Screenshot%202026-03-13%20082338.png"
         },
         {
             title: "Xoco.my",
-            category: "Sample Page",
+            category: "Concept Demo",
+            problem: "Demo: A chocolate artisan needed a bold landing page to drive WhatsApp orders directly.",
             url: "/sample/Xoco.my/index.html",
             color: "from-fuchsia-900/40 to-zinc-900/40",
             image: "/sample/Xoco.my/img/Screenshot%202026-03-13%20141144.png"
@@ -75,8 +81,13 @@ export function Showcase() {
 
                             <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
                                 <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <span className="inline-block text-[10px] font-mono font-bold py-0.5 px-2 rounded-full bg-white/10 border border-white/20 text-gray-300 mb-2">
+                                        {item.category}
+                                    </span>
                                     <h3 className="font-display font-bold text-xl text-white mb-1">{item.title}</h3>
-                                    <p className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{item.category}</p>
+                                    <p className="text-xs text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed">
+                                        {item.problem}
+                                    </p>
                                 </div>
                             </div>
 

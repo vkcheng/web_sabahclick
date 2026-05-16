@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/i18n/language-context"
-import { ArrowRight } from "lucide-react"
+import { MessageCircle, ArrowRight } from "lucide-react"
 
 export function Hero() {
     const { t } = useLanguage()
@@ -32,28 +32,38 @@ export function Hero() {
                     <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-mono mb-6 backdrop-blur-sm">
                         EST. 2026 // KOTA KINABALU
                     </span>
-                    <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-tight">
+                    <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-tight">
                         {t.hero.titleLine1}{" "}
                         <br className="md:hidden" />
                         {t.hero.titleLine2}
                     </h1>
-                    <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 font-light">
+                    <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-3 font-light">
                         {t.hero.subtitle}
                     </p>
 
+                    {/* Localized subtitle */}
+                    <p className="text-sm md:text-base text-neon-cyan/70 font-mono max-w-xl mx-auto mb-10 tracking-wide">
+                        {t.hero.localSubtitle}
+                    </p>
+
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button
-                            onClick={() => scrollToSection('contact')}
-                            className="px-8 py-4 bg-foreground text-background font-bold rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                        {/* Primary CTA: WhatsApp */}
+                        <a
+                            href="https://wa.me/60128131441"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-4 bg-[#25D366] text-black font-bold rounded-lg hover:bg-[#1db954] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#25D366]/20"
                         >
-                            {t.hero.cta}
+                            <MessageCircle className="w-5 h-5" />
+                            {t.hero.ctaWhatsapp}
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        </a>
+                        {/* Secondary CTA: View Our Work */}
                         <button
                             onClick={() => scrollToSection('showcase')}
                             className="px-8 py-4 border border-white/10 hover:border-neon-cyan hover:bg-neon-cyan/5 rounded-lg transition-all duration-300 backdrop-blur-sm"
                         >
-                            {t.nav.showcase}
+                            {t.hero.ctaShowcase}
                         </button>
                     </div>
                 </motion.div>
