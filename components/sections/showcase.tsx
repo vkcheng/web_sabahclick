@@ -53,6 +53,14 @@ export function Showcase() {
             url: "/sample/Xoco.my/index.html",
             color: "from-fuchsia-900/40 to-zinc-900/40",
             image: "/sample/Xoco.my/img/Screenshot%202026-03-13%20141144.png"
+        },
+        {
+            title: "Jisoo Korean Fried Chicken",
+            category: "Concept Demo",
+            problem: "Demo: A Korean fried chicken brand needed a professional landing page for menu discovery and business enquiries.",
+            url: "/sample/Jisoo/index.html",
+            color: "from-red-900/40 to-blue-950/40",
+            image: "/sample/Jisoo/img/001_122267617190020426.jpg"
         }
     ]
 
