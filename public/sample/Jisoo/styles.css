@@ -379,11 +379,54 @@ h1 {
 .opportunity {
   background: var(--midnight);
   color: #fff;
+  align-items: stretch;
+}
+
+.opportunity-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.owner-photo {
+  position: relative;
+  margin: 34px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow);
+}
+
+.owner-photo img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.owner-photo::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(17, 24, 39, 0.64), transparent 46%);
+}
+
+.owner-photo figcaption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.96rem;
+  font-weight: 900;
+  line-height: 1.35;
 }
 
 .proof-list {
   display: grid;
   gap: 14px;
+  align-content: center;
 }
 
 .proof-list div {
@@ -427,7 +470,7 @@ h1 {
 .visit {
   background:
     linear-gradient(90deg, rgba(255, 250, 240, 0.96), rgba(255, 250, 240, 0.82)),
-    url("public/images/024_122254531214020426.jpg") center/cover;
+    url("img/024_122254531214020426.jpg") center/cover;
 }
 
 .visit p {
