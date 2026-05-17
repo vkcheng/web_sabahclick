@@ -7,7 +7,7 @@
     <title>The Well Coffee & Grill | Sabah BBQ & Coffee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Permanent+Marker&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&family=Permanent+Marker&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -404,20 +404,25 @@
     </main>
 
     <script>
-      // Scroll reveal
+      // ── Scroll reveal (IntersectionObserver)
       const reveals = document.querySelectorAll('.reveal-up, .reveal-right');
       const ro = new IntersectionObserver(entries => {
         entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            ro.unobserve(e.target);
+          }
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       reveals.forEach(el => ro.observe(el));
 
-      // Sticky header shrink
+      // ── Sticky header
       const hdr = document.querySelector('.hdr');
-      window.addEventListener('scroll', () => hdr.classList.toggle('hdr-scrolled', window.scrollY > 60), { passive: true });
+      window.addEventListener('scroll', () => {
+        hdr.classList.toggle('hdr-scrolled', window.scrollY > 60);
+      }, { passive: true });
 
-      // Burger menu
+      // ── Burger menu
       const burger = document.getElementById('burger');
       const nav = document.querySelector('.hdr-nav');
       burger.addEventListener('click', () => {
@@ -425,6 +430,56 @@
         burger.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+      // Close nav on link click
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // ── Parallax on scroll
+      const heroBgImg  = document.querySelector('.hero-bg img');
+      const promoBgImg = document.querySelector('.promo-band-img img');
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const sy = window.scrollY;
+            if (heroBgImg)  heroBgImg.style.transform  = `translateY(${sy * 0.38}px)`;
+            if (promoBgImg) {
+              const rect = promoBgImg.closest('.promo-band').getBoundingClientRect();
+              const offset = (window.innerHeight - rect.top) * 0.18;
+              promoBgImg.style.transform = `translateY(${offset}px)`;
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // ── Counter animation for mag stats
+      const counters = document.querySelectorAll('.mag-stat-num');
+      const counterObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          const text = el.textContent;
+          const num = parseInt(text);
+          if (isNaN(num)) return;
+          const suffix = text.replace(/[0-9]/g, '');
+          let start = 0;
+          const step = Math.ceil(num / 28);
+          const timer = setInterval(() => {
+            start = Math.min(start + step, num);
+            el.textContent = start + suffix;
+            if (start >= num) clearInterval(timer);
+          }, 40);
+          counterObs.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(el => counterObs.observe(el));
     </script>
   </body>
 </html>
