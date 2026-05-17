@@ -61,6 +61,14 @@ export function Showcase() {
             url: "/sample/Jisoo/index.html",
             color: "from-red-900/40 to-blue-950/40",
             image: "/sample/Jisoo/img/001_122267617190020426.jpg"
+        },
+        {
+            title: "The Well Cafe",
+            category: "Concept Demo",
+            problem: "Demo: A cafe brand needed a playful, high-impact landing page using yellow-red campaign visuals to drive visits and menu discovery.",
+            url: "/sample/TheWellCafe/index.html",
+            color: "from-yellow-800/40 to-red-900/40",
+            image: "/sample/TheWellCafe/img/cover_478489465199533.jpg"
         }
     ]
 
