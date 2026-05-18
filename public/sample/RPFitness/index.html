@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Republic Fitness KK — Forge Your Limits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --yellow: #F5C800;
+      --yellow-dark: #D4A800;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark2: #1A1A1A;
+      --white: #FFFFFF;
+      --gray: #888888;
+      --light-gray: #CCCCCC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s, box-shadow 0.35s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(245,200,0,0.18);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      color: var(--yellow);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--light-gray);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow) !important;
+      color: var(--black) !important;
+      padding: 0.45rem 1.4rem;
+      clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+    }
+    .nav-cta:hover { background: var(--yellow-dark) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('./Screenshot 2026-05-18 094741.png') center/cover no-repeat;
+      transform: scale(1.12);
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(10,10,10,0.88) 0%,
+        rgba(10,10,10,0.55) 55%,
+        rgba(245,200,0,0.12) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 860px;
+      padding: 0 1.5rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.2rem;
+      clip-path: polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(4.5rem, 13vw, 10rem);
+      line-height: 0.88;
+      color: var(--white);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+    .hero-title .accent { color: var(--yellow); }
+    .hero-sub {
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      color: var(--light-gray);
+      max-width: 480px;
+      margin: 1.5rem auto 0;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease 0.65s forwards;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease 0.85s forwards;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+      padding: 0.85rem 2.4rem;
+      text-decoration: none;
+      clip-path: polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+      padding: 0.8rem 2.4rem;
+      text-decoration: none;
+      clip-path: polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--yellow); color: var(--black); transform: translateY(-2px); }
+    .scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.6s forwards;
+      cursor: pointer;
+    }
+    .scroll-cue span {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--yellow), transparent);
+      animation: linePulse 2s ease infinite;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--yellow);
+      overflow: hidden;
+      padding: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      animation: ticker 24s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 2.5rem;
+      flex-shrink: 0;
+      border-right: 2px solid rgba(0,0,0,0.15);
+    }
+    .ticker-num {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 2rem;
+      color: var(--black);
+      line-height: 1;
+    }
+    .ticker-lbl {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 1.5rem; }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .section-title .accent { color: var(--yellow); }
+    .section-desc {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 520px;
+      margin-top: 1rem;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal, .reveal-l, .reveal-r {
+      opacity: 0;
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal         { transform: translateY(40px); }
+    .reveal-l       { transform: translateX(-52px); }
+    .reveal-r       { transform: translateX(52px); }
+    .reveal.vis, .reveal-l.vis, .reveal-r.vis {
+      opacity: 1;
+      transform: none;
+    }
+    .d1 { transition-delay: 0.1s !important; }
+    .d2 { transition-delay: 0.2s !important; }
+    .d3 { transition-delay: 0.3s !important; }
+    .d4 { transition-delay: 0.4s !important; }
+    .d5 { transition-delay: 0.5s !important; }
+
+    /* ── FEATURES ── */
+    #features { background: var(--dark); }
+    .features-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .features-img {
+      position: relative;
+    }
+    .features-img img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+    .features-img::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 55%;
+      background: var(--yellow);
+    }
+    .features-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 55%; height: 4px;
+      background: var(--yellow);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.2rem;
+    }
+    .feat-card {
+      background: var(--dark2);
+      padding: 1.4rem;
+      border-left: 3px solid var(--yellow);
+      transition: transform 0.25s, background 0.25s;
+    }
+    .feat-card:hover { transform: translateY(-5px); background: #222; }
+    .feat-icon { font-size: 1.5rem; margin-bottom: 0.65rem; }
+    .feat-title {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .feat-text { font-size: 0.78rem; color: var(--gray); line-height: 1.55; }
+
+    /* ── STRIPE ── */
+    .stripe {
+      height: 8px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--yellow) 0, var(--yellow) 10px,
+        var(--black) 10px, var(--black) 20px
+      );
+    }
+
+    /* ── QUOTE ── */
+    #quote {
+      background: var(--yellow);
+      padding: 5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #quote::before {
+      content: '"';
+      position: absolute;
+      top: -3rem; left: 1rem;
+      font-size: 22rem;
+      color: rgba(0,0,0,0.055);
+      font-family: Georgia, serif;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .quote-text {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      color: var(--black);
+      text-transform: uppercase;
+      line-height: 0.96;
+      position: relative;
+      z-index: 1;
+    }
+    .quote-attr {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+      margin-top: 1rem;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--black); }
+    .gallery-head { text-align: center; margin-bottom: 2.8rem; }
+    .gallery-head .section-desc { margin: 0.5rem auto 0; text-align: center; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 0.6rem;
+    }
+    .g-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .g-item:nth-child(5) { grid-column: span 2; }
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s ease;
+    }
+    .g-item:hover img { transform: scale(1.08); }
+    .g-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245,200,0,0.22), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .g-item:hover::after { opacity: 1; }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--dark); }
+    .pricing-head { text-align: center; margin-bottom: 3rem; }
+    .pricing-head .section-desc { margin: 0.5rem auto 0; text-align: center; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .price-card {
+      background: var(--dark2);
+      padding: 2rem 1.4rem;
+      text-align: center;
+      position: relative;
+      clip-path: polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);
+      border-top: 3px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, background 0.3s;
+    }
+    .price-card:hover { transform: translateY(-8px); background: #222; }
+    .price-card.featured {
+      background: var(--yellow);
+      border-top-color: var(--yellow-dark);
+    }
+    .price-card.featured:hover { background: var(--yellow-dark); }
+    .price-tag {
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.4rem;
+    }
+    .price-card.featured .price-tag { color: rgba(0,0,0,0.55); }
+    .price-name {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .price-card.featured .price-name { color: var(--black); }
+    .price-orig {
+      font-size: 0.72rem;
+      color: var(--gray);
+      text-decoration: line-through;
+      margin-bottom: 0.2rem;
+    }
+    .price-card.featured .price-orig { color: rgba(0,0,0,0.4); }
+    .price-amt {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 3.2rem;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .price-card.featured .price-amt { color: var(--black); }
+    .price-per {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 1.4rem;
+    }
+    .price-card.featured .price-per { color: rgba(0,0,0,0.5); }
+    .price-feats {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .price-feats li {
+      font-size: 0.8rem;
+      color: var(--light-gray);
+      padding: 0.38rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .price-card.featured .price-feats li {
+      color: rgba(0,0,0,0.75);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+    .price-feats li::before {
+      content: '✓';
+      color: var(--yellow);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .price-card.featured .price-feats li::before { color: var(--black); }
+    .price-badge {
+      position: absolute;
+      top: 0.9rem; right: 0.9rem;
+      background: var(--black);
+      color: var(--yellow);
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+    }
+    .price-card.featured .price-badge {
+      background: rgba(0,0,0,0.15);
+      color: var(--black);
+    }
+    .price-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      padding: 0.65rem 1rem;
+      clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+      transition: all 0.2s;
+    }
+    .price-btn-outline {
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+    }
+    .price-btn-outline:hover { background: var(--yellow); color: var(--black); }
+    .price-btn-dark {
+      background: var(--black);
+      color: var(--yellow);
+    }
+    .price-btn-dark:hover { background: #1a1a1a; }
+    .price-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--gray);
+      margin-top: 1.5rem;
+    }
+
+    /* ── TRAINER ── */
+    #trainer { background: var(--black); }
+    .trainer-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .trainer-img-wrap {
+      position: relative;
+    }
+    .trainer-img-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .trainer-tag {
+      position: absolute;
+      bottom: 2rem;
+      left: -0.75rem;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.15em;
+      padding: 0.7rem 1.5rem;
+      clip-path: polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);
+    }
+    .specialties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-top: 2rem;
+    }
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: var(--dark2);
+      border-left: 3px solid var(--yellow);
+    }
+    .spec-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .spec-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--light-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--dark); }
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-items {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .c-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .c-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      clip-path: polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
+      font-size: 1rem;
+    }
+    .c-lbl {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.2rem;
+    }
+    .c-val {
+      font-size: 0.88rem;
+      color: var(--light-gray);
+      line-height: 1.55;
+    }
+    .contact-right img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .cta-box {
+      background: var(--yellow);
+      padding: 1.8rem 2rem;
+      margin-top: 0.8rem;
+      clip-path: polygon(0 0,100% 0,calc(100% - 10px) 100%,10px 100%);
+    }
+    .cta-box p { font-size: 0.8rem; color: rgba(0,0,0,0.55); margin-bottom: 0.3rem; }
+    .cta-box .cta-title {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.75rem;
+      color: var(--black);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .btn-dark {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      padding: 0.75rem 2rem;
+      text-decoration: none;
+      clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: #1a1a1a; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(245,200,0,0.14);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 0.8rem;
+    }
+    .footer-logo span { color: var(--white); }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--yellow); }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(136,136,136,0.6);
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes linePulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .features-wrap, .trainer-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+      .g-item:nth-child(1), .g-item:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .specialties { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(3.5rem, 18vw, 6rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">REPUBLIC<span>FITNESS</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#trainer">Trainers</a></li>
+      <li><a href="#contact" class="nav-cta">Join Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Kota Kinabalu's Premier Gym · 8F Centre Point</div>
+      <h1 class="hero-title">FORGE<br><span class="accent">YOUR</span><br>LIMITS</h1>
+      <p class="hero-sub">State-of-the-art equipment, panoramic city views, and a community that pushes you to be your best — every single day.</p>
+      <div class="hero-btns">
+        <a href="#pricing" class="btn-primary">Join Now</a>
+        <a href="#gallery" class="btn-outline">See The Gym</a>
+      </div>
+    </div>
+    <div class="scroll-cue" onclick="document.getElementById('ticker').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" id="ticker">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-num">RM12</span><span class="ticker-lbl">Walk-in<br>Pass</span></div>
+      <div class="ticker-item"><span class="ticker-num">7AM</span><span class="ticker-lbl">Opens<br>Daily</span></div>
+      <div class="ticker-item"><span class="ticker-num">11PM</span><span class="ticker-lbl">Closes<br>Daily</span></div>
+      <div class="ticker-item"><span class="ticker-num">8F</span><span class="ticker-lbl">Centre Point<br>Sabah KK</span></div>
+      <div class="ticker-item"><span class="ticker-num">100+</span><span class="ticker-lbl">Equipment<br>Pieces</span></div>
+      <div class="ticker-item"><span class="ticker-num">PRO</span><span class="ticker-lbl">Personal<br>Trainers</span></div>
+      <div class="ticker-item"><span class="ticker-num">NO</span><span class="ticker-lbl">Membership<br>Needed</span></div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker-item"><span class="ticker-num">RM12</span><span class="ticker-lbl">Walk-in<br>Pass</span></div>
+      <div class="ticker-item"><span class="ticker-num">7AM</span><span class="ticker-lbl">Opens<br>Daily</span></div>
+      <div class="ticker-item"><span class="ticker-num">11PM</span><span class="ticker-lbl">Closes<br>Daily</span></div>
+      <div class="ticker-item"><span class="ticker-num">8F</span><span class="ticker-lbl">Centre Point<br>Sabah KK</span></div>
+      <div class="ticker-item"><span class="ticker-num">100+</span><span class="ticker-lbl">Equipment<br>Pieces</span></div>
+      <div class="ticker-item"><span class="ticker-num">PRO</span><span class="ticker-lbl">Personal<br>Trainers</span></div>
+      <div class="ticker-item"><span class="ticker-num">NO</span><span class="ticker-lbl">Membership<br>Needed</span></div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="features-wrap">
+        <div class="reveal-l">
+          <div class="features-img">
+            <img src="./Screenshot 2026-05-18 094716.png" alt="Republic Fitness entrance">
+          </div>
+        </div>
+        <div class="reveal-r">
+          <div class="section-label">Why Choose Us</div>
+          <h2 class="section-title">WHERE<br>CHAMPIONS<br><span class="accent">ARE MADE</span></h2>
+          <p class="section-desc">Located on the 8th floor of Centre Point Sabah with breathtaking panoramic views of Kota Kinabalu. Republic Fitness is more than a gym — it's where your transformation begins.</p>
+          <div class="feature-grid">
+            <div class="feat-card reveal d1">
+              <div class="feat-icon">🏋️</div>
+              <div class="feat-title">Premium Equipment</div>
+              <p class="feat-text">Commercial-grade machines and free weights for every muscle group.</p>
+            </div>
+            <div class="feat-card reveal d2">
+              <div class="feat-icon">🌆</div>
+              <div class="feat-title">Panoramic Views</div>
+              <p class="feat-text">Train with a stunning KK cityscape backdrop — motivation every rep.</p>
+            </div>
+            <div class="feat-card reveal d3">
+              <div class="feat-icon">👊</div>
+              <div class="feat-title">Boxing Zone</div>
+              <p class="feat-text">Heavy bag station for cardio, stress relief, and combat conditioning.</p>
+            </div>
+            <div class="feat-card reveal d4">
+              <div class="feat-icon">🚲</div>
+              <div class="feat-title">Cardio Studio</div>
+              <p class="feat-text">Treadmills, spin bikes, and ellipticals overlooking the city.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIPE -->
+  <div class="stripe"></div>
+
+  <!-- QUOTE -->
+  <div id="quote">
+    <div class="container">
+      <div class="quote-text reveal">THE BODY ACHIEVES<br>WHAT THE MIND BELIEVES</div>
+      <p class="quote-attr reveal d2">— Republic Fitness · Kota Kinabalu</p>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-head reveal">
+        <div class="section-label">The Space</div>
+        <h2 class="section-title">BUILT FOR <span class="accent">GREATNESS</span></h2>
+        <p class="section-desc">Every corner engineered for performance. Come see it for yourself.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="g-item reveal d1">
+          <img src="./Screenshot 2026-05-18 094741.png" alt="Main gym floor with panoramic windows">
+        </div>
+        <div class="g-item reveal d2">
+          <img src="./480471932_517581548015261_4309478586580026710_n.jpg" alt="Free weights and bench press area">
+        </div>
+        <div class="g-item reveal d3">
+          <img src="./557750411_695252356914845_2103893443989386614_n.jpg" alt="Machine training area">
+        </div>
+        <div class="g-item reveal d1">
+          <img src="./Screenshot 2026-05-18 094914.png" alt="Strength training racks">
+        </div>
+        <div class="g-item reveal d2">
+          <img src="./556569452_695252436914837_2576185313475686655_n.jpg" alt="Cardio bikes with city view">
+        </div>
+        <div class="g-item reveal d3">
+          <img src="./Screenshot 2026-05-18 094836.png" alt="Boxing bag station">
+        </div>
+        <div class="g-item reveal d4">
+          <img src="./Screenshot 2026-05-18 094941.png" alt="Cable machines with sunset view">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIPE -->
+  <div class="stripe"></div>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-head reveal">
+        <div class="section-label">Membership Plans</div>
+        <h2 class="section-title">START YOUR <span class="accent">JOURNEY TODAY</span></h2>
+        <p class="section-desc">No excuses. Whether you're trying for a day or committing for a year — there's a plan built for you.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="price-card reveal d1">
+          <div class="price-tag">Walk-in</div>
+          <div class="price-name">DAY PASS</div>
+          <div class="price-amt">RM12</div>
+          <div class="price-per">Per visit · No commitment</div>
+          <ul class="price-feats">
+            <li>Full gym access</li>
+            <li>7AM – 11PM daily</li>
+            <li>No registration needed</li>
+            <li>Just walk in</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-outline">Walk In Now</a>
+        </div>
+
+        <div class="price-card reveal d2">
+          <div class="price-tag">Membership</div>
+          <div class="price-name">3 MONTHS</div>
+          <div class="price-amt">RM360</div>
+          <div class="price-per">RM120 / month</div>
+          <ul class="price-feats">
+            <li>Unlimited access</li>
+            <li>7AM – 11PM daily</li>
+            <li>All equipment</li>
+            <li>Member benefits</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-outline">Get Started</a>
+        </div>
+
+        <div class="price-card featured reveal d3">
+          <div class="price-badge">PROMO</div>
+          <div class="price-tag">Best Value</div>
+          <div class="price-name">6 MONTHS</div>
+          <div class="price-orig">Normal: RM720</div>
+          <div class="price-amt">RM648</div>
+          <div class="price-per">RM108 / month · Save RM72</div>
+          <ul class="price-feats">
+            <li>Unlimited access</li>
+            <li>7AM – 11PM daily</li>
+            <li>All equipment</li>
+            <li>Priority benefits</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-dark">Get Started</a>
+        </div>
+
+        <div class="price-card reveal d4">
+          <div class="price-badge">PROMO</div>
+          <div class="price-tag">Full Year</div>
+          <div class="price-name">1 YEAR</div>
+          <div class="price-orig">Normal: RM1440</div>
+          <div class="price-amt">RM1152</div>
+          <div class="price-per">RM96 / month · Best Savings</div>
+          <ul class="price-feats">
+            <li>Unlimited access</li>
+            <li>7AM – 11PM daily</li>
+            <li>All equipment</li>
+            <li>Maximum savings</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-outline">Get Started</a>
+        </div>
+
+      </div>
+      <p class="price-note">*Terms & Conditions apply</p>
+    </div>
+  </section>
+
+  <!-- TRAINER -->
+  <section id="trainer">
+    <div class="container">
+      <div class="trainer-wrap">
+        <div class="reveal-l">
+          <div class="trainer-img-wrap">
+            <img src="./670644799_842458235527589_4777317859765159778_n.jpg" alt="Personal Trainer PT Azmi">
+            <div class="trainer-tag">PT AZMI</div>
+          </div>
+        </div>
+        <div class="reveal-r">
+          <div class="section-label">Personal Training</div>
+          <h2 class="section-title">TRAIN SMARTER.<br><span class="accent">TRANSFORM</span><br>FASTER.</h2>
+          <p class="section-desc" style="margin-top:1rem;">I help busy professionals and beginners lose fat, build muscle and get stronger — without extreme dieting or wasting hours in the gym.</p>
+          <div class="specialties">
+            <div class="spec-item reveal d1">
+              <div class="spec-icon">⚖️</div>
+              <div class="spec-text">Weight Management</div>
+            </div>
+            <div class="spec-item reveal d2">
+              <div class="spec-icon">🔥</div>
+              <div class="spec-text">Fat Loss</div>
+            </div>
+            <div class="spec-item reveal d3">
+              <div class="spec-icon">💪</div>
+              <div class="spec-text">Body Recomposition</div>
+            </div>
+            <div class="spec-item reveal d4">
+              <div class="spec-icon">🏆</div>
+              <div class="spec-text">Strength & Muscle</div>
+            </div>
+          </div>
+          <a href="https://wa.me/60116950572" class="btn-primary" style="margin-top:2rem;display:inline-block;">Book a Session</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIPE -->
+  <div class="stripe"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="reveal-l">
+          <div class="section-label">Find Us</div>
+          <h2 class="section-title">COME TRAIN<br><span class="accent">WITH US</span></h2>
+          <div class="contact-items">
+            <div class="c-item">
+              <div class="c-icon">📍</div>
+              <div>
+                <div class="c-lbl">Location</div>
+                <div class="c-val">8F, Centre Point Sabah Shopping Mall<br>(Beside Bowling Centre)<br>Kota Kinabalu, Sabah 88000</div>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">🕐</div>
+              <div>
+                <div class="c-lbl">Operating Hours</div>
+                <div class="c-val">Daily: 7:00 AM – 11:00 PM</div>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">📞</div>
+              <div>
+                <div class="c-lbl">WhatsApp / Phone</div>
+                <div class="c-val">011-6950 5720</div>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">✉️</div>
+              <div>
+                <div class="c-lbl">Email</div>
+                <div class="c-val">republic.fitness23@gmail.com</div>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">📱</div>
+              <div>
+                <div class="c-lbl">Social Media</div>
+                <div class="c-val">IG / FB: @republic.fitnesskk<br>TikTok: @republic.fitnesskk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right reveal-r">
+          <img src="./Screenshot 2026-05-18 094804.png" alt="Republic Fitness friendly team">
+          <div class="cta-box">
+            <p>Ready to start? No membership needed.</p>
+            <div class="cta-title">WALK IN FOR JUST RM12</div>
+            <a href="https://wa.me/60116950572" class="btn-dark">WhatsApp Us Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">REPUBLIC<span>FITNESS</span></div>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+      <a href="https://wa.me/60116950572">WhatsApp</a>
+    </div>
+    <p class="footer-copy">© 2024 Republic Fitness KK · 8F Centre Point Sabah · Kota Kinabalu, Malaysia</p>
+  </footer>
+
+  <script>
+    // Parallax hero
+    const heroBg = document.getElementById('heroBg');
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `scale(1.12) translateY(${y * 0.28}px)`;
+      navbar.classList.toggle('scrolled', y > 60);
+    }, { passive: true });
+
+    // Scroll reveal via IntersectionObserver
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => io.observe(el));
+
+    // Counter animation for ticker numbers (optional enhancement)
+    const tickerNums = document.querySelectorAll('.ticker-num');
+    tickerNums.forEach(el => {
+      el.style.fontVariantNumeric = 'tabular-nums';
+    });
+  </script>
+</body>
+</html>
