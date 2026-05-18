@@ -1,0 +1,2636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优质陪月中心 | Quality Confinement Home - Sabah</title>
+    <meta name="description" content="沙巴著名月子中心，提供专业、温馨的产后护理服务。Quality Confinement Home - Centre Sabah Malaysia.">
+    <meta name="keywords" content="月子中心,沙巴,confinement,postnatal,Sabah,KK,Kota Kinabalu,优质陪月">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           CSS Variables - Pink Theme
+        ============================================================ */
+        :root {
+            --pink-deep:    #C2185B;
+            --pink-main:    #E91E8C;
+            --pink-bright:  #FF6FB7;
+            --pink-soft:    #FF9CC2;
+            --pink-light:   #FFD6E7;
+            --pink-blush:   #FFF0F5;
+            --pink-cream:   #FFF8FC;
+            --pink-pale:    #FDE8F0;
+
+            --rose-dark:    #880E4F;
+            --rose-mid:     #AD1457;
+
+            --text-dark:    #3D0A1E;
+            --text-mid:     #6B2D4A;
+            --text-soft:    #A06080;
+            --text-light:   #C899AF;
+
+            --white:        #FFFFFF;
+            --shadow-pink:  rgba(233, 30, 140, 0.15);
+            --shadow-soft:  rgba(194, 24, 91, 0.1);
+
+            --font-heading: 'Playfair Display', 'Noto Sans SC', serif;
+            --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --font-body:    'Lato', 'Noto Sans SC', sans-serif;
+
+            --transition-smooth: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-fast:   all 0.3s ease;
+            --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --radius-xl: 50px;
+        }
+
+        /* ============================================================
+           Reset & Base
+        ============================================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--pink-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
+        img { max-width: 100%; height: auto; display: block; object-fit: cover; }
+
+        /* ============================================================
+           Watermark
+        ============================================================ */
+        .watermark-global {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 9999;
+            pointer-events: none;
+            writing-mode: vertical-rl;
+            font-size: 11px;
+            font-family: var(--font-body);
+            color: rgba(194, 24, 91, 0.25);
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Corner watermarks on sections */
+        section { position: relative; }
+        section::after {
+            content: 'Demo by SabahClick';
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 10px;
+            font-family: var(--font-body);
+            color: rgba(194, 24, 91, 0.2);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            pointer-events: none;
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           Scroll Animation Classes
+        ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.from-left {
+            transform: translateX(-50px);
+        }
+        .reveal.from-right {
+            transform: translateX(50px);
+        }
+        .reveal.scale-in {
+            transform: scale(0.85);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        .reveal-delay-6 { transition-delay: 0.6s; }
+
+        /* Floating hearts animation */
+        @keyframes float-heart {
+            0%   { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            50%  { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+            100% { transform: translateY(0) rotate(-5deg); opacity: 0.6; }
+        }
+        @keyframes float-slow {
+            0%   { transform: translateY(0) translateX(0); }
+            33%  { transform: translateY(-15px) translateX(8px); }
+            66%  { transform: translateY(-8px) translateX(-5px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50%       { transform: scale(1.08); opacity: 1; }
+        }
+        @keyframes shimmer {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes bounce-in {
+            0%   { transform: scale(0.5); opacity: 0; }
+            60%  { transform: scale(1.1); opacity: 1; }
+            80%  { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        @keyframes slide-up {
+            from { transform: translateY(100%); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        /* ============================================================
+           Floating Decorative Elements
+        ============================================================ */
+        .deco-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: float-heart 3s ease-in-out infinite;
+            opacity: 0.4;
+            color: var(--pink-bright);
+        }
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+            pointer-events: none;
+            opacity: 0.3;
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        /* ============================================================
+           Utility
+        ============================================================ */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container-narrow {
+            width: 85%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-chinese);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--pink-main);
+            background: var(--pink-light);
+            padding: 6px 18px;
+            border-radius: var(--radius-xl);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-family: var(--font-chinese);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-mid);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        .section-desc {
+            font-family: var(--font-chinese);
+            font-size: 1rem;
+            color: var(--text-soft);
+            line-height: 1.9;
+            max-width: 600px;
+        }
+        .text-center { text-align: center; }
+        .text-center .section-desc { margin: 0 auto; }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: var(--transition-bounce);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px var(--shadow-pink);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 36px rgba(233, 30, 140, 0.35);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--pink-main);
+            padding: 13px 34px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: var(--transition-bounce);
+            border: 2px solid var(--pink-main);
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--pink-main);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px var(--shadow-pink);
+        }
+
+        /* ============================================================
+           Navigation
+        ============================================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition-smooth);
+        }
+        .nav.scrolled {
+            background: rgba(255, 248, 252, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px var(--shadow-pink);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px var(--shadow-pink);
+            animation: pulse-soft 3s ease-in-out infinite;
+        }
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-logo-en {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--pink-deep);
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+        .nav-logo-cn {
+            font-family: var(--font-chinese);
+            font-size: 0.7rem;
+            color: var(--text-soft);
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: var(--text-mid);
+            letter-spacing: 1px;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pink-main);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--pink-main); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            color: white !important;
+            padding: 8px 22px;
+            border-radius: var(--radius-xl);
+            font-size: 0.82rem !important;
+            font-weight: 500 !important;
+            box-shadow: 0 4px 16px var(--shadow-pink);
+            transition: var(--transition-bounce) !important;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 24px rgba(233, 30, 140, 0.4) !important;
+        }
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--pink-main);
+            border-radius: 2px;
+            transition: var(--transition-fast);
+        }
+
+        /* Mobile menu */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 248, 252, 0.97);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile.open { display: flex; }
+        .nav-mobile a {
+            font-family: var(--font-chinese);
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+        .nav-mobile a:hover { color: var(--pink-main); }
+        .nav-mobile-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-soft);
+            line-height: 1;
+        }
+
+        /* ============================================================
+           Hero
+        ============================================================ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #FFF0F5 0%, #FFD6E7 35%, #FFC2D4 65%, #FFB3CA 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        .hero-bg-circles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .hero-circle-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,107,183,0.25) 0%, transparent 70%);
+            top: -150px;
+            right: -100px;
+            animation: float-slow 8s ease-in-out infinite;
+        }
+        .hero-circle-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(194,24,91,0.15) 0%, transparent 70%);
+            bottom: -100px;
+            left: -80px;
+            animation: float-slow 10s ease-in-out infinite reverse;
+        }
+        .hero-circle-3 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,156,194,0.3) 0%, transparent 70%);
+            top: 30%;
+            left: 40%;
+            animation: pulse-soft 5s ease-in-out infinite;
+        }
+        .hero-hearts {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .hero-hearts span {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.4;
+            color: var(--pink-deep);
+            animation: float-heart 4s ease-in-out infinite;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+        .hero-content { animation: slide-up 1s ease both; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 20px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.8rem;
+            color: var(--pink-deep);
+            font-weight: 500;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 20px var(--shadow-pink);
+            margin-bottom: 1.5rem;
+        }
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--pink-main);
+            border-radius: 50%;
+            animation: pulse-soft 2s infinite;
+        }
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+        }
+        .hero-title-cn {
+            font-family: var(--font-chinese);
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--pink-deep);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .hero-desc {
+            font-family: var(--font-chinese);
+            font-size: 1.05rem;
+            color: var(--text-mid);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-num {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--pink-deep);
+            line-height: 1;
+            display: block;
+        }
+        .hero-stat-label {
+            font-family: var(--font-chinese);
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .hero-stat-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--pink-light);
+            align-self: center;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero-visual {
+            position: relative;
+            animation: slide-up 1s 0.3s ease both;
+        }
+        .hero-img-wrap {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(194, 24, 91, 0.25);
+            aspect-ratio: 4/5;
+        }
+        .hero-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .hero-img-wrap:hover img { transform: scale(1.04); }
+        .hero-img-fallback {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, var(--pink-main), var(--pink-deep), var(--rose-dark));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: white;
+            font-size: 5rem;
+        }
+        .hero-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(136,14,79,0.4) 0%, transparent 50%);
+        }
+        .hero-img-tag {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hero-img-tag-icon {
+            font-size: 2rem;
+            animation: pulse-soft 2s infinite;
+        }
+        .hero-img-tag-text strong {
+            display: block;
+            font-family: var(--font-chinese);
+            font-size: 0.9rem;
+            color: var(--pink-deep);
+            font-weight: 700;
+        }
+        .hero-img-tag-text span {
+            font-family: var(--font-chinese);
+            font-size: 0.75rem;
+            color: var(--text-soft);
+        }
+        .hero-float-card {
+            position: absolute;
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            box-shadow: 0 10px 40px var(--shadow-pink);
+            animation: float-slow 5s ease-in-out infinite;
+        }
+        .hero-float-card.top-right {
+            top: 20px;
+            right: -30px;
+            animation-delay: 1s;
+        }
+        .hero-float-card.mid-left {
+            left: -30px;
+            top: 40%;
+            animation-delay: 2s;
+        }
+        .hero-float-card-emoji { font-size: 1.5rem; margin-bottom: 4px; }
+        .hero-float-card-text {
+            font-family: var(--font-chinese);
+            font-size: 0.75rem;
+            color: var(--text-mid);
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           Features Strip
+        ============================================================ */
+        .features-strip {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            padding: 1.5rem 0;
+            overflow: hidden;
+        }
+        .features-strip-inner {
+            display: flex;
+            gap: 3rem;
+            animation: scroll-ticker 20s linear infinite;
+            white-space: nowrap;
+        }
+        @keyframes scroll-ticker {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .features-strip-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            flex-shrink: 0;
+        }
+        .features-strip-dot {
+            width: 5px;
+            height: 5px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+        }
+
+        /* ============================================================
+           About
+        ============================================================ */
+        .about {
+            padding: 100px 0;
+            background: var(--pink-blush);
+            overflow: hidden;
+        }
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .about-imgs {
+            position: relative;
+        }
+        .about-img-main {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            box-shadow: 0 20px 60px var(--shadow-pink);
+        }
+        .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+        .about-img-fallback {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, var(--pink-soft), var(--pink-main));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+        .about-img-accent {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 55%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: 0 15px 40px var(--shadow-pink);
+            border: 4px solid white;
+        }
+        .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+        .about-img-accent-fallback {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, var(--pink-light), var(--pink-soft));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .about-award {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            box-shadow: 0 10px 30px var(--shadow-pink);
+            text-align: center;
+            animation: pulse-soft 4s ease-in-out infinite;
+        }
+        .about-award-icon { font-size: 2rem; margin-bottom: 4px; }
+        .about-award-text {
+            font-family: var(--font-chinese);
+            font-size: 0.7rem;
+            color: var(--pink-deep);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        .about-content { padding-right: 1rem; }
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .about-highlight-item {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+            transition: var(--transition-bounce);
+        }
+        .about-highlight-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px var(--shadow-pink);
+        }
+        .about-highlight-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            animation: float-heart 3s ease-in-out infinite;
+        }
+        .about-highlight-icon:nth-child(1) { animation-delay: 0s; }
+        .about-highlight-text strong {
+            display: block;
+            font-family: var(--font-chinese);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .about-highlight-text span {
+            font-family: var(--font-chinese);
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           Services
+        ============================================================ */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+        .services-header { margin-bottom: 4rem; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--pink-cream);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-bounce);
+            cursor: default;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink-main), var(--pink-bright));
+            border-radius: 2px 2px 0 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px var(--shadow-pink);
+            background: white;
+        }
+        .service-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            transition: var(--transition-bounce);
+        }
+        .service-card:hover .service-card-icon {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .service-card-title {
+            font-family: var(--font-chinese);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .service-card-subtitle {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--pink-main);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        .service-card-desc {
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            line-height: 1.8;
+        }
+        .service-card-features {
+            list-style: none;
+            margin-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .service-card-features li {
+            font-family: var(--font-chinese);
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-card-features li::before {
+            content: '✦';
+            color: var(--pink-main);
+            font-size: 0.6rem;
+            flex-shrink: 0;
+        }
+        .service-card.featured {
+            background: linear-gradient(160deg, var(--pink-main), var(--pink-deep));
+            color: white;
+        }
+        .service-card.featured .service-card-title,
+        .service-card.featured .service-card-desc,
+        .service-card.featured .service-card-features li { color: white; }
+        .service-card.featured .service-card-subtitle { color: rgba(255,255,255,0.8); }
+        .service-card.featured .service-card-icon {
+            background: rgba(255,255,255,0.2);
+        }
+        .service-card.featured .service-card-features li::before { color: rgba(255,255,255,0.8); }
+        .service-card.featured::before { display: none; }
+        .service-card.featured:hover {
+            background: linear-gradient(160deg, #d81b8a, var(--rose-dark));
+            box-shadow: 0 24px 60px rgba(194, 24, 91, 0.45);
+        }
+        .service-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--font-chinese);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================================
+           Gallery
+        ============================================================ */
+        .gallery {
+            padding: 100px 0;
+            background: var(--pink-blush);
+        }
+        .gallery-header { margin-bottom: 3rem; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .gallery-item:nth-child(4) {
+            grid-column: span 2;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .gallery-fallback-colors {
+            background-color: var(--pink-light);
+        }
+        .gallery-item:nth-child(1) .gallery-item-fallback { background: linear-gradient(160deg, var(--pink-main), var(--rose-dark)); }
+        .gallery-item:nth-child(2) .gallery-item-fallback { background: linear-gradient(160deg, var(--pink-soft), var(--pink-main)); }
+        .gallery-item:nth-child(3) .gallery-item-fallback { background: linear-gradient(160deg, var(--pink-light), var(--pink-soft)); }
+        .gallery-item:nth-child(4) .gallery-item-fallback { background: linear-gradient(160deg, var(--pink-blush), var(--pink-light)); }
+        .gallery-item:nth-child(5) .gallery-item-fallback { background: linear-gradient(160deg, var(--pink-bright), var(--pink-soft)); }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(136,14,79,0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay-text {
+            color: white;
+            font-family: var(--font-chinese);
+            font-size: 0.85rem;
+        }
+        .gallery-more {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        /* ============================================================
+           Why Choose Us
+        ============================================================ */
+        .why {
+            padding: 100px 0;
+            background: white;
+        }
+        .why-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .why-content { padding-right: 1rem; }
+        .why-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .why-point {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            transition: var(--transition-bounce);
+            background: var(--pink-cream);
+        }
+        .why-point:hover {
+            background: var(--pink-blush);
+            transform: translateX(8px);
+        }
+        .why-point-num {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .why-point-text strong {
+            display: block;
+            font-family: var(--font-chinese);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .why-point-text span {
+            font-family: var(--font-chinese);
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            line-height: 1.6;
+        }
+        .why-visual {
+            position: relative;
+        }
+        .why-img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 12px;
+        }
+        .why-img-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .why-img-item:first-child {
+            grid-row: span 2;
+        }
+        .why-img-item img { width: 100%; height: 100%; object-fit: cover; }
+        .why-img-item-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .why-img-item:nth-child(1) .why-img-item-fallback { background: linear-gradient(160deg, var(--pink-soft), var(--pink-main)); }
+        .why-img-item:nth-child(2) .why-img-item-fallback { background: linear-gradient(160deg, var(--pink-light), var(--pink-soft)); }
+        .why-img-item:nth-child(3) .why-img-item-fallback { background: linear-gradient(160deg, var(--pink-blush), var(--pink-light)); }
+        .why-center-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px var(--shadow-pink);
+            border: 3px solid var(--pink-light);
+            font-family: var(--font-chinese);
+            text-align: center;
+            z-index: 2;
+            animation: pulse-soft 4s ease-in-out infinite;
+        }
+        .why-center-badge-icon { font-size: 2rem; }
+        .why-center-badge-text { font-size: 0.6rem; color: var(--pink-deep); font-weight: 700; line-height: 1.3; }
+
+        /* ============================================================
+           Packages / Pricing
+        ============================================================ */
+        .packages {
+            padding: 100px 0;
+            background: linear-gradient(160deg, var(--pink-light) 0%, var(--pink-blush) 50%, var(--pink-pale) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .packages-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(255,107,183,0.2) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(194,24,91,0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .packages-header { margin-bottom: 3.5rem; position: relative; z-index: 1; }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .package-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            position: relative;
+            transition: var(--transition-bounce);
+            box-shadow: 0 8px 30px var(--shadow-soft);
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 60px var(--shadow-pink);
+        }
+        .package-card.recommended {
+            background: linear-gradient(160deg, var(--pink-main), var(--rose-dark));
+            color: white;
+            transform: scale(1.05);
+        }
+        .package-card.recommended:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        .package-recommended-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 6px 20px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(255,165,0,0.4);
+        }
+        .package-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .package-name {
+            font-family: var(--font-chinese);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+        .package-card.recommended .package-name { color: white; }
+        .package-name-en {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+        }
+        .package-card.recommended .package-name-en { color: rgba(255,255,255,0.75); }
+        .package-price-label {
+            font-family: var(--font-chinese);
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            margin-bottom: 4px;
+        }
+        .package-card.recommended .package-price-label { color: rgba(255,255,255,0.75); }
+        .package-price {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--pink-deep);
+            margin-bottom: 2rem;
+        }
+        .package-card.recommended .package-price { color: white; }
+        .package-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        .package-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            color: var(--text-mid);
+        }
+        .package-card.recommended .package-features li { color: rgba(255,255,255,0.9); }
+        .package-features li::before {
+            content: '✓';
+            width: 20px;
+            height: 20px;
+            background: var(--pink-light);
+            color: var(--pink-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .package-card.recommended .package-features li::before {
+            background: rgba(255,255,255,0.25);
+            color: white;
+        }
+        .package-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 13px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition-bounce);
+            cursor: pointer;
+            border: none;
+        }
+        .package-cta-outline {
+            background: transparent;
+            border: 2px solid var(--pink-main);
+            color: var(--pink-main);
+        }
+        .package-cta-outline:hover {
+            background: var(--pink-main);
+            color: white;
+            transform: scale(1.03);
+        }
+        .package-cta-solid {
+            background: white;
+            color: var(--pink-deep);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .package-cta-solid:hover {
+            background: var(--pink-blush);
+            transform: scale(1.03);
+        }
+
+        /* ============================================================
+           Testimonials
+        ============================================================ */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        .testimonials-header { margin-bottom: 3.5rem; }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--pink-cream);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            position: relative;
+            transition: var(--transition-bounce);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px var(--shadow-pink);
+            background: white;
+        }
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--pink-light);
+            font-family: var(--font-heading);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .testimonial-text {
+            font-family: var(--font-chinese);
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-stars {
+            color: #FFB347;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            border: 2px solid var(--pink-light);
+        }
+        .testimonial-author-name {
+            font-family: var(--font-chinese);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .testimonial-author-sub {
+            font-family: var(--font-chinese);
+            font-size: 0.78rem;
+            color: var(--text-soft);
+        }
+        .testimonial-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--pink-light);
+            color: var(--pink-deep);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--font-chinese);
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           CTA Banner
+        ============================================================ */
+        .cta-banner {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--pink-main) 0%, var(--pink-deep) 50%, var(--rose-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .cta-banner-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 10% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+        .cta-banner-hearts {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .cta-banner-hearts span {
+            position: absolute;
+            color: rgba(255,255,255,0.15);
+            font-size: 2rem;
+            animation: float-heart 4s ease-in-out infinite;
+        }
+        .cta-banner-content { position: relative; z-index: 1; }
+        .cta-banner-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: white;
+            margin-bottom: 0.8rem;
+        }
+        .cta-banner-subtitle {
+            font-family: var(--font-chinese);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+        }
+        .cta-banner-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-white {
+            background: white;
+            color: var(--pink-deep);
+            padding: 14px 36px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-bounce);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .btn-white:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        }
+        .btn-transparent {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 13px 34px;
+            border-radius: var(--radius-xl);
+            font-family: var(--font-chinese);
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: var(--transition-bounce);
+            backdrop-filter: blur(10px);
+        }
+        .btn-transparent:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================
+           Contact
+        ============================================================ */
+        .contact {
+            padding: 100px 0;
+            background: var(--pink-blush);
+        }
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .contact-info { padding-right: 1rem; }
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 20px var(--shadow-soft);
+            transition: var(--transition-bounce);
+        }
+        .contact-item:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 30px var(--shadow-pink);
+        }
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--pink-light), var(--pink-soft));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .contact-item-title {
+            font-family: var(--font-chinese);
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            margin-bottom: 4px;
+        }
+        .contact-item-value {
+            font-family: var(--font-chinese);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .contact-whatsapp-big {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 20px 28px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-chinese);
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: var(--transition-bounce);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+            margin-top: 1.5rem;
+        }
+        .contact-whatsapp-big:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 50px rgba(37, 211, 102, 0.5);
+        }
+        .contact-whatsapp-big-icon { font-size: 2rem; }
+        .contact-hours {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: 0 8px 30px var(--shadow-soft);
+        }
+        .contact-hours-title {
+            font-family: var(--font-chinese);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--pink-cream);
+        }
+        .contact-hours-row:last-child { border-bottom: none; }
+        .contact-hours-day {
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            color: var(--text-mid);
+        }
+        .contact-hours-time {
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            color: var(--pink-deep);
+            font-weight: 600;
+        }
+        .contact-note {
+            margin-top: 2rem;
+            padding: 16px 20px;
+            background: var(--pink-cream);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--pink-main);
+        }
+        .contact-note p {
+            font-family: var(--font-chinese);
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           Footer
+        ============================================================ */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .footer-brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+        .footer-brand-cn {
+            font-family: var(--font-chinese);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1rem;
+        }
+        .footer-brand-desc {
+            font-family: var(--font-chinese);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.8;
+        }
+        .footer-col-title {
+            font-family: var(--font-chinese);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-links li a {
+            font-family: var(--font-chinese);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            transition: var(--transition-fast);
+        }
+        .footer-links li a:hover { color: var(--pink-bright); padding-left: 4px; }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+        .footer-social-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: var(--transition-bounce);
+        }
+        .footer-social-btn:hover {
+            background: var(--pink-main);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom-left {
+            font-family: var(--font-chinese);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+        .footer-watermark {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            color: var(--pink-bright);
+            font-weight: 700;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+        /* ============================================================
+           WhatsApp Float
+        ============================================================ */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+        .wa-bubble {
+            background: white;
+            color: var(--text-dark);
+            padding: 10px 16px;
+            border-radius: 16px 16px 4px 16px;
+            font-family: var(--font-chinese);
+            font-size: 0.82rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            animation: slide-up 0.5s 1s ease both;
+            opacity: 0;
+        }
+        .wa-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+            animation: pulse-soft 3s ease-in-out infinite;
+            transition: var(--transition-bounce);
+        }
+        .wa-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 14px 50px rgba(37, 211, 102, 0.7);
+        }
+
+        /* ============================================================
+           Responsive
+        ============================================================ */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-stats { justify-content: center; }
+            .hero-ctas { justify-content: center; }
+            .hero-float-card { display: none; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .packages-grid { grid-template-columns: repeat(2, 1fr); }
+            .packages-grid .package-card.recommended { grid-column: span 2; transform: none; }
+            .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .about-inner, .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .gallery-item:nth-child(1) { grid-column: span 2; height: 300px; }
+            .gallery-item:nth-child(4) { grid-column: span 1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .hero-float-card { display: none; }
+            .services-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
+            .packages-grid .package-card.recommended { grid-column: span 1; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .gallery-item { height: 220px; }
+            .gallery-item:nth-child(1) { grid-column: span 1; height: 280px; }
+            .gallery-item:nth-child(4) { grid-column: span 1; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+            .about-img-accent { display: none; }
+            .contact-inner { grid-template-columns: 1fr; }
+            .why-img-grid { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     GLOBAL WATERMARK
+============================================================ -->
+<div class="watermark-global">Demo by SabahClick</div>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="nav-logo-icon">🌸</div>
+            <div class="nav-logo-text">
+                <span class="nav-logo-en">Quality Confinement Home</span>
+                <span class="nav-logo-cn">优质陪月中心 · 沙巴</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#services">服务项目</a></li>
+            <li><a href="#gallery">中心照片</a></li>
+            <li><a href="#packages">套餐价格</a></li>
+            <li><a href="#testimonials">妈妈心声</a></li>
+            <li><a href="#contact" class="nav-cta">立即咨询</a></li>
+        </ul>
+        <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="nav-mobile" id="mobileMenu">
+    <span class="nav-mobile-close" onclick="toggleMenu()">✕</span>
+    <a href="#about" onclick="toggleMenu()">关于我们</a>
+    <a href="#services" onclick="toggleMenu()">服务项目</a>
+    <a href="#gallery" onclick="toggleMenu()">中心照片</a>
+    <a href="#packages" onclick="toggleMenu()">套餐价格</a>
+    <a href="#testimonials" onclick="toggleMenu()">妈妈心声</a>
+    <a href="#contact" onclick="toggleMenu()">立即咨询</a>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+    <div class="hero-bg-circles">
+        <div class="hero-circle-1"></div>
+        <div class="hero-circle-2"></div>
+        <div class="hero-circle-3"></div>
+    </div>
+    <div class="hero-hearts">
+        <span style="top:15%;left:8%;animation-delay:0s;">🌸</span>
+        <span style="top:70%;left:5%;animation-delay:1s;">💕</span>
+        <span style="top:25%;right:5%;animation-delay:0.5s;">🌷</span>
+        <span style="top:80%;right:10%;animation-delay:1.5s;">🌸</span>
+        <span style="top:50%;left:15%;animation-delay:2s;">✨</span>
+        <span style="top:10%;right:20%;animation-delay:2.5s;">💗</span>
+    </div>
+    <div class="hero-inner">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                沙巴著名月子中心 · SABAH TRUSTED
+            </div>
+            <h1 class="hero-title">Quality Confinement<br>Home – Centre</h1>
+            <span class="hero-title-cn">优质陪月中心</span>
+            <p class="hero-desc">
+                专注提供专业、温馨、安心的月子护理服务。<br>
+                让每一位妈妈在最重要的月子期间得到最好的呵护，<br>
+                开启人生最美好的新篇章。
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-num">500+</span>
+                    <span class="hero-stat-label">满意妈妈</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">10+</span>
+                    <span class="hero-stat-label">年经验</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">24H</span>
+                    <span class="hero-stat-label">专业护理</span>
+                </div>
+            </div>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">💬 立即预约咨询</a>
+                <a href="#services" class="btn-outline">了解服务详情 →</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-float-card top-right">
+                <div class="hero-float-card-emoji">⭐</div>
+                <div class="hero-float-card-text">Google 5星好评</div>
+            </div>
+            <div class="hero-float-card mid-left">
+                <div class="hero-float-card-emoji">🍀</div>
+                <div class="hero-float-card-text">正宗月子餐</div>
+            </div>
+            <div class="hero-img-wrap">
+                <img src="img/hero.jpg" alt="Quality Confinement Home Centre"
+                     onerror="this.parentElement.innerHTML='<div class=\'hero-img-fallback\'><span>🌸</span><p style=\'font-family:var(--font-chinese);font-size:1rem;color:rgba(255,255,255,0.9);text-align:center;\'>优质陪月中心<br>专业·温馨·贴心</p></div><div class=\'hero-img-overlay\'></div><div class=\'hero-img-tag\'><div class=\'hero-img-tag-icon\'>🌸</div><div class=\'hero-img-tag-text\'><strong>优质陪月中心</strong><span>专业 · 温馨 · 贴心</span></div></div>'">
+                <div class="hero-img-overlay"></div>
+                <div class="hero-img-tag">
+                    <div class="hero-img-tag-icon">🌸</div>
+                    <div class="hero-img-tag-text">
+                        <strong>优质陪月中心</strong>
+                        <span>专业 · 温馨 · 贴心</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FEATURES STRIP (Ticker)
+============================================================ -->
+<div class="features-strip">
+    <div class="features-strip-inner">
+        <!-- Duplicated for seamless loop -->
+        <div class="features-strip-item">🌸 专业月子护理团队</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">🍲 传统营养月子餐</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">👶 新生儿专业照护</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">💆 产后修复按摩</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">🏥 24小时护理服务</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">🌿 温馨舒适环境</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">💕 母乳喂养指导</div>
+        <div class="features-strip-dot"></div>
+        <!-- Duplicate -->
+        <div class="features-strip-item">🌸 专业月子护理团队</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">🍲 传统营养月子餐</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">👶 新生儿专业照护</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">💆 产后修复按摩</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">🏥 24小时护理服务</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">🌿 温馨舒适环境</div>
+        <div class="features-strip-dot"></div>
+        <div class="features-strip-item">💕 母乳喂养指导</div>
+        <div class="features-strip-dot"></div>
+    </div>
+</div>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-inner">
+            <div class="about-imgs reveal from-left">
+                <div class="about-img-main">
+                    <img src="img/about-main.jpg" alt="Quality Confinement Centre Interior"
+                         onerror="this.parentElement.innerHTML='<div class=\'about-img-fallback\'>🌸</div>'">
+                </div>
+                <div class="about-img-accent">
+                    <img src="img/about-accent.jpg" alt="Confinement Meal"
+                         onerror="this.parentElement.innerHTML='<div class=\'about-img-accent-fallback\'>🍲</div>'">
+                </div>
+                <div class="about-award">
+                    <div class="about-award-icon">🏆</div>
+                    <div class="about-award-text">沙巴<br>信誉月子中心</div>
+                </div>
+            </div>
+            <div class="about-content reveal from-right">
+                <span class="section-tag">关于我们 · About Us</span>
+                <h2 class="section-title">用心守护每一位妈妈的<em>月子岁月</em></h2>
+                <p class="section-subtitle">Caring for Every Mother's Confinement Journey</p>
+                <p class="section-desc" style="max-width:100%;">
+                    优质陪月中心（Quality Confinement Home - Centre）坐落于美丽的沙巴，是沙巴地区最受信赖的月子中心之一。我们深信，坐月子是每一位妈妈人生中最重要的阶段，因此我们以最专业的团队、最温馨的环境、最营养的月子餐，全力守护每一位妈妈的产后恢复。
+                </p>
+                <p class="section-desc" style="max-width:100%;margin-top:1rem;">
+                    我们的专业陪月师团队经验丰富，结合传统中医智慧与现代护理知识，为妈妈和宝宝提供最贴心的照护服务。
+                </p>
+                <div class="about-highlights">
+                    <div class="about-highlight-item reveal scale-in reveal-delay-1">
+                        <div class="about-highlight-icon">👩‍⚕️</div>
+                        <div class="about-highlight-text">
+                            <strong>专业陪月师</strong>
+                            <span>持证上岗，经验丰富，专业可靠</span>
+                        </div>
+                    </div>
+                    <div class="about-highlight-item reveal scale-in reveal-delay-2">
+                        <div class="about-highlight-icon">🍲</div>
+                        <div class="about-highlight-text">
+                            <strong>营养月子餐</strong>
+                            <span>传统配方，营养均衡，美味可口</span>
+                        </div>
+                    </div>
+                    <div class="about-highlight-item reveal scale-in reveal-delay-3">
+                        <div class="about-highlight-icon">👶</div>
+                        <div class="about-highlight-text">
+                            <strong>新生儿护理</strong>
+                            <span>24小时专人照看，安全有保障</span>
+                        </div>
+                    </div>
+                    <div class="about-highlight-item reveal scale-in reveal-delay-4">
+                        <div class="about-highlight-icon">🌿</div>
+                        <div class="about-highlight-text">
+                            <strong>舒适环境</strong>
+                            <span>温馨整洁，宾至如归的家的感觉</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="services-header text-center">
+            <span class="section-tag reveal">服务项目 · Our Services</span>
+            <h2 class="section-title reveal reveal-delay-1">全方位月子护理服务</h2>
+            <p class="section-subtitle reveal reveal-delay-2">Comprehensive Postnatal Care Services</p>
+            <p class="section-desc reveal reveal-delay-3" style="margin:0 auto;">
+                我们提供从妈妈护理到新生儿照护的一站式服务，让您安心坐月子，放心做新妈妈。
+            </p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-card-icon">👶</div>
+                <div class="service-card-title">新生儿专业护理</div>
+                <div class="service-card-subtitle">Newborn Professional Care</div>
+                <p class="service-card-desc">由专业护士提供全天候新生儿照护，让妈妈得到充分休息。</p>
+                <ul class="service-card-features">
+                    <li>24小时婴儿室照看</li>
+                    <li>洗澡、换尿布护理</li>
+                    <li>体重与健康监测</li>
+                    <li>黄疸监测与护理</li>
+                </ul>
+            </div>
+            <div class="service-card featured reveal reveal-delay-2">
+                <div class="service-badge">⭐ 最受欢迎</div>
+                <div class="service-card-icon">🌸</div>
+                <div class="service-card-title">全套月子护理套餐</div>
+                <div class="service-card-subtitle">Full Confinement Package</div>
+                <p class="service-card-desc">涵盖妈妈护理与宝宝照护的一体化服务，是我们最受欢迎的选择。</p>
+                <ul class="service-card-features">
+                    <li>28/30天全套服务</li>
+                    <li>每日3正餐2茶点</li>
+                    <li>每日药草浴</li>
+                    <li>产后收腹按摩</li>
+                    <li>母乳喂养指导</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-card-icon">🍲</div>
+                <div class="service-card-title">传统月子餐</div>
+                <div class="service-card-subtitle">Traditional Confinement Meals</div>
+                <p class="service-card-desc">依据传统中医食补原则，为妈妈量身订制营养丰富的月子膳食。</p>
+                <ul class="service-card-features">
+                    <li>每日5餐精心准备</li>
+                    <li>催乳汤水</li>
+                    <li>生化汤调理</li>
+                    <li>有机食材优先选用</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-4">
+                <div class="service-card-icon">💆</div>
+                <div class="service-card-title">产后修复按摩</div>
+                <div class="service-card-subtitle">Postnatal Massage Therapy</div>
+                <p class="service-card-desc">专业产后按摩，帮助子宫复原、消除水肿、恢复体形。</p>
+                <ul class="service-card-features">
+                    <li>全身产后按摩</li>
+                    <li>收腹束腰绑带</li>
+                    <li>乳房护理</li>
+                    <li>足部护理</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-5">
+                <div class="service-card-icon">🤱</div>
+                <div class="service-card-title">母乳喂养支持</div>
+                <div class="service-card-subtitle">Breastfeeding Support</div>
+                <p class="service-card-desc">专业哺乳指导，帮助每位妈妈建立成功的母乳喂养体验。</p>
+                <ul class="service-card-features">
+                    <li>正确哺乳姿势指导</li>
+                    <li>通乳按摩服务</li>
+                    <li>挤奶机使用指导</li>
+                    <li>母乳储存知识</li>
+                </ul>
+            </div>
+            <div class="service-card reveal reveal-delay-6">
+                <div class="service-card-icon">🌿</div>
+                <div class="service-card-title">草药养生护理</div>
+                <div class="service-card-subtitle">Herbal Wellness Care</div>
+                <p class="service-card-desc">结合传统草药疗法，促进产后快速恢复，强健体魄。</p>
+                <ul class="service-card-features">
+                    <li>每日草药药浴</li>
+                    <li>生化汤调理</li>
+                    <li>月子茶水配方</li>
+                    <li>暖宫调理服务</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+============================================================ -->
+<section class="gallery" id="gallery">
+    <div class="container">
+        <div class="gallery-header text-center">
+            <span class="section-tag reveal">中心环境 · Our Centre</span>
+            <h2 class="section-title reveal reveal-delay-1">温馨舒适的<em>月子家园</em></h2>
+            <p class="section-subtitle reveal reveal-delay-2">A Warm & Comfortable Home Away From Home</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal scale-in">
+                <img src="img/gallery-1.jpg" alt="Centre Main Area"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="gallery-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-main),var(--rose-dark));">🌸</div>
+                <div class="gallery-overlay"><div class="gallery-overlay-text">温馨客房环境</div></div>
+            </div>
+            <div class="gallery-item reveal scale-in reveal-delay-1">
+                <img src="img/gallery-2.jpg" alt="Nursery Room"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="gallery-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-soft),var(--pink-main));">👶</div>
+                <div class="gallery-overlay"><div class="gallery-overlay-text">宝宝婴儿室</div></div>
+            </div>
+            <div class="gallery-item reveal scale-in reveal-delay-2">
+                <img src="img/gallery-3.jpg" alt="Confinement Meals"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="gallery-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-light),var(--pink-soft));">🍲</div>
+                <div class="gallery-overlay"><div class="gallery-overlay-text">营养月子餐</div></div>
+            </div>
+            <div class="gallery-item reveal scale-in reveal-delay-3">
+                <img src="img/gallery-4.jpg" alt="Recovery Room"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="gallery-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-blush),var(--pink-light));">💆</div>
+                <div class="gallery-overlay"><div class="gallery-overlay-text">产后按摩护理</div></div>
+            </div>
+            <div class="gallery-item reveal scale-in reveal-delay-4">
+                <img src="img/gallery-5.jpg" alt="Happy Mothers"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="gallery-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-bright),var(--pink-soft));">💕</div>
+                <div class="gallery-overlay"><div class="gallery-overlay-text">快乐妈妈们</div></div>
+            </div>
+        </div>
+        <div class="gallery-more reveal">
+            <a href="#contact" class="btn-primary">📸 查看更多照片</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE US
+============================================================ -->
+<section class="why" id="why">
+    <div class="container">
+        <div class="why-inner">
+            <div class="why-content reveal from-left">
+                <span class="section-tag">为什么选择我们 · Why Us</span>
+                <h2 class="section-title">值得信赖的<em>月子中心</em>首选</h2>
+                <p class="section-subtitle">Sabah's Most Trusted Confinement Centre</p>
+                <div class="why-points">
+                    <div class="why-point reveal reveal-delay-1">
+                        <div class="why-point-num">01</div>
+                        <div class="why-point-text">
+                            <strong>✨ 专业认证团队</strong>
+                            <span>全体陪月师均持有专业资格证书，定期接受培训，以最高专业标准服务每位妈妈。</span>
+                        </div>
+                    </div>
+                    <div class="why-point reveal reveal-delay-2">
+                        <div class="why-point-num">02</div>
+                        <div class="why-point-text">
+                            <strong>🍲 传统营养月子餐</strong>
+                            <span>每日精心准备传统月子膳食，结合中医食补原则，促进产后快速恢复。</span>
+                        </div>
+                    </div>
+                    <div class="why-point reveal reveal-delay-3">
+                        <div class="why-point-num">03</div>
+                        <div class="why-point-text">
+                            <strong>🌿 温馨舒适环境</strong>
+                            <span>中心环境整洁舒适，布置温馨如家，让妈妈在最舒适的环境中坐月子。</span>
+                        </div>
+                    </div>
+                    <div class="why-point reveal reveal-delay-4">
+                        <div class="why-point-num">04</div>
+                        <div class="why-point-text">
+                            <strong>💬 24小时全程陪伴</strong>
+                            <span>全天候专业护理服务，有任何问题随时可以寻求帮助，让妈妈安心休息。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-visual reveal from-right">
+                <div class="why-img-grid">
+                    <div class="why-img-item">
+                        <img src="img/why-1.jpg" alt="Professional Care"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="why-img-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-soft),var(--pink-main));">👩‍⚕️</div>
+                    </div>
+                    <div class="why-img-item">
+                        <img src="img/why-2.jpg" alt="Newborn Care"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="why-img-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-light),var(--pink-soft));">👶</div>
+                    </div>
+                    <div class="why-img-item">
+                        <img src="img/why-3.jpg" alt="Confinement Food"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="why-img-item-fallback" style="display:none;background:linear-gradient(160deg,var(--pink-blush),var(--pink-light));">🍲</div>
+                    </div>
+                </div>
+                <div class="why-center-badge">
+                    <div class="why-center-badge-icon">🌸</div>
+                    <div class="why-center-badge-text">口碑<br>保证</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     PACKAGES
+============================================================ -->
+<section class="packages" id="packages">
+    <div class="packages-bg"></div>
+    <div class="container">
+        <div class="packages-header text-center">
+            <span class="section-tag reveal">套餐价格 · Packages</span>
+            <h2 class="section-title reveal reveal-delay-1">选择最适合您的<em>月子套餐</em></h2>
+            <p class="section-subtitle reveal reveal-delay-2">Find the Perfect Package for Your Needs</p>
+            <p class="section-desc reveal reveal-delay-3" style="margin:0 auto;">
+                我们提供多款月子套餐，满足不同需求与预算，让每位妈妈都能享受优质的月子护理。
+            </p>
+        </div>
+        <div class="packages-grid">
+            <div class="package-card reveal reveal-delay-1">
+                <div class="package-icon">🌷</div>
+                <div class="package-name">基础套餐</div>
+                <div class="package-name-en">Basic Package · 28 Days</div>
+                <div class="package-price-label">参考价格（请咨询最新报价）</div>
+                <div class="package-price">欢迎询问</div>
+                <ul class="package-features">
+                    <li>28天住宿服务</li>
+                    <li>每日三正餐一茶点</li>
+                    <li>新生儿基础照护</li>
+                    <li>药草浴（每日一次）</li>
+                    <li>产后按摩（3次）</li>
+                    <li>母乳喂养基础指导</li>
+                </ul>
+                <a href="#contact" class="package-cta package-cta-outline">立即咨询</a>
+            </div>
+            <div class="package-card recommended reveal reveal-delay-2">
+                <div class="package-recommended-badge">⭐ 最受妈妈推荐</div>
+                <div class="package-icon">🌸</div>
+                <div class="package-name" style="color:white;">尊享套餐</div>
+                <div class="package-name-en">Premium Package · 30 Days</div>
+                <div class="package-price-label" style="color:rgba(255,255,255,0.75);">参考价格（请咨询最新报价）</div>
+                <div class="package-price" style="color:white;">欢迎询问</div>
+                <ul class="package-features">
+                    <li>30天尊享住宿</li>
+                    <li>每日3正餐2茶点</li>
+                    <li>新生儿24H专业照护</li>
+                    <li>药草浴（每日一次）</li>
+                    <li>产后按摩（8次）</li>
+                    <li>收腹束腰服务</li>
+                    <li>母乳喂养全程指导</li>
+                    <li>通乳按摩服务</li>
+                </ul>
+                <a href="#contact" class="package-cta package-cta-solid">立即预订 →</a>
+            </div>
+            <div class="package-card reveal reveal-delay-3">
+                <div class="package-icon">👑</div>
+                <div class="package-name">豪华套餐</div>
+                <div class="package-name-en">Luxury Package · 30 Days</div>
+                <div class="package-price-label">参考价格（请咨询最新报价）</div>
+                <div class="package-price">欢迎询问</div>
+                <ul class="package-features">
+                    <li>30天豪华套房住宿</li>
+                    <li>每日5餐精致膳食</li>
+                    <li>专属护士一对一照护</li>
+                    <li>每日草药浴+泡浴</li>
+                    <li>产后按摩（全程）</li>
+                    <li>收腹美体塑形</li>
+                    <li>完整通乳护理</li>
+                    <li>产后瑜伽课程</li>
+                    <li>离开礼品套装</li>
+                </ul>
+                <a href="#contact" class="package-cta package-cta-outline">立即咨询</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="testimonials-header text-center">
+            <span class="section-tag reveal">妈妈心声 · Testimonials</span>
+            <h2 class="section-title reveal reveal-delay-1">听听妈妈们怎么说</h2>
+            <p class="section-subtitle reveal reveal-delay-2">What Our Happy Mummies Say</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-tag">Google 评价</div>
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    在这里坐月子真的是非常好的体验！陪月师阿姨们非常专业，对宝宝的照顾非常细心。月子餐每天变换不同菜色，营养又美味。强烈推荐给所有准妈妈们！
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">😊</div>
+                    <div>
+                        <div class="testimonial-author-name">李太太 Mrs. Lee</div>
+                        <div class="testimonial-author-sub">头胎妈妈 · 沙巴亚庇</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-tag">Facebook 评价</div>
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    第二胎也选择这里！服务质量一如既往地好，护士们非常有耐心，帮助我解决了很多母乳喂养的问题。环境干净舒适，真的像在家里一样温馨。
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">🌸</div>
+                    <div>
+                        <div class="testimonial-author-name">张小姐 Ms. Chang</div>
+                        <div class="testimonial-author-sub">二胎妈妈 · 沙巴KK</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-3">
+                <div class="testimonial-tag">WhatsApp 推荐</div>
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    工作人员态度非常好，24小时都有人照看宝宝，让我可以好好休息恢复体力。月子餐的汤水很补，感觉身体恢复得很好。非常值得推荐！
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">💕</div>
+                    <div>
+                        <div class="testimonial-author-name">陈太太 Mrs. Chen</div>
+                        <div class="testimonial-author-sub">新手妈妈 · 沙巴斗亚兰</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+============================================================ -->
+<section class="cta-banner">
+    <div class="cta-banner-bg"></div>
+    <div class="cta-banner-hearts">
+        <span style="top:10%;left:5%;animation-delay:0s;">🌸</span>
+        <span style="top:60%;left:8%;animation-delay:1s;">💗</span>
+        <span style="top:20%;right:5%;animation-delay:0.5s;">🌷</span>
+        <span style="top:70%;right:8%;animation-delay:1.5s;">🌸</span>
+        <span style="bottom:10%;left:20%;animation-delay:2s;">✨</span>
+        <span style="top:15%;right:20%;animation-delay:2.5s;">💕</span>
+    </div>
+    <div class="container">
+        <div class="cta-banner-content reveal">
+            <h2 class="cta-banner-title">准备好迎接您的新生命了吗？</h2>
+            <p class="cta-banner-subtitle">
+                现在预约，让我们陪伴您度过人生中最珍贵的月子时光 🌸
+            </p>
+            <div class="cta-banner-ctas">
+                <a href="https://wa.me/601XXXXXXXXX?text=你好，我想了解优质陪月中心的月子套餐，请帮我介绍一下。" class="btn-white">
+                    💬 WhatsApp 立即咨询
+                </a>
+                <a href="#packages" class="btn-transparent">
+                    查看套餐价格 →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-inner">
+            <div class="contact-info reveal from-left">
+                <span class="section-tag">联系我们 · Contact Us</span>
+                <h2 class="section-title">随时欢迎您<em>联系咨询</em></h2>
+                <p class="section-subtitle">We're Always Here to Help</p>
+                <p class="section-desc" style="max-width:100%;">
+                    如有任何关于月子套餐、服务项目或预约的问题，欢迎随时联系我们。我们的团队将竭诚为您解答。
+                </p>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <div class="contact-item-title">中心地址</div>
+                            <div class="contact-item-value">Kota Kinabalu, Sabah, Malaysia</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <div class="contact-item-title">电话 / WhatsApp</div>
+                            <div class="contact-item-value">+60 1X-XXXX XXXX</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📘</div>
+                        <div>
+                            <div class="contact-item-title">Facebook 主页</div>
+                            <div class="contact-item-value">Quality Confinement Home</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📸</div>
+                        <div>
+                            <div class="contact-item-title">Instagram</div>
+                            <div class="contact-item-value">@qualityconfinementhome</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://wa.me/601XXXXXXXXX?text=你好，我想了解优质陪月中心的月子套餐，请帮我介绍一下。"
+                   class="contact-whatsapp-big">
+                    <span class="contact-whatsapp-big-icon">💬</span>
+                    <div>
+                        <div style="font-size:0.8rem;opacity:0.85;font-weight:400;">点击即可联系我们</div>
+                        WhatsApp 立即咨询
+                    </div>
+                </a>
+            </div>
+            <div class="contact-hours reveal from-right">
+                <div class="contact-hours-title">
+                    🕐 营业时间 Business Hours
+                </div>
+                <div class="contact-hours-row">
+                    <span class="contact-hours-day">星期一 – 星期五</span>
+                    <span class="contact-hours-time">8:00 AM – 6:00 PM</span>
+                </div>
+                <div class="contact-hours-row">
+                    <span class="contact-hours-day">星期六</span>
+                    <span class="contact-hours-time">8:00 AM – 5:00 PM</span>
+                </div>
+                <div class="contact-hours-row">
+                    <span class="contact-hours-day">星期日 & 公共假期</span>
+                    <span class="contact-hours-time">预约参观可安排</span>
+                </div>
+                <div class="contact-hours-row">
+                    <span class="contact-hours-day">住院妈妈护理</span>
+                    <span class="contact-hours-time">24小时全年无休</span>
+                </div>
+                <div class="contact-note">
+                    <p>
+                        💡 <strong>温馨提示：</strong>建议提早预约，尤其是节假日前后，床位有限，先到先得。通常建议在预产期前 2-3 个月完成预约。
+                    </p>
+                </div>
+                <div style="margin-top:2rem;">
+                    <div class="contact-hours-title" style="margin-bottom:1rem;">
+                        📍 中心位置
+                    </div>
+                    <div style="border-radius:var(--radius-md);overflow:hidden;background:var(--pink-cream);height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;border:2px solid var(--pink-light);">
+                        <div style="font-size:3rem;">📍</div>
+                        <div style="font-family:var(--font-chinese);font-size:0.9rem;color:var(--text-soft);text-align:center;padding:0 1rem;">
+                            Kota Kinabalu, Sabah<br>
+                            <span style="font-size:0.78rem;">（详细地址请WhatsApp咨询）</span>
+                        </div>
+                        <a href="https://maps.google.com" style="font-family:var(--font-chinese);font-size:0.82rem;color:var(--pink-main);font-weight:600;border-bottom:1px solid var(--pink-light);">
+                            查看地图 →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-icon">🌸</div>
+                <div class="footer-brand-name">Quality Confinement Home</div>
+                <div class="footer-brand-cn">优质陪月中心 · 沙巴</div>
+                <p class="footer-brand-desc">
+                    专业·温馨·贴心的月子护理服务。<br>
+                    我们以爱心守护每一位妈妈与宝宝，<br>
+                    陪伴您度过人生中最珍贵的月子时光。
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-btn" title="Facebook">📘</a>
+                    <a href="#" class="footer-social-btn" title="Instagram">📸</a>
+                    <a href="#" class="footer-social-btn" title="WhatsApp">💬</a>
+                    <a href="#" class="footer-social-btn" title="TikTok">🎵</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-col-title">快速导航</div>
+                <ul class="footer-links">
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#services">服务项目</a></li>
+                    <li><a href="#gallery">中心照片</a></li>
+                    <li><a href="#packages">套餐价格</a></li>
+                    <li><a href="#testimonials">妈妈心声</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">服务项目</div>
+                <ul class="footer-links">
+                    <li><a href="#services">全套月子护理</a></li>
+                    <li><a href="#services">新生儿照护</a></li>
+                    <li><a href="#services">传统月子餐</a></li>
+                    <li><a href="#services">产后修复按摩</a></li>
+                    <li><a href="#services">母乳喂养指导</a></li>
+                    <li><a href="#services">草药养生护理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
+                © 2024 Quality Confinement Home - Centre · 优质陪月中心 · All Rights Reserved
+            </div>
+            <div class="footer-watermark">Demo by SabahClick</div>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+     WHATSAPP FLOAT
+============================================================ -->
+<div class="wa-float">
+    <div class="wa-bubble">💬 有问题？立即咨询我们！</div>
+    <a href="https://wa.me/601XXXXXXXXX?text=你好，我想了解优质陪月中心的月子套餐，请帮我介绍一下。"
+       class="wa-btn" title="WhatsApp Us">💬</a>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+    // ── Scroll-based nav styling ──────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Mobile menu ───────────────────────────────────────────────
+    function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('open');
+        document.body.style.overflow =
+            document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+    }
+
+    // ── Scroll reveal (Intersection Observer) ────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Staggered children reveal ─────────────────────────────────
+    document.querySelectorAll('.services-grid, .packages-grid, .testimonials-grid').forEach(grid => {
+        const children = grid.children;
+        Array.from(children).forEach((child, i) => {
+            if (!child.classList.contains('reveal')) {
+                child.classList.add('reveal');
+                child.style.transitionDelay = `${i * 0.12}s`;
+                observer.observe(child);
+            }
+        });
+    });
+
+    // ── Smooth anchor scrolling with offset ──────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const offset = 80;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // ── Animate wa-bubble on load ────────────────────────────────
+    setTimeout(() => {
+        const bubble = document.querySelector('.wa-bubble');
+        if (bubble) {
+            bubble.style.animation = 'none';
+            bubble.style.opacity = '1';
+        }
+    }, 1800);
+
+    // ── Parallax on hero circles (subtle) ────────────────────────
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const c1 = document.querySelector('.hero-circle-1');
+        const c2 = document.querySelector('.hero-circle-2');
+        if (c1) c1.style.transform = `translateY(${scrollY * 0.12}px)`;
+        if (c2) c2.style.transform = `translateY(${-scrollY * 0.08}px)`;
+    });
+
+    // ── Gallery image error fallback ──────────────────────────────
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const fallback = this.nextElementSibling;
+            if (fallback) {
+                fallback.style.display = 'flex';
+                fallback.style.height = '100%';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
