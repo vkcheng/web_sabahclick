@@ -1,0 +1,4 @@
+:HL["/sample/JesseltonStay/_next/static/chunks/7a8e19a47bd0fd3f.css","style"]
+:HL["/sample/JesseltonStay/_next/static/chunks/8fc6ca75501b4963.css","style"]
+:HL["/sample/JesseltonStay/_next/static/chunks/629572e3d7eb9f79.css","style"]
+0:{"buildId":"iZWU-s6nZFDwbzQkR9-Pi","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

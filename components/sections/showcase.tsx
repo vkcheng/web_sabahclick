@@ -86,6 +86,14 @@ export function Showcase() {
             url: "/sample/RPFitness/index.html",
             color: "from-red-900/40 to-neutral-950/40",
             image: "/sample/RPFitness/Screenshot%202026-05-18%20094716.png"
+        },
+        {
+            title: "Jesselton Stay",
+            category: "Concept Demo",
+            problem: "Demo: A Kota Kinabalu homestay needed a warm direct-booking page to highlight rooms, location, and guest enquiries.",
+            url: "/sample/JesseltonStay/index.html",
+            color: "from-teal-900/40 to-yellow-900/40",
+            image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/JesseltonStay/IMG-20221215-WA0234.jpg"
         }
     ]
 
