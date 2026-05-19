@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useLanguage } from "@/lib/i18n/language-context"
 
 export function Showcase() {
@@ -69,6 +70,22 @@ export function Showcase() {
             url: "/sample/TheWellCafe/index.html",
             color: "from-yellow-800/40 to-red-900/40",
             image: "/sample/TheWellCafe/img/cover_478489465199533.jpg"
+        },
+        {
+            title: "Quality Confinement Home",
+            category: "Concept Demo",
+            problem: "Demo: A confinement care brand needed a warm bilingual page to communicate trust, comfort, and professional postpartum support.",
+            url: "/sample/Qconfine/index.html",
+            color: "from-pink-900/40 to-emerald-950/40",
+            image: "/sample/Qconfine/Screenshot%202026-05-18%20161829.png"
+        },
+        {
+            title: "Republic Fitness KK",
+            category: "Concept Demo",
+            problem: "Demo: A fitness brand needed a bold, high-energy landing page to showcase facilities, training culture, and membership enquiries.",
+            url: "/sample/RPFitness/index.html",
+            color: "from-red-900/40 to-neutral-950/40",
+            image: "/sample/RPFitness/Screenshot%202026-05-18%20094716.png"
         }
     ]
 
@@ -88,9 +105,12 @@ export function Showcase() {
                             rel="noopener noreferrer"
                             className={`aspect-video rounded-xl overflow-hidden border border-white/5 relative group cursor-pointer bg-gradient-to-br ${item.color}`}
                         >
-                            <img
+                            <Image
                                 src={item.image}
                                 alt={item.title}
+                                fill
+                                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                unoptimized
                                 className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-500"
                             />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
