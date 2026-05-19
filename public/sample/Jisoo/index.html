@@ -15,7 +15,37 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-  </head>
+  <style id="sabahclick-demo-watermark-style">
+  .sabahclick-demo-watermark {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .sabahclick-demo-watermark span {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.8rem, 7vw, 8rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.2);
+    -webkit-text-stroke: 1px rgba(70, 0, 28, 0.12);
+    text-shadow: 0 2px 18px rgba(45, 0, 18, 0.16), 0 0 1px rgba(255,255,255,0.45);
+    white-space: nowrap;
+    transform: rotate(-24deg);
+    letter-spacing: 0.01em;
+  }
+  @media (max-width: 760px) {
+    .sabahclick-demo-watermark span {
+      font-size: clamp(2.2rem, 13vw, 4.8rem);
+    }
+  }
+</style>
+</head>
   <body>
 
     <!-- ── HEADER ──────────────────────────────────────────── -->
@@ -405,5 +435,8 @@
       revealEls.forEach(el => observer.observe(el));
     </script>
 
-  </body>
+  <div class="sabahclick-demo-watermark" aria-hidden="true">
+  <span>Demo by SabahClick</span>
+</div>
+</body>
 </html>
