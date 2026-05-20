@@ -1,3 +1,36 @@
+// Cursor bug
+const cursorBug = document.querySelector('.cursor-bug');
+let bugTX = -200, bugTY = -200;
+let bugX = -200, bugY = -200;
+let prevBugX = bugX, prevBugY = bugY;
+let bugAngle = 0;
+
+document.addEventListener('mousemove', (e) => {
+  bugTX = e.clientX;
+  bugTY = e.clientY;
+  cursorBug.classList.add('is-active');
+});
+
+document.addEventListener('mouseleave', () => {
+  cursorBug.classList.remove('is-active');
+});
+
+(function tickBug() {
+  bugX += (bugTX - bugX) * 0.1;
+  bugY += (bugTY - bugY) * 0.1;
+  const dx = bugX - prevBugX;
+  const dy = bugY - prevBugY;
+  if (Math.hypot(dx, dy) > 0.3) {
+    bugAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+  }
+  cursorBug.style.left = bugX + 'px';
+  cursorBug.style.top = bugY + 'px';
+  cursorBug.style.transform = `translate(-50%, -50%) rotate(${bugAngle}deg)`;
+  prevBugX = bugX;
+  prevBugY = bugY;
+  requestAnimationFrame(tickBug);
+}());
+
 const tiltCards = document.querySelectorAll("[data-tilt]");
 
 tiltCards.forEach((card) => {

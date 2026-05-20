@@ -11,7 +11,15 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    "node_modules/**",
     "next-env.d.ts",
+    ".claude/**",
+    ".codex/**",
+    ".cursor/**",
+    ".windsurf/**",
+    ".agent/**/*.log",
+    ".shared/**/__pycache__/**",
+    ".shared/**/*.pyc",
   ]),
 ]);
 

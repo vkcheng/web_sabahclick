@@ -1,4 +1,6 @@
 
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 const { Resend } = require('resend');
 const fs = require('fs');
 const path = require('path');

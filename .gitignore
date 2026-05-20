@@ -24,6 +24,19 @@
 .DS_Store
 *.pem
 
+# local AI/editor workspaces
+.claude/
+.codex/
+.cursor/
+.windsurf/
+
+# local agent runtime output
+.agent/*.log
+
+# python cache
+__pycache__/
+*.py[cod]
+
 # debug
 npm-debug.log*
 yarn-debug.log*
