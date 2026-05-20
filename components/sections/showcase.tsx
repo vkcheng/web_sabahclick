@@ -94,6 +94,14 @@ export function Showcase() {
             url: "/sample/JesseltonStay/index.html",
             color: "from-teal-900/40 to-yellow-900/40",
             image: "https://huiluiebajsmbrejbnux.supabase.co/storage/v1/object/public/images/JesseltonStay/IMG-20221215-WA0234.jpg"
+        },
+        {
+            title: "Happy Tree House",
+            category: "Concept Demo",
+            problem: "Demo: A child care centre needed a playful, colorful landing page to communicate warmth, safety, programs, and parent enquiries.",
+            url: "/sample/HappyTree/index.html",
+            color: "from-emerald-900/40 to-yellow-800/40",
+            image: "/sample/HappyTree/img/472182563_522556340813428_9035446261907880246_n.jpg"
         }
     ]
 
