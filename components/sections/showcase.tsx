@@ -32,14 +32,6 @@ export function Showcase() {
             image: "/sample/FikaJTT/img/Screenshot%202026-03-12%20134455.png"
         },
         {
-            title: "Happy Place",
-            category: "Concept Demo",
-            problem: "Demo: A wellness brand needed a calming, trust-building page to convert visitors into customers.",
-            url: "/sample/Happyplace/index.html",
-            color: "from-rose-900/40 to-pink-900/40",
-            image: "/sample/Happyplace/img/Screenshot%202026-03-13%20214952.png"
-        },
-        {
             title: "Lumiere Coffee",
             category: "Concept Demo",
             problem: "Demo: A coffee brand wanted a premium digital presence to compete with big-city competitors.",
