@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
@@ -40,9 +41,9 @@ export function Header() {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     {/* Logo Placeholder - Sci-Fi Font */}
-                    <a href="#" className="font-display text-2xl font-bold tracking-widest text-foreground hover:text-neon-cyan transition-colors">
+                    <Link href="/" aria-label="SabahClick home" className="font-display text-2xl font-bold tracking-widest text-foreground hover:text-neon-cyan transition-colors">
                         SABAH<span className="text-neon-cyan">CLICK</span>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Desktop Nav */}
@@ -66,6 +67,8 @@ export function Header() {
                 {/* Mobile Menu Toggle */}
                 <button
                     className="md:hidden"
+                    aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={mobileMenuOpen}
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? <X /> : <Menu />}

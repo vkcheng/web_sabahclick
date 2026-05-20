@@ -115,7 +115,7 @@ export function Showcase() {
                         >
                             <Image
                                 src={item.image}
-                                alt={item.title}
+                                alt={`${item.title} website design showcase by SabahClick`}
                                 fill
                                 sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                 unoptimized
