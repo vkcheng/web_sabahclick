@@ -1,0 +1,1696 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="冲出重围5.0，AI时代下企业增长与资源整合实战峰会，马来西亚吉隆坡站。"
+    />
+    <title>冲出重围5.0 | AI时代企业增长与资源整合实战峰会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --canvas: #f2ede4;
+        --paper: #fffaf0;
+        --ink: #171615;
+        --charcoal: #262421;
+        --muted: #706a62;
+        --hairline: rgba(23, 22, 21, 0.14);
+        --gold: #b98a44;
+        --gold-soft: #dfc083;
+        --signal: #b93428;
+        --signal-dark: #7d1f1a;
+        --blue: #153f6f;
+        --teal: #0b665e;
+        --cream-line: rgba(255, 250, 240, 0.2);
+        --radius: 8px;
+        --sans: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        --display: "ZCOOL XiaoWei", "Noto Sans SC", serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(90deg, rgba(23, 22, 21, 0.035) 1px, transparent 1px),
+          linear-gradient(rgba(23, 22, 21, 0.028) 1px, transparent 1px),
+          var(--canvas);
+        background-size: 48px 48px;
+        font-family: var(--sans);
+        letter-spacing: 0;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 10% 8%, rgba(185, 138, 68, 0.22), transparent 24rem),
+          radial-gradient(circle at 82% 20%, rgba(21, 63, 111, 0.16), transparent 28rem),
+          radial-gradient(circle at 45% 90%, rgba(185, 52, 40, 0.12), transparent 22rem);
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      p,
+      h1,
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+
+      .sample-mark {
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        z-index: 30;
+        padding: 8px 12px;
+        color: rgba(255, 250, 240, 0.82);
+        background: rgba(23, 22, 21, 0.82);
+        border: 1px solid rgba(255, 250, 240, 0.18);
+        border-radius: 999px;
+        font-size: 12px;
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-shell {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        padding: 14px clamp(16px, 4vw, 42px);
+        pointer-events: none;
+      }
+
+      .nav {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+        min-height: 66px;
+        padding: 10px 12px 10px 18px;
+        color: var(--ink);
+        background: rgba(255, 250, 240, 0.9);
+        border: 1px solid rgba(23, 22, 21, 0.12);
+        border-radius: 999px;
+        box-shadow: 0 18px 45px rgba(43, 34, 22, 0.11);
+        backdrop-filter: blur(18px);
+        pointer-events: auto;
+      }
+
+      .brand {
+        display: inline-grid;
+        grid-template-columns: 44px auto;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid rgba(185, 138, 68, 0.35);
+        background: #fff;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 19px;
+        line-height: 1;
+        font-weight: 900;
+      }
+
+      .brand span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(14px, 2.3vw, 34px);
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav-links a {
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--signal);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 22px;
+        color: var(--paper);
+        background: var(--ink);
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        font-weight: 900;
+        transition: transform 0.22s ease, background 0.22s ease;
+      }
+
+      .nav-cta:hover,
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .nav-cta:active,
+      .button:active {
+        transform: translateY(1px) scale(0.99);
+      }
+
+      .section {
+        padding: clamp(70px, 9vw, 132px) clamp(16px, 5vw, 70px);
+      }
+
+      .wrap {
+        width: min(1280px, 100%);
+        margin: 0 auto;
+      }
+
+      .hero {
+        min-height: calc(100dvh - 96px);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.78fr);
+        align-items: center;
+        gap: clamp(32px, 5vw, 76px);
+        padding-top: clamp(16px, 4vw, 52px);
+        padding-bottom: clamp(50px, 6vw, 88px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        color: var(--signal);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 2px;
+        background: currentColor;
+      }
+
+      h1 {
+        max-width: 850px;
+        margin-bottom: 22px;
+        font-family: var(--display);
+        font-size: clamp(52px, 8vw, 112px);
+        font-weight: 400;
+        line-height: 0.92;
+      }
+
+      h1 span {
+        display: block;
+        color: var(--signal);
+      }
+
+      .hero-lead {
+        max-width: 760px;
+        margin-bottom: 26px;
+        color: var(--charcoal);
+        font-size: clamp(18px, 2vw, 24px);
+        line-height: 1.78;
+        font-weight: 500;
+      }
+
+      .hero-lead strong {
+        color: var(--ink);
+        font-weight: 900;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 26px 0;
+      }
+
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 64px;
+        padding: 0 30px;
+        border-radius: 999px;
+        font-size: clamp(17px, 2vw, 21px);
+        font-weight: 900;
+        border: 1.5px solid var(--ink);
+        transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+      }
+
+      .button-primary {
+        min-width: min(100%, 270px);
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      .button-secondary {
+        min-width: min(100%, 300px);
+        color: var(--ink);
+        background: transparent;
+      }
+
+      .button-secondary:hover {
+        color: var(--paper);
+        background: var(--signal);
+        border-color: var(--signal);
+      }
+
+      .pain-ledger {
+        margin-top: 36px;
+        border-top: 1px solid var(--hairline);
+      }
+
+      .pain-ledger h2 {
+        max-width: 760px;
+        margin: 24px 0;
+        font-size: clamp(25px, 3vw, 42px);
+        line-height: 1.2;
+      }
+
+      .pain-ledger h2 span {
+        color: var(--signal);
+      }
+
+      .pain-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border-top: 1px solid var(--hairline);
+        border-left: 1px solid var(--hairline);
+      }
+
+      .pain-list li {
+        min-height: 86px;
+        padding: 16px 14px;
+        border-right: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        color: var(--charcoal);
+        font-weight: 800;
+        line-height: 1.5;
+      }
+
+      .hero-media {
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .hero-card {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 2 / 5;
+        border-radius: var(--radius);
+        background: var(--ink);
+        border: 1px solid rgba(23, 22, 21, 0.18);
+        box-shadow: 0 34px 80px rgba(43, 34, 22, 0.26);
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        box-shadow: inset 0 0 0 1px rgba(255, 250, 240, 0.2);
+      }
+
+      .proof-strip {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .proof-photo {
+        min-height: 170px;
+        overflow: hidden;
+        border-radius: var(--radius);
+        border: 1px solid rgba(23, 22, 21, 0.16);
+        background: var(--ink);
+      }
+
+      .proof-note {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 170px;
+        padding: 18px;
+        color: var(--paper);
+        background: var(--signal);
+        border-radius: var(--radius);
+      }
+
+      .proof-note b {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .proof-note span {
+        color: rgba(255, 250, 240, 0.78);
+        line-height: 1.6;
+      }
+
+      .stats-band {
+        color: var(--paper);
+        background: var(--ink);
+        border-top: 1px solid rgba(255, 250, 240, 0.16);
+        border-bottom: 1px solid rgba(255, 250, 240, 0.16);
+      }
+
+      .stats-band .eyebrow {
+        color: var(--gold-soft);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.84fr) minmax(280px, 0.44fr);
+        align-items: end;
+        gap: clamp(24px, 4vw, 60px);
+        margin-bottom: clamp(26px, 4vw, 44px);
+      }
+
+      .section-title {
+        margin-bottom: 0;
+        font-family: var(--display);
+        font-size: clamp(38px, 5.8vw, 76px);
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .section-title span {
+        color: var(--signal);
+      }
+
+      .stats-band .section-title span,
+      .dark-section .section-title span {
+        color: var(--gold-soft);
+      }
+
+      .section-copy {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.85;
+      }
+
+      .stats-band .section-copy,
+      .dark-section .section-copy {
+        color: rgba(255, 250, 240, 0.72);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr 1fr 0.9fr;
+        border-top: 1px solid var(--cream-line);
+        border-left: 1px solid var(--cream-line);
+      }
+
+      .stat {
+        min-height: 180px;
+        padding: clamp(20px, 3vw, 32px);
+        border-right: 1px solid var(--cream-line);
+        border-bottom: 1px solid var(--cream-line);
+      }
+
+      .stat:nth-child(2) {
+        background: rgba(185, 52, 40, 0.28);
+      }
+
+      .stat:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 14px;
+        color: var(--gold-soft);
+        font-size: clamp(34px, 5vw, 64px);
+        line-height: 1;
+        font-weight: 900;
+      }
+
+      .stat span {
+        color: rgba(255, 250, 240, 0.8);
+        line-height: 1.7;
+      }
+
+      .mentor-layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.58fr) minmax(0, 1fr);
+        gap: clamp(24px, 5vw, 70px);
+        align-items: center;
+      }
+
+      .portrait-orbit {
+        position: relative;
+        aspect-ratio: 1;
+        border-radius: 999px;
+        overflow: hidden;
+        background: var(--ink);
+        box-shadow: 0 26px 60px rgba(43, 34, 22, 0.18);
+      }
+
+      .portrait-orbit::before {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        z-index: 2;
+        pointer-events: none;
+        border: 1px solid rgba(255, 250, 240, 0.28);
+        border-radius: 999px;
+      }
+
+      .mentor-copy h2 {
+        margin-bottom: 8px;
+        font-family: var(--display);
+        font-size: clamp(44px, 6vw, 84px);
+        font-weight: 400;
+        line-height: 0.98;
+      }
+
+      .mentor-role {
+        margin-bottom: 26px;
+        color: var(--signal);
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .bullet-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--hairline);
+        border-left: 1px solid var(--hairline);
+      }
+
+      .bullet-grid li {
+        min-height: 74px;
+        padding: 16px;
+        border-right: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        line-height: 1.6;
+        font-weight: 700;
+      }
+
+      .quote-band {
+        margin-top: 30px;
+        padding: clamp(22px, 4vw, 36px);
+        color: var(--paper);
+        background: var(--signal-dark);
+        border-radius: var(--radius);
+        font-size: clamp(24px, 3.4vw, 42px);
+        line-height: 1.25;
+        font-weight: 900;
+      }
+
+      .course-band {
+        background: var(--paper);
+        border-top: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr 0.9fr;
+        gap: 0;
+        border-top: 1px solid var(--hairline);
+        border-left: 1px solid var(--hairline);
+      }
+
+      .course-day {
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(24px, 3vw, 32px);
+        border-right: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+      }
+
+      .day-kicker {
+        display: inline-flex;
+        width: fit-content;
+        margin-bottom: 24px;
+        padding: 8px 13px;
+        color: var(--paper);
+        background: var(--ink);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .course-day:nth-child(2) .day-kicker {
+        background: var(--gold);
+      }
+
+      .course-day:nth-child(3) .day-kicker {
+        background: var(--teal);
+      }
+
+      .course-day h3 {
+        margin-bottom: 8px;
+        font-size: clamp(28px, 3.4vw, 42px);
+        line-height: 1.12;
+      }
+
+      .result {
+        margin-bottom: 8px;
+        color: var(--signal);
+        font-size: 19px;
+        font-weight: 900;
+      }
+
+      .course-subtitle {
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .course-day p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .course-list,
+      .gain-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .course-list li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(23, 22, 21, 0.09);
+      }
+
+      .course-mark {
+        width: 34px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--paper);
+        background: var(--ink);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .course-day:nth-child(2) .course-mark {
+        background: var(--gold);
+      }
+
+      .course-day:nth-child(3) .course-mark {
+        background: var(--teal);
+      }
+
+      .course-list b {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 800;
+      }
+
+      .course-list li > span:not(.course-mark) > span {
+        display: block;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .gain-box {
+        margin-top: auto;
+        padding: 18px;
+        color: var(--paper);
+        background: var(--ink);
+        border-radius: var(--radius);
+      }
+
+      .course-day:nth-child(2) .gain-box {
+        background: var(--gold);
+        color: var(--ink);
+      }
+
+      .course-day:nth-child(3) .gain-box {
+        background: var(--teal);
+      }
+
+      .gain-title {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--gold-soft);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .course-day:nth-child(2) .gain-title {
+        color: var(--paper);
+      }
+
+      .gain-list li {
+        padding: 4px 0;
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .course-highlights {
+        display: grid;
+        grid-template-columns: 1.1fr repeat(5, 1fr) 1.05fr;
+        margin-top: 16px;
+        border: 1px solid var(--hairline);
+        background: rgba(255, 250, 240, 0.8);
+      }
+
+      .highlight-label,
+      .highlight-item {
+        min-height: 92px;
+        padding: 18px;
+        border-right: 1px solid var(--hairline);
+      }
+
+      .highlight-label {
+        display: flex;
+        align-items: center;
+        color: var(--ink);
+        background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+        font-size: 23px;
+        font-weight: 900;
+      }
+
+      .highlight-item:last-child {
+        border-right: 0;
+      }
+
+      .highlight-item b {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+        font-size: 17px;
+      }
+
+      .highlight-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .partner-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+        gap: clamp(24px, 5vw, 70px);
+        align-items: start;
+      }
+
+      .partner-thesis {
+        position: sticky;
+        top: 120px;
+      }
+
+      .partner-thesis p {
+        max-width: 560px;
+        color: var(--charcoal);
+        font-size: 19px;
+        line-height: 1.9;
+      }
+
+      .partner-thesis strong {
+        color: var(--signal);
+      }
+
+      .advantage-list {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid var(--hairline);
+      }
+
+      .advantage {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 20px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+
+      .advantage b {
+        color: var(--signal);
+        font-size: 14px;
+      }
+
+      .advantage h3 {
+        margin-bottom: 8px;
+        font-size: 24px;
+      }
+
+      .advantage p {
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .dark-section {
+        color: var(--paper);
+        background:
+          linear-gradient(90deg, rgba(23, 22, 21, 0.9), rgba(23, 22, 21, 0.72)),
+          url("img/summit-stage.jpeg") center / cover;
+      }
+
+      .circle-layout {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.72fr) minmax(0, 1fr);
+        gap: clamp(28px, 6vw, 88px);
+        align-items: center;
+      }
+
+      .network-copy {
+        max-width: 520px;
+      }
+
+      .network-copy .section-title {
+        font-size: clamp(38px, 5.2vw, 72px);
+        line-height: 1.05;
+      }
+
+      .network-copy .section-copy {
+        max-width: 460px;
+      }
+
+      .circle-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .circle-item {
+        position: relative;
+        min-height: 142px;
+        padding: 22px 22px 22px 58px;
+        border: 1px solid rgba(255, 250, 240, 0.18);
+        border-radius: var(--radius);
+        background: rgba(23, 22, 21, 0.42);
+        backdrop-filter: blur(10px);
+      }
+
+      .circle-item::before {
+        content: attr(data-index);
+        position: absolute;
+        top: 24px;
+        left: 22px;
+        color: rgba(223, 192, 131, 0.72);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .circle-item b {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--gold-soft);
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .circle-item span {
+        color: rgba(255, 250, 240, 0.75);
+        line-height: 1.75;
+      }
+
+      .scarcity {
+        color: var(--paper);
+        background: var(--signal-dark);
+      }
+
+      .scarcity-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr 1fr 1.15fr;
+        gap: 0;
+        border-top: 1px solid rgba(255, 250, 240, 0.24);
+        border-left: 1px solid rgba(255, 250, 240, 0.24);
+      }
+
+      .scarcity-item {
+        min-height: 170px;
+        padding: 24px;
+        border-right: 1px solid rgba(255, 250, 240, 0.24);
+        border-bottom: 1px solid rgba(255, 250, 240, 0.24);
+        font-size: clamp(22px, 3vw, 36px);
+        font-weight: 900;
+        line-height: 1.25;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        grid-auto-rows: 260px;
+        gap: 12px;
+      }
+
+      .gallery-grid figure {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        border-radius: var(--radius);
+        background: var(--ink);
+      }
+
+      .gallery-grid figure:first-child {
+        grid-row: span 2;
+      }
+
+      .gallery-grid figure:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      .gallery-grid figcaption {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        max-width: calc(100% - 24px);
+        padding: 9px 12px;
+        color: var(--paper);
+        background: rgba(23, 22, 21, 0.76);
+        border: 1px solid rgba(255, 250, 240, 0.2);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 900;
+        backdrop-filter: blur(10px);
+      }
+
+      .case-section {
+        padding-top: clamp(44px, 6vw, 88px);
+      }
+
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .case-card {
+        position: relative;
+        margin: 0;
+        padding: clamp(12px, 1.5vw, 18px);
+        background:
+          linear-gradient(180deg, rgba(255, 250, 240, 0.84), rgba(255, 250, 240, 0.58)),
+          rgba(255, 250, 240, 0.72);
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        box-shadow: 0 20px 42px rgba(43, 34, 22, 0.1);
+      }
+
+      .case-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 9 / 13;
+        object-fit: contain;
+        background: #8d1714;
+        border-radius: calc(var(--radius) - 2px);
+        box-shadow: 0 16px 26px rgba(43, 34, 22, 0.16);
+      }
+
+      .case-card figcaption {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .case-card figcaption::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        flex: 0 0 auto;
+        background: var(--signal);
+        border-radius: 999px;
+        box-shadow: 0 0 0 5px rgba(185, 52, 40, 0.12);
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.65fr) minmax(320px, 1fr);
+        gap: clamp(24px, 5vw, 70px);
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      details {
+        background: rgba(255, 250, 240, 0.62);
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 22px;
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      details p {
+        margin: 0;
+        padding: 0 22px 22px;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .closing {
+        min-height: 88dvh;
+        display: grid;
+        align-items: center;
+        color: var(--paper);
+        background:
+          linear-gradient(90deg, rgba(23, 22, 21, 0.9), rgba(23, 22, 21, 0.44)),
+          url("img/summit-hall-wide.jpeg") center / cover;
+      }
+
+      .closing-copy {
+        max-width: 900px;
+      }
+
+      .closing-copy h2 {
+        margin-bottom: 24px;
+        font-family: var(--display);
+        font-size: clamp(44px, 7vw, 96px);
+        font-weight: 400;
+        line-height: 0.98;
+      }
+
+      .closing-copy h2 span {
+        color: var(--gold-soft);
+      }
+
+      .closing-copy p {
+        max-width: 760px;
+        color: rgba(255, 250, 240, 0.82);
+        font-size: clamp(18px, 2.2vw, 25px);
+        line-height: 1.85;
+      }
+
+      .closing .button-primary {
+        background: var(--paper);
+        color: var(--ink);
+        border-color: var(--paper);
+      }
+
+      .closing .button-secondary {
+        color: var(--paper);
+        border-color: rgba(255, 250, 240, 0.72);
+      }
+
+      .footer {
+        padding: 30px clamp(16px, 5vw, 70px);
+        color: rgba(255, 250, 240, 0.7);
+        background: var(--ink);
+      }
+
+      .footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .rise {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .d1 {
+        animation-delay: 0.1s;
+      }
+
+      .d2 {
+        animation-delay: 0.2s;
+      }
+
+      .d3 {
+        animation-delay: 0.32s;
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1080px) {
+        .nav {
+          grid-template-columns: auto auto;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero,
+        .section-head,
+        .mentor-layout,
+        .partner-layout,
+        .circle-layout,
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid,
+        .course-grid,
+        .course-highlights,
+        .scarcity-grid,
+        .case-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .partner-thesis {
+          position: static;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .sample-mark {
+          display: none;
+        }
+
+        .nav-shell {
+          padding: 10px;
+        }
+
+        .nav {
+          min-height: 58px;
+          grid-template-columns: 1fr auto;
+          gap: 10px;
+          border-radius: 26px;
+        }
+
+        .brand {
+          grid-template-columns: 36px auto;
+          gap: 9px;
+        }
+
+        .brand-logo {
+          width: 36px;
+          height: 36px;
+        }
+
+        .brand strong {
+          font-size: 16px;
+        }
+
+        .brand span {
+          font-size: 11px;
+        }
+
+        .nav-cta {
+          min-height: 38px;
+          padding: 0 13px;
+          font-size: 13px;
+        }
+
+        .section {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .hero {
+          padding-top: 20px;
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: clamp(46px, 15vw, 68px);
+        }
+
+        .cta-row {
+          display: grid;
+        }
+
+        .button {
+          width: 100%;
+          min-height: 58px;
+        }
+
+        .pain-list,
+        .proof-strip,
+        .bullet-grid,
+        .stats-grid,
+        .course-grid,
+        .course-highlights,
+        .circle-list,
+        .scarcity-grid,
+        .case-grid,
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card {
+          aspect-ratio: 2 / 5;
+        }
+
+        .stat:nth-child(5) {
+          grid-column: auto;
+        }
+
+        .gallery-grid {
+          grid-auto-rows: 240px;
+        }
+
+        .gallery-grid figure:first-child {
+          grid-row: auto;
+        }
+
+        .advantage {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .closing {
+          background-position: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sample-mark">SabahClick Sample</div>
+
+    <header class="nav-shell" id="top">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="冲出重围5.0">
+          <span class="brand-logo">
+            <img src="img/gwla-logo.jpeg" alt="智富国际联盟 GWLA" />
+          </span>
+          <span>
+            <strong>冲出重围5.0</strong>
+            <span>AI企业增长实战峰会</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="页面导航">
+          <a href="#trust">数字信任</a>
+          <a href="#mentor">导师</a>
+          <a href="#course">3天结果</a>
+          <a href="#partner">合伙人</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="nav-cta" href="#closing">立即报名</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero wrap" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow rise">马来西亚 · 吉隆坡站 | 2026年8月</p>
+          <h1 id="hero-title" class="rise d1">
+            冲出重围5.0
+            <span>AI时代企业增长实战峰会</span>
+          </h1>
+          <p class="hero-lead rise d2">
+            疫情后市场全面洗牌，未来3年，不懂AI、不懂流量、不懂商业模式的企业，将越来越难生存。
+            <strong>这不仅是一堂课程，更是一场企业升级、资源链接、商业破局的机会。</strong>
+          </p>
+          <div class="cta-row rise d3">
+            <a class="button button-primary" href="#closing">立即锁定席位</a>
+            <a class="button button-secondary" href="#partner">申请成为项目合伙人</a>
+          </div>
+
+          <div class="pain-ledger rise d3">
+            <h2>老板，你是否面对以下问题？</h2>
+            <ul class="pain-list">
+              <li>流量越来越贵</li>
+              <li>客户越来越难成交</li>
+              <li>生意利润越来越低</li>
+              <li>公司增长卡住</li>
+              <li>团队没有执行力</li>
+              <li>想做AI但不知道如何开始</li>
+              <li>有资源却不会整合</li>
+              <li>想进入更高层企业家圈层</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="hero-media rise d2" aria-label="峰会视觉与现场证明">
+          <div class="hero-card">
+            <img
+              src="img/hero-ai-business-original.jpeg"
+              alt="AI商业模式引领未来增长海报"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        </aside>
+      </section>
+
+      <section class="section stats-band" id="trust" aria-labelledby="trust-title">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title" id="trust-title">为什么选择王冲老师？</h2>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat"><strong>过亿</strong><span>全网粉丝量</span></div>
+            <div class="stat"><strong>100万+</strong><span>服务企业家超过</span></div>
+            <div class="stat"><strong>30万家</strong><span>链接中国企业资源</span></div>
+            <div class="stat"><strong>1亿+</strong><span>2025新加坡课程成交额突破</span></div>
+            <div class="stat"><strong>东南亚</strong><span>企业增长实战案例覆盖东南亚华人企业圈</span></div>
+            <div class="stat"><strong>AI落地</strong><span>AI商业系统落地实操，帮助企业把效率变成增长</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mentor" aria-labelledby="mentor-title">
+        <div class="wrap mentor-layout">
+          <div class="portrait-orbit">
+            <img src="img/mentor-wang-direct.png?v=1" alt="王冲老师高清商务肖像" loading="lazy" />
+          </div>
+          <div class="mentor-copy">
+            <p class="eyebrow">导师介绍</p>
+            <h2 id="mentor-title">王冲老师</h2>
+            <p class="mentor-role">中国商业增长实战导师</p>
+            <ul class="bullet-grid">
+              <li>19年企业增长与商业策划经验</li>
+              <li>中国商业教育顶流导师</li>
+              <li>擅长商业模式、流量增长、资源整合、AI商业系统</li>
+              <li>帮助大量企业突破增长瓶颈</li>
+              <li>东南亚华人企业圈最受关注商业导师之一</li>
+              <li>以实战方法拆解企业增长问题</li>
+            </ul>
+            <div class="quote-band">很多企业不是不努力，而是商业模式已经落后时代。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section course-band" id="course" aria-labelledby="course-title">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">3天2夜结果导向</p>
+              <h2 class="section-title" id="course-title">
+                学完后，不只是知道更多，而是拿到<span>增长操作系统</span>
+              </h2>
+            </div>
+            <p class="section-copy">
+              每一天都从企业经营结果出发，重构模式、建立流量、落地AI，让老板带着可执行方向回去。
+            </p>
+          </div>
+
+          <div class="course-grid">
+            <article class="course-day">
+              <span class="day-kicker">DAY 1</span>
+              <h3>商业模式重构</h3>
+              <p class="result">打造企业增长底层系统</p>
+              <p class="course-subtitle">找到企业第二增长曲线</p>
+              <ul class="course-list">
+                <li>
+                  <span class="course-mark">01</span>
+                  <span><b>108种盈利模式深度拆解</b><span>找到企业第二增长曲线</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">02</span>
+                  <span><b>六大商业模式矩阵实战应用</b><span>多维度构建企业增长引擎</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">03</span>
+                  <span><b>企业增长底层逻辑重构</b><span>破解增长困局，重塑增长系统</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">04</span>
+                  <span><b>如何找到行业突破口</b><span>精准定位市场机会，实现弯道超车</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">05</span>
+                  <span><b>从“赚钱”升级到“值钱”</b><span>打造企业核心价值，提升企业估值</span></span>
+                </li>
+              </ul>
+              <div class="gain-box">
+                <b class="gain-title">学习收获</b>
+                <ul class="gain-list">
+                  <li>掌握可复制的盈利模式</li>
+                  <li>构建企业持续增长系统</li>
+                  <li>发现行业增长新机会</li>
+                  <li>提升企业商业价值</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="course-day">
+              <span class="day-kicker">DAY 2</span>
+              <h3>流量增长引擎</h3>
+              <p class="result">引流 · 锁客 · 裂变实战</p>
+              <p class="course-subtitle">破解企业获客难题</p>
+              <ul class="course-list">
+                <li>
+                  <span class="course-mark">01</span>
+                  <span><b>五维流量增长模型</b><span>构建全域流量增长体系</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">02</span>
+                  <span><b>会员锁流系统搭建</b><span>打造高粘性、高复购的客户系统</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">03</span>
+                  <span><b>异业联盟合作模式</b><span>跨界资源整合，实现1+1&gt;2</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">04</span>
+                  <span><b>高价值赠品设计策略</b><span>精准吸引目标客户，提升转化率</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">05</span>
+                  <span><b>企业自动化获客系统</b><span>降低获客成本，实现持续增长</span></span>
+                </li>
+              </ul>
+              <div class="gain-box">
+                <b class="gain-title">学习收获</b>
+                <ul class="gain-list">
+                  <li>掌握流量增长核心方法</li>
+                  <li>打造稳定的客户获取系统</li>
+                  <li>提升客户留存与转化率</li>
+                  <li>建立低成本获客模式</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="course-day">
+              <span class="day-kicker">DAY 3</span>
+              <h3>AI数智化+企业落地方案</h3>
+              <p class="result">打造未来企业增长操作系统</p>
+              <p class="course-subtitle">帮助企业提升效率与增长</p>
+              <ul class="course-list">
+                <li>
+                  <span class="course-mark">01</span>
+                  <span><b>AI商业应用实战</b><span>AI赋能企业，提升效率与增长</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">02</span>
+                  <span><b>AI数字人矩阵打造</b><span>打造企业IP矩阵，放大品牌影响力</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">03</span>
+                  <span><b>智能成交链路设计</b><span>构建高效成交流程，提升转化率</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">04</span>
+                  <span><b>企业现场诊断分析</b><span>深度剖析企业问题，找到增长关键点</span></span>
+                </li>
+                <li>
+                  <span class="course-mark">05</span>
+                  <span><b>一企一策落地方案</b><span>量身定制增长方案，确保落地执行</span></span>
+                </li>
+              </ul>
+              <div class="gain-box">
+                <b class="gain-title">学习收获</b>
+                <ul class="gain-list">
+                  <li>掌握AI赋能企业的实战方法</li>
+                  <li>打造智能化增长操作系统</li>
+                  <li>获得企业专属增长方案</li>
+                  <li>实现战略落地与业绩突破</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <div class="course-highlights" aria-label="课程亮点">
+            <div class="highlight-label">课程亮点</div>
+            <div class="highlight-item"><b>实战落地</b><span>方法即学即用</span></div>
+            <div class="highlight-item"><b>案例丰富</b><span>大量企业实战案例</span></div>
+            <div class="highlight-item"><b>资源对接</b><span>链接优质商业资源</span></div>
+            <div class="highlight-item"><b>高端人脉</b><span>结识优秀企业家</span></div>
+            <div class="highlight-item"><b>持续赋能</b><span>长期陪跑与支持</span></div>
+            <div class="highlight-item"><b>名额有限</b><span>定向邀请制</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="partner" aria-labelledby="partner-title">
+        <div class="wrap partner-layout">
+          <div class="partner-thesis">
+            <p class="eyebrow">项目合伙人专区</p>
+            <h2 class="section-title" id="partner-title">
+              为什么越来越多企业家开始做<span>资源型生意？</span>
+            </h2>
+            <p>
+              未来最赚钱的人，不是单打独斗的人，而是拥有资源整合能力、圈层链接能力、平台合作能力的人。
+            </p>
+            <p>
+              <strong>GWLA正在打造：马来西亚 × 中国 × 东南亚企业资源平台。</strong>
+              现在加入，未来有机会优先参与AI项目、跨境合作、资源整合与区域市场布局。
+            </p>
+          </div>
+
+          <div class="advantage-list">
+            <article class="advantage">
+              <b>01</b>
+              <div><h3>项目优先权</h3><p>优先接触AI项目与区域商业机会。</p></div>
+            </article>
+            <article class="advantage">
+              <b>02</b>
+              <div><h3>跨境资源</h3><p>链接中国、马来西亚与东南亚企业资源。</p></div>
+            </article>
+            <article class="advantage">
+              <b>03</b>
+              <div><h3>平台合作</h3><p>从单点生意升级为平台型合作。</p></div>
+            </article>
+            <article class="advantage">
+              <b>04</b>
+              <div><h3>圈层入口</h3><p>进入更高层企业家与高净值商业圈层。</p></div>
+            </article>
+            <article class="advantage">
+              <b>05</b>
+              <div><h3>增长方案</h3><p>获得企业升级与商业破局方向。</p></div>
+            </article>
+            <article class="advantage">
+              <b>06</b>
+              <div><h3>审核制名额</h3><p>合伙人名额采用审核制，确保圈层质量。</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark-section" aria-labelledby="network-title">
+        <div class="wrap circle-layout">
+          <div class="network-copy">
+            <p class="eyebrow">圈层链接</p>
+            <h2 class="section-title" id="network-title">
+              你将链接到什么样的<span>人？</span>
+            </h2>
+            <p class="section-copy">
+              老板买的很多时候不是课，而是进入这个圈子，链接更高维度的人、资源与合作机会。一个人的成长速度，取决于他身边的人。
+            </p>
+          </div>
+          <div class="circle-list">
+            <div class="circle-item" data-index="01"><b>企业创办人</b><span>链接正在寻找增长突破口的老板。</span></div>
+            <div class="circle-item" data-index="02"><b>品牌经营者</b><span>对接品牌升级、市场拓展与渠道资源。</span></div>
+            <div class="circle-item" data-index="03"><b>投资人与资本资源</b><span>看见更高层面的商业合作可能。</span></div>
+            <div class="circle-item" data-index="04"><b>AI创业团队</b><span>接触AI系统、工具与落地应用团队。</span></div>
+            <div class="circle-item" data-index="05"><b>中国与东南亚企业家</b><span>建立跨境资源链接与合作机会。</span></div>
+            <div class="circle-item" data-index="06"><b>高净值商业圈层</b><span>进入更有质量的长期商业网络。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section scarcity" aria-labelledby="scarcity-title">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">稀缺席位</p>
+              <h2 class="section-title" id="scarcity-title">这不是无限开放的普通课程</h2>
+            </div>
+            <p class="section-copy">
+              未来区域合作资格，将优先从本次学员中筛选。继续观望，可能错过下一轮增长机会。
+            </p>
+          </div>
+          <div class="scarcity-grid">
+            <div class="scarcity-item">本次课程仅开放 50 位席位</div>
+            <div class="scarcity-item">VIP席位有限</div>
+            <div class="scarcity-item">合伙人名额审核制</div>
+            <div class="scarcity-item">区域合作资格优先筛选</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">现场证明</p>
+              <h2 class="section-title" id="gallery-title">和全马最成功的老板们一起学习！</h2>
+            </div>
+          </div>
+          <div class="gallery-grid">
+            <figure>
+              <img src="img/team-red-collage.jpeg" alt="冲出重围学员团队合影" loading="lazy" />
+              <figcaption>学员与团队合影</figcaption>
+            </figure>
+            <figure>
+              <img src="img/summit-hall-side.jpeg" alt="大型企业家课程侧面现场" loading="lazy" />
+              <figcaption>高密度学习现场</figcaption>
+            </figure>
+            <figure>
+              <img src="img/summit-hall-wide.jpeg" alt="大型企业家峰会会场全景" loading="lazy" />
+              <figcaption>千人级课程会场</figcaption>
+            </figure>
+            <figure>
+              <img src="img/summit-stage.jpeg" alt="王冲老师课程舞台现场" loading="lazy" />
+              <figcaption>课程舞台实战现场</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section case-section" aria-labelledby="case-title">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">成功案例</p>
+              <h2 class="section-title" id="case-title">
+                真实学员案例，
+                <span>看得见的增长结果</span>
+              </h2>
+            </div>
+            <p class="section-copy">
+              不只是听一堂课，而是看见企业如何把方法、流量、资源与执行真正落地。
+            </p>
+          </div>
+          <div class="case-grid">
+            <figure class="case-card">
+              <img src="img/WhatsApp%20Image%202026-06-08%20at%207.00.49%20PM.jpeg" alt="冲出重围学员企业成功案例海报" loading="lazy" />
+              <figcaption>企业实战转型案例</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="img/WhatsApp%20Image%202026-06-08%20at%207.00.47%20PM.jpeg" alt="冲出重围学员落地成功案例海报" loading="lazy" />
+              <figcaption>增长方法落地见证</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="img/WhatsApp%20Image%202026-06-08%20at%207.00.50%20PM.jpeg" alt="上市成功企业案例海报" loading="lazy" />
+              <figcaption>资本与规模突破案例</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="img/WhatsApp%20Image%202026-06-08%20at%207.00.50%20PM%20%281%29.jpeg" alt="冲出重围商业增长成功案例海报" loading="lazy" />
+              <figcaption>商业模式升级案例</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="wrap faq-grid">
+          <div>
+            <p class="eyebrow">解除顾虑</p>
+            <h2 class="section-title" id="faq-title">报名之前，你可能想确认这些</h2>
+            <p class="section-copy">
+              FAQ的重点不是解释课程，而是解除不敢报名、不敢行动的顾虑。
+            </p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Q：我不是大企业，适合吗？</summary>
+              <p>适合。无论你是创业者、中小企业、品牌经营者，还是想寻找商业机会的人，都能找到适合自己的增长模式。</p>
+            </details>
+            <details>
+              <summary>Q：完全不懂AI可以参加吗？</summary>
+              <p>可以。课程会从商业应用角度出发，让企业真正理解AI如何帮助增长，而不是复杂技术。</p>
+            </details>
+            <details>
+              <summary>Q：这堂课适合什么行业？</summary>
+              <p>适用于教育、美业、餐饮、电商、地产、传统行业、自媒体、服务业等行业。</p>
+            </details>
+            <details>
+              <summary>Q：是否有机会对接资源？</summary>
+              <p>有。GWLA核心目标之一，就是帮助企业建立资源链接与合作机会。</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section closing" id="closing" aria-labelledby="closing-title">
+        <div class="wrap closing-copy">
+          <p class="eyebrow">最后的选择</p>
+          <h2 id="closing-title">
+            未来3年，不是淘汰传统行业。
+            <span>而是淘汰不会升级的企业。</span>
+          </h2>
+          <p>
+            AI时代已经开始，商业逻辑正在重构。你是选择继续观望，还是提前进入下一轮增长机会？
+          </p>
+          <div class="cta-row">
+            <a class="button button-primary" href="https://wa.me/" aria-label="立即报名">立即报名</a>
+            <a class="button button-secondary" href="https://wa.me/" aria-label="申请成为项目合伙人">
+              申请成为项目合伙人
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <span>冲出重围5.0 · AI时代企业增长与资源整合实战峰会</span>
+        <span>马来西亚 · 吉隆坡站 | 2026年8月（待公布）</span>
+      </div>
+    </footer>
+  </body>
+</html>
+

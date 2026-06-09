@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>冲出重围5.0 AI商业模式主海报</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 720px;
+        height: 996px;
+        margin: 0;
+        overflow: hidden;
+        background: #07111d;
+        font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      }
+
+      .poster {
+        position: relative;
+        width: 720px;
+        height: 996px;
+        overflow: hidden;
+        color: #fff7e5;
+        background: #07111d;
+      }
+
+      .bg {
+        position: absolute;
+        inset: -28px;
+        width: calc(100% + 56px);
+        height: calc(100% + 56px);
+        object-fit: cover;
+        filter: blur(10px) saturate(0.86) contrast(0.9);
+        opacity: 0.52;
+      }
+
+      .poster::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 77% 34%, rgba(226, 174, 91, 0.26), transparent 260px),
+          radial-gradient(circle at 18% 72%, rgba(226, 174, 91, 0.2), transparent 260px),
+          linear-gradient(90deg, rgba(5, 11, 20, 0.96), rgba(5, 11, 20, 0.56) 60%, rgba(5, 11, 20, 0.84)),
+          linear-gradient(180deg, rgba(5, 11, 20, 0.96), rgba(5, 11, 20, 0.32) 48%, rgba(5, 11, 20, 0.96));
+      }
+
+      .poster::after {
+        content: "";
+        position: absolute;
+        inset: 22px;
+        border: 1px solid rgba(246, 210, 141, 0.32);
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 44px 46px 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .kicker {
+        color: #f3d28a;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 2px;
+      }
+
+      h1 {
+        margin: 24px 0 0;
+        font-size: 82px;
+        line-height: 0.96;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .version {
+        display: block;
+        color: #f3d28a;
+        font-size: 104px;
+        line-height: 0.95;
+      }
+
+      .ai {
+        margin: 18px 0 12px;
+        color: #fff7e5;
+        font-size: 86px;
+        line-height: 0.95;
+        font-weight: 900;
+      }
+
+      .ai span {
+        color: #f3d28a;
+      }
+
+      .subtitle {
+        width: fit-content;
+        padding: 11px 16px;
+        border: 1px solid rgba(243, 210, 138, 0.55);
+        background: rgba(5, 11, 20, 0.64);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .middle {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: 1fr 0.82fr;
+        gap: 18px;
+        align-items: end;
+      }
+
+      .speaker {
+        min-height: 132px;
+        padding: 20px;
+        border-left: 6px solid #f3d28a;
+        background: rgba(5, 11, 20, 0.78);
+      }
+
+      .speaker b {
+        display: block;
+        margin-bottom: 8px;
+        color: #f3d28a;
+        font-size: 34px;
+      }
+
+      .speaker span {
+        color: rgba(255, 247, 229, 0.84);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .seat {
+        min-height: 132px;
+        padding: 20px;
+        border: 1px solid rgba(243, 210, 138, 0.28);
+        background: rgba(5, 11, 20, 0.72);
+      }
+
+      .seat b {
+        display: block;
+        color: #f3d28a;
+        font-size: 30px;
+      }
+
+      .seat span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 247, 229, 0.82);
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .details {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid rgba(243, 210, 138, 0.26);
+        background: rgba(5, 11, 20, 0.82);
+      }
+
+      .detail {
+        min-height: 118px;
+        padding: 18px;
+        border-right: 1px solid rgba(243, 210, 138, 0.22);
+      }
+
+      .detail:last-child {
+        border-right: 0;
+      }
+
+      .detail b {
+        display: block;
+        margin-bottom: 12px;
+        color: #f3d28a;
+        font-size: 18px;
+      }
+
+      .detail span {
+        color: #fff7e5;
+        font-size: 20px;
+        line-height: 1.38;
+        font-weight: 800;
+      }
+
+      .focus {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid rgba(243, 210, 138, 0.28);
+        border-bottom: 1px solid rgba(243, 210, 138, 0.28);
+      }
+
+      .focus span {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #f3d28a;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.35;
+        border-right: 1px solid rgba(243, 210, 138, 0.22);
+      }
+
+      .focus span:last-child {
+        border-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <img class="bg" src="img/poster-main.jpeg" alt="" aria-hidden="true" />
+      <div class="content">
+        <div class="kicker">马来西亚 · 吉隆坡站 | 2026年8月</div>
+        <h1>
+          冲出重围
+          <span class="version">5.0</span>
+        </h1>
+        <div class="ai">AI商业<span>模式</span></div>
+        <div class="subtitle">引领企业未来增长</div>
+
+        <div class="middle">
+          <div class="speaker">
+            <b>王冲老师</b>
+            <span>中国商业培训顶流导师<br />企业增长实战导师</span>
+          </div>
+          <div class="seat">
+            <b>3天2夜</b>
+            <span>企业增长实战营<br />名额有限 · 定向邀请制</span>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="detail"><b>活动地点</b><span>马来西亚<br />吉隆坡</span></div>
+          <div class="detail"><b>活动时间</b><span>2026年8月<br />待公布</span></div>
+          <div class="detail"><b>课程重点</b><span>商业模式<br />流量增长<br />AI数智化</span></div>
+        </div>
+
+        <div class="focus">
+          <span>重构商业模式</span>
+          <span>引爆流量增长</span>
+          <span>AI数智化落地</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
