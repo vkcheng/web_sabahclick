@@ -2,42 +2,28 @@
 
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function sendContactEmail(formData: FormData) {
-    const name = formData.get('name') as string
-    const email = formData.get('email') as string
-    const tel = formData.get('tel') as string
-    const message = formData.get('message') as string
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const tel = formData.get('tel')
+    const message = formData.get('message')
 
-    if (!name || !email || !message) {
+    if (typeof name !== 'string' || typeof email !== 'string' || typeof tel !== 'string' || typeof message !== 'string'
+        || !name.trim() || !email.trim() || !message.trim()) {
         return { error: 'Missing required fields' }
     }
 
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) return { error: 'Email service unavailable' }
+
     try {
+        const resend = new Resend(apiKey)
         const { data, error } = await resend.emails.send({
-            from: 'SabahClick Contact <onboarding@resend.dev>', // Default for testing, user might need to change this if they have a domain
+            from: 'SabahClick Contact <onboarding@resend.dev>',
             to: ['vkcheng@gmail.com'],
             replyTo: email,
             subject: `New Contact Form Submission from ${name}`,
-            text: `
-Name: ${name}
-Email: ${email}
-Tel: ${tel}
-
-Message:
-${message}
-      `,
-            // basic html version
-            html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Tel:</strong> ${tel}</p>
-        <br/>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br/>')}</p>
-      `
+            text: `Name: ${name}\nEmail: ${email}\nTel: ${tel}\n\nMessage:\n${message}`,
         })
 
         if (error) {

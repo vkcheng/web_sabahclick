@@ -1,33 +1,23 @@
 "use client"
 
-import * as React from "react"
-import { useLanguage } from "@/lib/i18n/language-context"
 import { Globe } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/language-context"
+import { languageTags, type Language } from "@/lib/i18n/translations"
+
+const languages = { en: "English", cn: "中文", bm: "Melayu" } satisfies Record<Language, string>
 
 export function LanguageSwitcher() {
-    const { language, setLanguage } = useLanguage()
-
-    const toggleLanguage = () => {
-        if (language === 'en') setLanguage('cn')
-        else if (language === 'cn') setLanguage('bm')
-        else setLanguage('en')
-    }
-
-    const label = {
-        en: "EN",
-        cn: "中",
-        bm: "BM"
-    }
+    const { language, setLanguage, t } = useLanguage()
 
     return (
-        <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 p-2 rounded-md hover:bg-muted transition-colors border border-transparent hover:border-accent group"
-        >
-            <Globe className="h-4 w-4 text-foreground group-hover:text-neon-cyan" />
-            <span className="text-sm font-display font-medium text-foreground group-hover:text-neon-cyan min-w-[1.5rem] text-center">
-                {label[language]}
-            </span>
-        </button>
+        <label className="language-picker">
+            <Globe size={16} aria-hidden="true" />
+            <span className="sr-only">{t.nav.language}</span>
+            <select value={language} onChange={(event) => setLanguage(event.target.value as Language)}>
+                {(Object.keys(languages) as Language[]).map((value) => (
+                    <option key={value} value={value} lang={languageTags[value]}>{languages[value]}</option>
+                ))}
+            </select>
+        </label>
     )
 }

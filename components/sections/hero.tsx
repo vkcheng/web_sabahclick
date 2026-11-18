@@ -1,84 +1,55 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { ArrowDown, ArrowUpRight, CalendarCheck, MessageCircle, Sparkles } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/language-context"
-import { MessageCircle, ArrowRight } from "lucide-react"
+
+const stepIcons = [MessageCircle, Sparkles, CalendarCheck]
 
 export function Hero() {
     const { t } = useLanguage()
 
-    const scrollToSection = (id: string) => {
-        const element = document.getElementById(id)
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
-        }
-    }
-
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Background Effects */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-[100px] animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-[100px] animate-pulse delay-1000" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-            </div>
-
-            <div className="container mx-auto px-6 relative z-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-mono mb-6 backdrop-blur-sm">
-                        EST. 2026 // KOTA KINABALU
-                    </span>
-                    <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 leading-tight">
+        <section className="home-hero" aria-labelledby="hero-title">
+            <div className="site-wrap hero-layout">
+                <div className="hero-copy">
+                    <h1 id="hero-title" className="headline">
                         {t.hero.titleLine1}{" "}
-                        <br className="md:hidden" />
-                        {t.hero.titleLine2}
+                        <span className="headline-accent">{t.hero.titleLine2}</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-3 font-light">
-                        {t.hero.subtitle}
-                    </p>
-
-                    {/* Localized subtitle */}
-                    <p className="text-sm md:text-base text-neon-cyan/70 font-mono max-w-xl mx-auto mb-10 tracking-wide">
-                        {t.hero.localSubtitle}
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        {/* Primary CTA: WhatsApp */}
-                        <a
-                            href="https://wa.me/60128131441"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-4 bg-[#25D366] text-black font-bold rounded-lg hover:bg-[#1db954] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#25D366]/20"
-                        >
-                            <MessageCircle className="w-5 h-5" />
-                            {t.hero.ctaWhatsapp}
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <p className="section-lead">{t.hero.description}</p>
+                    <div className="site-actions">
+                        <a href="#contact" className="site-button button-primary">
+                            {t.nav.contact}
+                            <ArrowUpRight size={17} aria-hidden="true" />
                         </a>
-                        {/* Secondary CTA: View Our Work */}
-                        <button
-                            onClick={() => scrollToSection('showcase')}
-                            className="px-8 py-4 border border-white/10 hover:border-neon-cyan hover:bg-neon-cyan/5 rounded-lg transition-all duration-300 backdrop-blur-sm"
-                        >
-                            {t.hero.ctaShowcase}
-                        </button>
+                        <a href="#services" className="site-button button-secondary">
+                            {t.hero.services}
+                            <ArrowDown size={17} aria-hidden="true" />
+                        </a>
                     </div>
-                </motion.div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-50"
-            >
-                <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-current rounded-full" />
                 </div>
-            </motion.div>
+
+                <div className="workflow">
+                    <div className="workflow-heading">
+                        <p>{t.hero.workflow}</p>
+                        <h2>{t.hero.scenario}</h2>
+                    </div>
+                    <ol className="workflow-steps">
+                        {t.hero.steps.map((step, index) => {
+                            const Icon = stepIcons[index]
+                            return (
+                                <li key={index} className={index === 1 ? "workflow-step workflow-step-ai" : "workflow-step"}>
+                                    <span className="workflow-icon"><Icon size={19} aria-hidden="true" /></span>
+                                    <div>
+                                        <p className="workflow-step-title">{step.title}</p>
+                                        <p className="small-copy">{step.detail}</p>
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ol>
+                </div>
+            </div>
         </section>
     )
 }

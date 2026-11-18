@@ -1,165 +1,283 @@
-export type Language = 'en' | 'cn' | 'bm';
+export type Language = 'en' | 'cn' | 'bm'
 
-export type Translation = {
+export const languageTags = { en: 'en', cn: 'zh-Hans', bm: 'ms' } as const
+
+const english = {
     nav: {
-        home: string;
-        services: string;
-        showcase: string;
-        contact: string;
-        about: string;
-    };
-    hero: {
-        titleLine1: string;
-        titleLine2: string;
-        subtitle: string;
-        localSubtitle: string;
-        cta: string;
-        ctaWhatsapp: string;
-        ctaShowcase: string;
-    };
-    services: {
-        title: string;
-        webDesign: string;
-        webDesignDesc: string;
-        landingPage: string;
-        landingPageDesc: string;
-        seo: string;
-        seoDesc: string;
-    };
-    aboutSection: {
-        headline: string;
-        body1: string;
-        body2: string;
-    };
-    contact: {
-        title: string;
-        name: string;
-        email: string;
-        tel: string;
-        message: string;
-        submit: string;
-    };
-};
-
-export const translations: Record<Language, Translation> = {
-    en: {
-        nav: {
-            home: "Home",
-            services: "Services",
-            showcase: "Showcase",
-            contact: "Contact",
-            about: "About",
-        },
-        hero: {
-            titleLine1: "Future-Ready",
-            titleLine2: "Web Design",
-            subtitle: "Elevate your business with minimalist, high-performance landing pages.",
-            localSubtitle: "Serving 10+ Sabah businesses — from Kota Kinabalu to beyond",
-            cta: "Get Started",
-            ctaWhatsapp: "WhatsApp Us",
-            ctaShowcase: "View Our Work",
-        },
-        services: {
-            title: "Our Services",
-            webDesign: "Web Design",
-            webDesignDesc: "Custom built websites with modern aesthetics.",
-            landingPage: "Landing Pages",
-            landingPageDesc: "High conversion landing pages for small businesses.",
-            seo: "SEO Optimization",
-            seoDesc: "Rank higher and reach more customers.",
-        },
-        aboutSection: {
-            headline: "Empowering Sabah Businesses, One Click to New Opportunities.",
-            body1: "SabahClick was founded with a single mission: to help every local entrepreneur and freelancer in our home state possess a beautiful, professional web presence.",
-            body2: "Whether you are based in Kota Kinabalu or anywhere across Sabah, we are here to build the most aesthetic and effective promotional tools for you. Let your business stand out and thrive in the digital age.",
-        },
-        contact: {
-            title: "Get in Touch",
-            name: "Name",
-            email: "Email",
-            tel: "Phone",
-            message: "Message",
-            submit: "Send Message",
-        },
+        home: 'Home',
+        services: 'AI Services',
+        about: 'How We Work',
+        web: 'Web Design',
+        apps: 'Free Apps',
+        contact: 'Discuss a project',
+        menu: 'Menu',
+        navigation: 'Main navigation',
+        closeMenu: 'Close menu',
+        skip: 'Skip to content',
+        language: 'Language',
+        theme: 'Toggle light or dark mode',
     },
+    hero: {
+        titleLine1: 'AI systems for',
+        titleLine2: 'Sabah businesses.',
+        description: 'SabahClick builds AI around the way your team works, from handling customer enquiries to connecting the tools you already use.',
+        services: 'See AI services',
+        workflow: 'How an AI workflow could work',
+        scenario: 'Booking enquiries',
+        steps: [
+            { title: 'Customer asks about a booking', detail: 'Website or WhatsApp enquiry' },
+            { title: 'AI gathers the booking details', detail: 'Checks dates and drafts a reply' },
+            { title: 'Your team confirms the booking', detail: 'Reviews the reply and updates the record' },
+        ],
+    },
+    services: {
+        title: 'Systems and services',
+        description: 'We build new AI systems and help established teams bring AI into their daily operations.',
+        systems: 'Custom AI systems',
+        systemsDescription: 'Build a system around a specific job, such as sorting customer enquiries, extracting information from documents, or preparing routine reports.',
+        transformation: 'AI transformation',
+        transformationDescription: 'Review your current workflows, connect the tools and data you already use, and introduce AI in stages with your team.',
+        webDescription: 'Business websites, landing pages, and local SEO for Sabah businesses.',
+        webLink: 'View web design service',
+    },
+    approach: {
+        title: 'From one workflow to daily use',
+        description: 'We start with a task your team repeats often and agree on where human review is needed.',
+        steps: [
+            { title: 'Map your workflow', detail: 'Walk through how the work gets done today and identify the steps worth improving.' },
+            { title: 'Build and test', detail: 'Test a small version with the people who do the work and the tools they already use.' },
+            { title: 'Roll out with your team', detail: 'Show your team how to use the system, then use their feedback to refine it.' },
+        ],
+    },
+    apps: {
+        title: 'Free apps',
+        description: 'Small tools by SabahClick for everyday tasks, from scanning documents to saving them as PDFs.',
+        browse: 'Browse free apps',
+        platform: 'Android',
+        scannerDescription: 'Scan documents, recognise text and export PDFs. VKscanner processes your scans on your device and works offline.',
+        availability: 'Ask about VKscanner',
+        privacy: 'Privacy policy',
+        message: 'Hi SabahClick, how can I get VKscanner?',
+    },
+    web: {
+        title: 'Web design for Sabah businesses.',
+        description: 'We build business websites and landing pages that make it easy for customers to find you and get in touch.',
+        showcaseLink: 'See website projects',
+        servicesTitle: 'Website and search services',
+        services: [
+            { title: 'Business websites', detail: 'Multi-page sites with a layout that works on phones and desktops.', price: 'From RM599' },
+            { title: 'Landing pages', detail: 'One page for a campaign, product or service, with a clear next step for customers.', price: 'From RM299' },
+            { title: 'Local SEO', detail: 'Improvements to your Google Business Profile and website to help customers find you in local searches.', price: 'From RM399/month' },
+        ],
+        showcase: 'Website projects',
+        showcaseDescription: 'Client websites and design concepts from SabahClick.',
+        clientProject: 'Client website',
+        conceptProject: 'Design concept',
+    },
+    contact: {
+        title: 'Tell us what you want to improve.',
+        description: 'Tell us how your business works today and which tasks take up your team’s time. We can start with one workflow.',
+        whatsapp: 'Chat on WhatsApp',
+        emailLink: 'Email SabahClick',
+        name: 'Name',
+        email: 'Email',
+        tel: 'Phone',
+        message: 'What would you like help with?',
+        submit: 'Send enquiry',
+        sending: 'Sending…',
+        success: 'Thanks. We’ve received your enquiry.',
+        error: 'Your enquiry could not be sent. Please try again or contact us on WhatsApp.',
+    },
+    footer: {
+        location: 'Kota Kinabalu, Sabah',
+        navigation: 'Footer navigation',
+    },
+}
+
+export type Translation = typeof english
+
+export const translations = {
+    en: english,
     cn: {
         nav: {
-            home: "首页",
-            services: "服务",
-            showcase: "案例",
-            contact: "联系我们",
-            about: "关于我们",
+            home: '首页',
+            services: 'AI 服务',
+            about: '合作流程',
+            web: '网页制作',
+            apps: '免费应用',
+            contact: '聊聊你的项目',
+            menu: '菜单',
+            navigation: '主导航',
+            closeMenu: '关闭菜单',
+            skip: '跳到主要内容',
+            language: '语言',
+            theme: '切换浅色或深色模式',
         },
         hero: {
-            titleLine1: "面向未来的",
-            titleLine2: "网页设计",
-            subtitle: "以极简、高性能的着陆页提升您的业务。",
-            localSubtitle: "服务沙巴10+家企业 — 从亚庇到更远的地方",
-            cta: "立即开始",
-            ctaWhatsapp: "WhatsApp 联系",
-            ctaShowcase: "查看案例",
+            titleLine1: '为沙巴商家打造',
+            titleLine2: '适合日常营运的 AI 系统。',
+            description: 'SabahClick 按照团队的日常工作方式设计 AI 系统，协助处理客户询问，也能连接你们已经在用的工具。',
+            services: '了解 AI 服务',
+            workflow: 'AI 工作流程示例',
+            scenario: '处理预约询问',
+            steps: [
+                { title: '客户询问预约', detail: '从网站或 WhatsApp 发来消息' },
+                { title: 'AI 整理预约资料', detail: '核对日期并拟写回复' },
+                { title: '团队确认预约', detail: '审核回复并更新预约记录' },
+            ],
         },
         services: {
-            title: "我们的服务",
-            webDesign: "网页设计",
-            webDesignDesc: "具有现代美学的定制网站。",
-            landingPage: "着陆页制作",
-            landingPageDesc: "为小企业打造的高转化率着陆页。",
-            seo: "SEO 优化",
-            seoDesc: "提高排名，触达更多客户。",
+            title: '系统与服务',
+            description: '我们为商家定制 AI 系统，也协助已有团队把 AI 用到日常营运中。',
+            systems: '定制 AI 系统',
+            systemsDescription: '围绕实际任务搭建系统，例如分类客户询问、提取文件资料，或整理日常报表。',
+            transformation: 'AI 营运转型',
+            transformationDescription: '梳理现有流程，连接你正在使用的工具和资料，和团队一起分阶段把 AI 导入日常工作。',
+            webDescription: '为沙巴商家制作企业网站、宣传落地页，并提供本地 SEO 服务。',
+            webLink: '查看网页制作服务',
         },
-        aboutSection: {
-            headline: "赋能沙巴企业，一键开启新机遇。",
-            body1: "SabahClick 成立的宗旨只有一个：帮助家乡的每一位本地企业家和自由职业者拥有一个美观、专业的网络形象。",
-            body2: "无论您位于亚庇还是沙巴的任何地方，我们都致力于为您打造最美观、最有效的推广工具。让您的业务在数字时代脱颖而出，蓬勃发展。",
+        approach: {
+            title: '从一个流程开始，逐步融入日常',
+            description: '我们从团队反复处理的一项工作着手，一起确定哪些步骤需要人工审核。',
+            steps: [
+                { title: '梳理现有流程', detail: '了解团队目前怎么做，找出值得改善的环节。' },
+                { title: '开发与试用', detail: '先做一个小规模版本，让实际负责这项工作的同事用熟悉的工具试用。' },
+                { title: '上线与交接', detail: '协助团队掌握用法，再根据实际使用反馈调整。' },
+            ],
+        },
+        apps: {
+            title: '免费应用',
+            description: 'SabahClick 制作的日常小工具，帮你扫描文件、保存 PDF。',
+            browse: '浏览免费应用',
+            platform: 'Android',
+            scannerDescription: '扫描文件、识别文字并导出 PDF。VKscanner 可离线使用，扫描内容在设备上处理。',
+            availability: '询问如何获取 VKscanner',
+            privacy: '隐私政策',
+            message: '你好 SabahClick，请问如何获取 VKscanner？',
+        },
+        web: {
+            title: '为沙巴商家制作网站。',
+            description: '我们制作企业网站和宣传落地页，让客户更容易找到你、了解你的服务并联系你。',
+            showcaseLink: '查看网站案例',
+            servicesTitle: '网站建设与搜索优化',
+            services: [
+                { title: '企业网站', detail: '适配手机和电脑的多页网站。', price: 'RM599 起' },
+                { title: '宣传落地页', detail: '为活动、产品或服务制作单页网站，让客户清楚知道下一步怎么做。', price: 'RM299 起' },
+                { title: '本地 SEO', detail: '优化 Google 商家资料和网站，帮助本地客户通过搜索找到你。', price: '每月 RM399 起' },
+            ],
+            showcase: '网站案例',
+            showcaseDescription: 'SabahClick 制作的客户网站和设计概念。',
+            clientProject: '客户网站',
+            conceptProject: '设计概念',
         },
         contact: {
-            title: "联系我们",
-            name: "姓名",
-            email: "邮箱",
-            tel: "电话",
-            message: "留言",
-            submit: "发送信息",
+            title: '聊聊你想改善的工作。',
+            description: '说说你的生意现在怎么运作，以及哪些工作最占用团队的时间。我们可以先从一个流程开始。',
+            whatsapp: '通过 WhatsApp 联系',
+            emailLink: '发送电邮',
+            name: '姓名',
+            email: '电邮',
+            tel: '电话号码',
+            message: '你希望我们协助什么？',
+            submit: '发送询问',
+            sending: '发送中…',
+            success: '谢谢，我们已收到你的询问。',
+            error: '暂时无法发送，请重试或通过 WhatsApp 联系我们。',
+        },
+        footer: {
+            location: '沙巴 · 亚庇',
+            navigation: '页脚导航',
         },
     },
     bm: {
         nav: {
-            home: "Utama",
-            services: "Perkhidmatan",
-            showcase: "Galeri",
-            contact: "Hubungi",
-            about: "Tentang Kami",
+            home: 'Laman utama',
+            services: 'Perkhidmatan AI',
+            about: 'Cara Kami Bekerja',
+            web: 'Reka Bentuk Web',
+            apps: 'Aplikasi Percuma',
+            contact: 'Bincangkan projek',
+            menu: 'Menu',
+            navigation: 'Navigasi utama',
+            closeMenu: 'Tutup menu',
+            skip: 'Langkau ke kandungan utama',
+            language: 'Bahasa',
+            theme: 'Tukar tema cerah atau gelap',
         },
         hero: {
-            titleLine1: "Reka Bentuk Web",
-            titleLine2: "Masa Depan",
-            subtitle: "Tingkatkan perniagaan anda dengan halaman pendaratan minimalis dan berprestasi tinggi.",
-            localSubtitle: "Melayani 10+ perniagaan Sabah — dari Kota Kinabalu ke seluruh negeri",
-            cta: "Mula Sekarang",
-            ctaWhatsapp: "WhatsApp Kami",
-            ctaShowcase: "Lihat Kerja Kami",
+            titleLine1: 'Sistem AI untuk',
+            titleLine2: 'perniagaan di Sabah.',
+            description: 'SabahClick membina sistem AI mengikut cara pasukan anda bekerja, daripada mengurus pertanyaan pelanggan hingga menghubungkan alat sedia ada.',
+            services: 'Lihat perkhidmatan AI',
+            workflow: 'Contoh aliran kerja AI',
+            scenario: 'Pertanyaan tempahan',
+            steps: [
+                { title: 'Pelanggan bertanya tentang tempahan', detail: 'Pertanyaan melalui laman web atau WhatsApp' },
+                { title: 'AI mengumpul butiran tempahan', detail: 'Menyemak tarikh dan mendraf balasan' },
+                { title: 'Pasukan anda mengesahkan tempahan', detail: 'Menyemak balasan dan mengemas kini rekod' },
+            ],
         },
         services: {
-            title: "Perkhidmatan Kami",
-            webDesign: "Reka Bentuk Web",
-            webDesignDesc: "Laman web tersuai dengan estetika moden.",
-            landingPage: "Halaman Pendaratan",
-            landingPageDesc: "Halaman pendaratan konversi tinggi untuk perniagaan kecil.",
-            seo: "Optimumkan SEO",
-            seoDesc: "Tingkatkan kedudukan dan capai lebih ramai pelanggan.",
+            title: 'Sistem dan perkhidmatan',
+            description: 'Kami membina sistem AI baharu dan membantu pasukan sedia ada menggunakan AI dalam operasi harian.',
+            systems: 'Sistem AI tersuai',
+            systemsDescription: 'Bina sistem mengikut tugas, seperti mengasingkan pertanyaan pelanggan, mengambil maklumat daripada dokumen atau menyediakan laporan rutin.',
+            transformation: 'Transformasi operasi dengan AI',
+            transformationDescription: 'Semak aliran kerja semasa, hubungkan alat dan data sedia ada, dan perkenalkan AI secara berperingkat bersama pasukan anda.',
+            webDescription: 'Laman web perniagaan, halaman pendaratan dan SEO setempat untuk perniagaan di Sabah.',
+            webLink: 'Lihat khidmat reka bentuk web',
         },
-        aboutSection: {
-            headline: "Memperkasa Perniagaan Sabah, Satu Klik ke Peluang Baru.",
-            body1: "SabahClick ditubuhkan dengan satu misi: untuk membantu setiap usahawan tempatan dan pekerja bebas di negeri asal kami memiliki kehadiran web yang cantik dan profesional.",
-            body2: "Sama ada anda bertapak di Kota Kinabalu atau di mana-mana sahaja di seluruh Sabah, kami berada di sini untuk membina alat promosi yang paling estetik dan berkesan untuk anda. Biarkan perniagaan anda menonjol dan berkembang maju dalam era digital.",
+        approach: {
+            title: 'Daripada satu aliran kerja kepada penggunaan harian',
+            description: 'Kami bermula dengan tugas yang kerap dibuat dan mengenal pasti langkah yang perlu disemak oleh pasukan anda.',
+            steps: [
+                { title: 'Teliti aliran kerja', detail: 'Fahami cara kerja dilakukan sekarang dan kenal pasti langkah yang boleh diperbaik.' },
+                { title: 'Bina dan uji', detail: 'Uji versi awal dengan kakitangan yang menjalankan tugas itu menggunakan alat sedia ada.' },
+                { title: 'Laksana bersama pasukan', detail: 'Bimbing pasukan menggunakan sistem dan perbaiknya berdasarkan maklum balas mereka.' },
+            ],
+        },
+        apps: {
+            title: 'Aplikasi percuma',
+            description: 'Alat ringkas daripada SabahClick untuk kegunaan harian, daripada mengimbas dokumen hingga menyimpannya sebagai PDF.',
+            browse: 'Lihat aplikasi percuma',
+            platform: 'Android',
+            scannerDescription: 'Imbas dokumen, kenal pasti teks dan eksport PDF. VKscanner memproses imbasan pada peranti anda dan boleh digunakan di luar talian.',
+            availability: 'Tanya cara mendapatkan VKscanner',
+            privacy: 'Dasar privasi',
+            message: 'Hai SabahClick, bagaimana saya boleh mendapatkan VKscanner?',
+        },
+        web: {
+            title: 'Reka bentuk web untuk perniagaan di Sabah.',
+            description: 'Kami membina laman web perniagaan dan halaman pendaratan yang memudahkan pelanggan mencari dan menghubungi anda.',
+            showcaseLink: 'Lihat projek laman web',
+            servicesTitle: 'Perkhidmatan laman web dan carian',
+            services: [
+                { title: 'Laman web perniagaan', detail: 'Laman berbilang halaman yang sesuai untuk telefon dan komputer.', price: 'Bermula RM599' },
+                { title: 'Halaman pendaratan', detail: 'Satu halaman untuk kempen, produk atau perkhidmatan dengan langkah seterusnya yang jelas untuk pelanggan.', price: 'Bermula RM299' },
+                { title: 'SEO setempat', detail: 'Baik pulih Profil Perniagaan Google dan laman web anda supaya pelanggan setempat lebih mudah menemui anda.', price: 'Bermula RM399/bulan' },
+            ],
+            showcase: 'Projek laman web',
+            showcaseDescription: 'Laman web pelanggan dan konsep reka bentuk daripada SabahClick.',
+            clientProject: 'Laman web pelanggan',
+            conceptProject: 'Konsep reka bentuk',
         },
         contact: {
-            title: "Hubungi Kami",
-            name: "Nama",
-            email: "E-mel",
-            tel: "Telefon",
-            message: "Mesej",
-            submit: "Hantar Mesej",
+            title: 'Kongsi perkara yang ingin anda perbaik.',
+            description: 'Beritahu kami cara perniagaan anda beroperasi dan tugas yang mengambil banyak masa. Kita boleh bermula dengan satu aliran kerja.',
+            whatsapp: 'Hubungi melalui WhatsApp',
+            emailLink: 'E-mel SabahClick',
+            name: 'Nama',
+            email: 'E-mel',
+            tel: 'Telefon',
+            message: 'Apakah yang boleh kami bantu?',
+            submit: 'Hantar pertanyaan',
+            sending: 'Sedang menghantar…',
+            success: 'Terima kasih. Kami telah menerima pertanyaan anda.',
+            error: 'Pertanyaan tidak dapat dihantar. Cuba lagi atau hubungi kami melalui WhatsApp.',
+        },
+        footer: {
+            location: 'Kota Kinabalu, Sabah',
+            navigation: 'Navigasi bahagian bawah',
         },
     },
-};
+} satisfies Record<Language, Translation>

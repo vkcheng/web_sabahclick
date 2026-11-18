@@ -1,151 +1,94 @@
 "use client"
 
-import * as React from "react"
-import { useLanguage } from "@/lib/i18n/language-context"
-import { supabase } from "@/lib/supabase"
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react"
+import { useState, type FormEvent } from "react"
 import { sendContactEmail } from "@/app/actions/contact"
+import { useLanguage } from "@/lib/i18n/language-context"
+import { contactEmail, whatsAppUrl } from "@/lib/site"
 
 export function Contact() {
     const { t } = useLanguage()
-    const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-    const [errorMessage, setErrorMessage] = React.useState<string>('')
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+    const isSending = status === "loading"
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        const form = e.currentTarget
-        setStatus('loading')
-        setErrorMessage('')
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        if (isSending) return
 
-        const formData = new FormData(form)
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            tel: formData.get('tel'),
-            message: formData.get('message'),
-            created_at: new Date().toISOString(),
-        }
-
-        // Imports moved to top level for better stability
-        // const { supabase } = await import('@/lib/supabase')
-        // const { sendContactEmail } = await import('@/app/actions/contact')
+        const form = event.currentTarget
+        const fields = new FormData(form)
+        setStatus("loading")
 
         try {
-            // 1. Send email via Resend
-            const emailResult = await sendContactEmail(formData)
+            const emailResult = await sendContactEmail(fields)
             if (emailResult.error) {
-                console.error('Email sending error:', emailResult.error)
-                throw new Error(`Email Error: ${emailResult.error}`)
+                setStatus("error")
+                return
             }
-
-            // 2. Save to Supabase (keeping existing logic, but non-blocking)
-            try {
-                const { error } = await supabase
-                    .from('contacts')
-                    .insert([data])
-
-                if (error) {
-                    console.error('Supabase error (non-fatal):', error)
-                    // We don't throw here anymore so the user still sees "Sent!"
-                    // failing to save to DB should not block the user experience if email succeeded
-                }
-            } catch (dbError) {
-                console.error('Supabase exception (non-fatal):', dbError)
-            }
-
-            setStatus('success')
-            // Reset form
-            form.reset()
-        } catch (error) {
-            console.error('Error submitting form:', error)
-            setStatus('error')
-            setErrorMessage(error instanceof Error ? error.message : 'Unknown error occurred')
-        } finally {
-            // Reset loading state after 3 seconds
-            if (status !== 'error') {
-                setTimeout(() => setStatus('idle'), 3000)
-            }
+        } catch {
+            setStatus("error")
+            return
         }
+
+        try {
+            const { supabase } = await import("@/lib/supabase")
+            const { error } = await supabase.from("contacts").insert([{
+                name: fields.get("name"),
+                email: fields.get("email"),
+                tel: fields.get("tel"),
+                message: fields.get("message"),
+                created_at: new Date().toISOString(),
+            }])
+            if (error) console.error("Could not save contact enquiry:", error.message)
+        } catch (error) {
+            console.error("Could not save contact enquiry:", error)
+        }
+
+        form.reset()
+        setStatus("success")
     }
 
     return (
-        <section id="contact" className="py-24 bg-secondary/20 relative">
-            <div className="container mx-auto px-6">
-                <div className="max-w-2xl mx-auto text-center mb-16">
-                    <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-                        Ready to grow your business online? Let&apos;s talk.
-                    </h2>
-                </div>
-
-                <div className="max-w-md mx-auto bg-card border border-white/5 p-8 rounded-2xl shadow-2xl backdrop-blur-sm">
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                        <div>
-                            <label className="block text-sm font-medium mb-2">{t.contact.name}</label>
-                            <input
-                                name="name"
-                                required
-                                type="text"
-                                className="w-full bg-secondary/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-neon-cyan transition-colors"
-                                placeholder={t.contact.name}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium mb-2">{t.contact.email}</label>
-                            <input
-                                name="email"
-                                required
-                                type="email"
-                                className="w-full bg-secondary/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-neon-cyan transition-colors"
-                                placeholder="hello@example.com"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium mb-2">{t.contact.tel}</label>
-                            <input
-                                name="tel"
-                                required
-                                type="tel"
-                                className="w-full bg-secondary/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-neon-cyan transition-colors"
-                                placeholder={t.contact.tel}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium mb-2">{t.contact.message}</label>
-                            <textarea
-                                name="message"
-                                required
-                                rows={4}
-                                className="w-full bg-secondary/50 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-neon-cyan transition-colors resize-none"
-                                placeholder={t.contact.message}
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={status === 'loading'}
-                            className="mt-4 w-full py-4 bg-neon-cyan text-black font-bold rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent!' : status === 'error' ? 'Failed' : t.contact.submit}
-                        </button>
-                        {status === 'success' && <p className="text-green-500 text-sm text-center">Message sent successfully!</p>}
-                        {status === 'error' && (
-                            <div className="text-red-500 text-sm text-center">
-                                <p>Failed to send message.</p>
-                                <p className="text-xs mt-1 opacity-80">{errorMessage}</p>
-                            </div>
-                        )}
-                    </form>
-                </div>
-
-                <footer className="mt-24 text-center text-muted-foreground text-sm">
-                    <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mb-8">
-                        <a href="mailto:sabahclick.my@gmail.com" className="hover:text-neon-cyan transition-colors">
-                            Email: sabahclick.my@gmail.com
+        <section id="contact" className="site-section tinted-section" aria-labelledby="contact-title">
+            <div className="site-wrap section-split">
+                <div className="section-intro">
+                    <h2 id="contact-title" className="section-title">{t.contact.title}</h2>
+                    <p className="section-lead">{t.contact.description}</p>
+                    <div className="contact-links">
+                        <a className="text-link" href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
+                            <MessageCircle size={17} aria-hidden="true" /> {t.contact.whatsapp}
+                            <ArrowUpRight size={15} aria-hidden="true" />
                         </a>
-                        <a href="https://wa.me/60128131441" target="_blank" rel="noopener noreferrer" className="hover:text-neon-cyan transition-colors">
-                            WhatsApp: 012-813 1441 (Text Only)
+                        <a className="text-link" href={`mailto:${contactEmail}`}>
+                            <Mail size={17} aria-hidden="true" /> {t.contact.emailLink}
                         </a>
                     </div>
-                    <p>© 2026 SabahClick. All rights reserved.</p>
-                </footer>
+                </div>
+
+                <form onSubmit={handleSubmit} className="contact-form" aria-busy={isSending}>
+                    <div className="contact-fields">
+                        <label htmlFor="contact-name">{t.contact.name}
+                            <input id="contact-name" name="name" required type="text" autoComplete="name" />
+                        </label>
+                        <label htmlFor="contact-tel">{t.contact.tel}
+                            <input id="contact-tel" name="tel" required type="tel" autoComplete="tel" />
+                        </label>
+                    </div>
+                    <label htmlFor="contact-email">{t.contact.email}
+                        <input id="contact-email" name="email" required type="email" autoComplete="email" />
+                    </label>
+                    <label htmlFor="contact-message">{t.contact.message}
+                        <textarea id="contact-message" name="message" required rows={4} />
+                    </label>
+                    <button type="submit" className="site-button button-primary" disabled={isSending}>
+                        {isSending ? t.contact.sending : t.contact.submit}
+                        <ArrowUpRight size={17} aria-hidden="true" />
+                    </button>
+                    <div className="form-status" role="status" data-state={status}>
+                        {status === "success" && t.contact.success}
+                        {status === "error" && t.contact.error}
+                    </div>
+                </form>
             </div>
         </section>
     )

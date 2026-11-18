@@ -1,48 +1,52 @@
 "use client"
 
-import React, { createContext, useContext, useState } from 'react';
-import { translations, Language, Translation } from './translations';
+import { createContext, useContext, useEffect, useSyncExternalStore, type ReactNode } from "react"
+import { languageTags, translations, type Language, type Translation } from "./translations"
 
 type LanguageContextType = {
-    language: Language;
-    setLanguage: (lang: Language) => void;
-    t: Translation;
-};
+    language: Language
+    setLanguage: (language: Language) => void
+    t: Translation
+}
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | null>(null)
+const languageChange = "sabahclick-language-change"
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguage] = useState<Language>(() => {
-        if (typeof window === 'undefined') {
-            return 'en';
-        }
+function getLanguage(): Language {
+    const saved = window.localStorage.getItem("language")
+    return saved === "cn" || saved === "bm" ? saved : "en"
+}
 
-        const saved = window.localStorage.getItem('language') as Language;
-        if (saved && (saved === 'en' || saved === 'cn' || saved === 'bm')) {
-            return saved;
-        }
+function subscribe(callback: () => void) {
+    window.addEventListener("storage", callback)
+    window.addEventListener(languageChange, callback)
+    return () => {
+        window.removeEventListener("storage", callback)
+        window.removeEventListener(languageChange, callback)
+    }
+}
 
-        return 'en';
-    });
+function setLanguage(language: Language) {
+    window.localStorage.setItem("language", language)
+    window.dispatchEvent(new Event(languageChange))
+}
 
-    const handleSetLanguage = (lang: Language) => {
-        setLanguage(lang);
-        window.localStorage.setItem('language', lang);
-    };
+export function LanguageProvider({ children }: { children: ReactNode }) {
+    const language = useSyncExternalStore(subscribe, getLanguage, (): Language => "en")
 
-    const t = translations[language];
+    useEffect(() => {
+        document.documentElement.lang = languageTags[language]
+    }, [language])
 
     return (
-        <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+        <LanguageContext.Provider value={{ language, setLanguage, t: translations[language] }}>
             {children}
         </LanguageContext.Provider>
-    );
+    )
 }
 
 export function useLanguage() {
-    const context = useContext(LanguageContext);
-    if (context === undefined) {
-        throw new Error('useLanguage must be used within a LanguageProvider');
-    }
-    return context;
+    const context = useContext(LanguageContext)
+    if (!context) throw new Error("useLanguage must be used within a LanguageProvider")
+    return context
 }
