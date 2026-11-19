@@ -1,12 +1,14 @@
 import type { Metadata } from "next"
-import "./globals.css"
-import { Header } from "@/components/sections/header"
-import { Footer } from "@/components/sections/footer"
-import { ThemeProvider } from "@/components/theme-provider"
-import { LanguageProvider } from "@/lib/i18n/language-context"
-import { siteDescription, siteTitle, siteUrl } from "@/lib/site"
+import { siteDescription, siteTitle, siteUrl } from "./site"
 
-export const metadata: Metadata = {
+export const socialImage = {
+    url: new URL("/opengraph-image", siteUrl).href,
+    width: 1200,
+    height: 630,
+    alt: "SabahClick builds AI systems for Sabah businesses",
+}
+
+export const siteMetadata: Metadata = {
     metadataBase: siteUrl,
     applicationName: "SabahClick",
     title: {
@@ -29,9 +31,11 @@ export const metadata: Metadata = {
         siteName: "SabahClick",
         title: siteTitle,
         description: siteDescription,
+        images: [socialImage],
         locale: "en_MY",
     },
     twitter: {
+        images: [socialImage],
         card: "summary_large_image",
         title: siteTitle,
         description: siteDescription,
@@ -47,22 +51,4 @@ export const metadata: Metadata = {
             "max-video-preview": -1,
         },
     },
-}
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-    return (
-        <html lang="en" suppressHydrationWarning>
-            <body className="antialiased">
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-                    <LanguageProvider>
-                        <div className="site-shell">
-                            <Header />
-                            {children}
-                            <Footer />
-                        </div>
-                    </LanguageProvider>
-                </ThemeProvider>
-            </body>
-        </html>
-    )
 }

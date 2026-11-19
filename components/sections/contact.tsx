@@ -1,12 +1,10 @@
 "use client"
 
-import { ArrowUpRight, Mail, MessageCircle } from "lucide-react"
 import { useState, type FormEvent } from "react"
 import { sendContactEmail } from "@/app/actions/contact"
 import { useLanguage } from "@/lib/i18n/language-context"
-import { contactEmail, whatsAppUrl } from "@/lib/site"
 
-export function Contact() {
+export function ContactForm() {
     const { t } = useLanguage()
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
     const isSending = status === "loading"
@@ -48,48 +46,26 @@ export function Contact() {
         setStatus("success")
     }
 
-    return (
-        <section id="contact" className="site-section tinted-section" aria-labelledby="contact-title">
-            <div className="site-wrap section-split">
-                <div className="section-intro">
-                    <h2 id="contact-title" className="section-title">{t.contact.title}</h2>
-                    <p className="section-lead">{t.contact.description}</p>
-                    <div className="contact-links">
-                        <a className="text-link" href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
-                            <MessageCircle size={17} aria-hidden="true" /> {t.contact.whatsapp}
-                            <ArrowUpRight size={15} aria-hidden="true" />
-                        </a>
-                        <a className="text-link" href={`mailto:${contactEmail}`}>
-                            <Mail size={17} aria-hidden="true" /> {t.contact.emailLink}
-                        </a>
-                    </div>
-                </div>
-
-                <form onSubmit={handleSubmit} className="contact-form" aria-busy={isSending}>
-                    <div className="contact-fields">
-                        <label htmlFor="contact-name">{t.contact.name}
-                            <input id="contact-name" name="name" required type="text" autoComplete="name" />
-                        </label>
-                        <label htmlFor="contact-tel">{t.contact.tel}
-                            <input id="contact-tel" name="tel" required type="tel" autoComplete="tel" />
-                        </label>
-                    </div>
-                    <label htmlFor="contact-email">{t.contact.email}
-                        <input id="contact-email" name="email" required type="email" autoComplete="email" />
-                    </label>
-                    <label htmlFor="contact-message">{t.contact.message}
-                        <textarea id="contact-message" name="message" required rows={4} />
-                    </label>
-                    <button type="submit" className="site-button button-primary" disabled={isSending}>
-                        {isSending ? t.contact.sending : t.contact.submit}
-                        <ArrowUpRight size={17} aria-hidden="true" />
-                    </button>
-                    <div className="form-status" role="status" data-state={status}>
-                        {status === "success" && t.contact.success}
-                        {status === "error" && t.contact.error}
-                    </div>
-                </form>
+    return <>
+        <noscript><style>{"#enquiryForm{display:none}"}</style><a className="btn-ghost" href="mailto:sabahclick.my@gmail.com">{t.contact.emailLink} ↗</a></noscript>
+        <form method="post" className="cyber-form reveal" id="enquiryForm" onSubmit={handleSubmit} aria-busy={isSending}>
+            <div className="form-row">
+                <div className="field"><label htmlFor="f-name">{t.contact.name} *</label>
+                    <input id="f-name" name="name" autoComplete="name" required /></div>
+                <div className="field"><label htmlFor="f-phone">{t.contact.tel} / WhatsApp *</label>
+                    <input id="f-phone" name="tel" type="tel" autoComplete="tel" required /></div>
             </div>
-        </section>
-    )
+            <div className="field"><label htmlFor="f-email">{t.contact.email} *</label>
+                <input id="f-email" name="email" type="email" autoComplete="email" placeholder="you@company.com.my" required /></div>
+            <div className="field"><label htmlFor="f-msg">{t.contact.message} *</label>
+                <textarea id="f-msg" name="message" rows={4} required /></div>
+            <button className="btn-primary send-button" type="submit" disabled={isSending}>
+                {isSending ? t.contact.sending : t.contact.submit} ↗
+            </button>
+            <div className="form-feedback" id="formFeedback" role="status" data-state={status}>
+                {status === "success" && t.contact.success}
+                {status === "error" && t.contact.error}
+            </div>
+        </form>
+    </>
 }

@@ -1,10 +1,9 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "SabahClick builds AI systems for Sabah businesses"
-export const size = { width: 1200, height: 630 }
-export const contentType = "image/png"
+const size = { width: 1200, height: 630 }
+export const dynamic = "force-static"
 
-export default function Image() {
+export function GET() {
     return new ImageResponse(
         (
             <div style={{
@@ -26,7 +25,7 @@ export default function Image() {
                     <div style={{ color: "#006c70" }}>Sabah businesses.</div>
                 </div>
                 <div style={{ display: "flex", fontSize: 26, color: "#435b60" }}>
-                    Custom AI systems and AI transformation · Kota Kinabalu, Sabah
+                    Custom AI systems and AI transformation Â· Kota Kinabalu, Sabah
                 </div>
             </div>
         ),

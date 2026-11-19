@@ -1,8 +1,4 @@
-import { About } from "@/components/sections/about"
-import { AppsPreview } from "@/components/sections/apps"
-import { Contact } from "@/components/sections/contact"
-import { Hero } from "@/components/sections/hero"
-import { Services } from "@/components/sections/services"
+import { ObsidianHome } from "@/components/obsidian/home"
 import { contactEmail, siteDescription, siteUrl } from "@/lib/site"
 
 const structuredData = {
@@ -35,14 +31,8 @@ const structuredData = {
 }
 
 export default function Home() {
-    return (
-        <main id="main" tabIndex={-1}>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-            <Hero />
-            <Services />
-            <About />
-            <AppsPreview />
-            <Contact />
-        </main>
-    )
+    return <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+        <ObsidianHome />
+    </>
 }

@@ -1,3 +1,4 @@
+import { socialImage } from "@/lib/site-metadata"
 import type { Metadata } from "next"
 import { AppsCatalog } from "@/components/sections/apps"
 
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
     title,
     description,
     alternates: { canonical: "/apps" },
-    openGraph: { title, description, url: "/apps" },
-    twitter: { title, description, card: "summary_large_image" },
+    openGraph: { title, description, images: [socialImage], url: "/apps" },
+    twitter: { title, description, images: [socialImage], card: "summary_large_image" },
 }
 
 export default function AppsPage() {

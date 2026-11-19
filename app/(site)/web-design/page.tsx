@@ -1,3 +1,4 @@
+import { socialImage } from "@/lib/site-metadata"
 import type { Metadata } from "next"
 import { WebDesign } from "@/components/sections/showcase"
 
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
     title,
     description,
     alternates: { canonical: "/web-design" },
-    openGraph: { title, description, url: "/web-design" },
-    twitter: { title, description, card: "summary_large_image" },
+    openGraph: { title, description, images: [socialImage], url: "/web-design" },
+    twitter: { title, description, images: [socialImage], card: "summary_large_image" },
 }
 
 export default function WebDesignPage() {
