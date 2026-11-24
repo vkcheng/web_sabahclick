@@ -1,6 +1,6 @@
 import { LanguageProvider } from "@/lib/i18n/language-context"
 import { siteMetadata } from "@/lib/site-metadata"
-import "./obsidian.css"
+import "./machine.css"
 
 export const metadata = siteMetadata
 

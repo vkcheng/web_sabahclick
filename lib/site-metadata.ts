@@ -5,7 +5,7 @@ export const socialImage = {
     url: new URL("/opengraph-image", siteUrl).href,
     width: 1200,
     height: 630,
-    alt: "SabahClick builds AI systems for Sabah businesses",
+    alt: "SabahClick: AI workflow systems, apps and AI training in Sabah",
 }
 
 export const siteMetadata: Metadata = {
@@ -17,11 +17,12 @@ export const siteMetadata: Metadata = {
     },
     description: siteDescription,
     keywords: [
-        "AI systems Sabah",
-        "AI automation Kota Kinabalu",
-        "AI transformation Sabah",
-        "custom AI systems Malaysia",
-        "web design Sabah",
+        "AI course Sabah",
+        "AI training Kota Kinabalu",
+        "AI 课程 亚庇",
+        "AI automation Sabah",
+        "custom software Kota Kinabalu",
+        "custom system development Malaysia",
     ],
     authors: [{ name: "SabahClick" }],
     alternates: { canonical: "/" },

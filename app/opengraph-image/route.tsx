@@ -12,20 +12,25 @@ export function GET() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                padding: 74,
-                color: "#102024",
-                background: "#eef8f7",
+                padding: 72,
+                color: "#f2f2f2",
+                background: "#151515",
                 fontFamily: "Arial, sans-serif",
             }}>
-                <div style={{ display: "flex", fontWeight: 700, fontSize: 34, letterSpacing: 4 }}>
-                    SABAH<span style={{ color: "#006c70" }}>CLICK</span>
+                <div style={{ display: "flex", fontWeight: 700, fontSize: 36, letterSpacing: 2 }}>
+                    SABAH<span style={{ color: "#ff3b30" }}>CLICK</span>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", fontSize: 84, fontWeight: 700, lineHeight: 1.08, letterSpacing: -3 }}>
-                    <div>AI systems for</div>
-                    <div style={{ color: "#006c70" }}>Sabah businesses.</div>
+                <div style={{ display: "flex", flexDirection: "column", fontSize: 88, fontWeight: 700, lineHeight: 1, letterSpacing: -1, textTransform: "uppercase" }}>
+                    <div>AI for the work</div>
+                    <div>you do every day.</div>
                 </div>
-                <div style={{ display: "flex", fontSize: 26, color: "#435b60" }}>
-                    Custom AI systems and AI transformation Â· Kota Kinabalu, Sabah
+                <div style={{ display: "flex", gap: 8 }}>
+                    {["#ff3b30", "#ff3b30", "#ff3b30", "#ff3b30", "#ff9a00", "#ff9a00", "#ff9a00", "#ff9a00", "#ffe100", "#ffe100", "#ffe100", "#ffe100", "#ecebe6", "#ecebe6", "#ecebe6", "#ecebe6"].map((color, index) => (
+                        <div key={index} style={{ display: "flex", flex: 1, height: 70, background: color, borderRadius: 4 }} />
+                    ))}
+                </div>
+                <div style={{ display: "flex", fontSize: 26, color: "#bdbdbd" }}>
+                    Web systems · Mobile apps · Workflow systems · AI training · Kota Kinabalu
                 </div>
             </div>
         ),

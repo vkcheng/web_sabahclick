@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "arial",
+        "files": [
+          "app/opengraph-image/route.tsx"
+        ],
+        "createdAt": "2026-11-24T01:40:49.385Z",
+        "reason": "Claude: next/og ImageResponse (satori) cannot load the self-hosted woff2 Saira; Arial is the OG-card fallback only"
+      }
+    ]
+  }
+}

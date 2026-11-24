@@ -1,4 +1,4 @@
-import { ObsidianHome } from "@/components/obsidian/home"
+import { Home as MachineHome } from "@/components/home/home"
 import { contactEmail, siteDescription, siteUrl } from "@/lib/site"
 
 const structuredData = {
@@ -23,7 +23,7 @@ const structuredData = {
     hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "SabahClick services",
-        itemListElement: ["Custom AI systems", "AI transformation", "Web design"].map((name) => ({
+        itemListElement: ["Custom web systems", "Mobile app development", "Workflow systems and AI automation", "AI training"].map((name) => ({
             "@type": "Offer",
             itemOffered: { "@type": "Service", name },
         })),
@@ -33,6 +33,6 @@ const structuredData = {
 export default function Home() {
     return <>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-        <ObsidianHome />
+        <MachineHome />
     </>
 }

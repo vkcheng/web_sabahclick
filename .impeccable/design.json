@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T00:00:00Z",
+  "title": "Design System: SabahClick",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Ground", "canonical": "#121212", "tonalRamp": ["#050505", "#0b0b0b", "#121212", "#1a1a1a", "#2a2a2a", "#4a4a4a", "#8a8a8a", "#d9d9d9"] },
+      "panel": { "role": "neutral", "displayName": "Panel Charcoal", "canonical": "#1a1a1a", "tonalRamp": ["#0b0b0b", "#121212", "#1a1a1a", "#202020", "#2a2a2a", "#3a3a3a", "#6a6a6a", "#bdbdbd"] },
+      "panel-raised": { "role": "neutral", "displayName": "Raised Key Grey", "canonical": "#202020" },
+      "well": { "role": "neutral", "displayName": "Well Black", "canonical": "#0b0b0b" },
+      "rule": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(242, 242, 242, 0.12)" },
+      "rule-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "rgba(242, 242, 242, 0.26)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#f2f2f2" },
+      "silk": { "role": "neutral", "displayName": "Silkscreen Grey", "canonical": "#bdbdbd" },
+      "silk-dim": { "role": "neutral", "displayName": "Dim Silkscreen", "canonical": "#9a9a9a" },
+      "key-ink": { "role": "neutral", "displayName": "Key Ink", "canonical": "#111111" },
+      "red": { "role": "primary", "displayName": "Signal Red", "canonical": "#ff3b30", "tonalRamp": ["#3a1715", "#6e1a14", "#a61f17", "#d1251b", "#ff3b30", "#ff6b62", "#ffa39d", "#ffe0dd"] },
+      "red-deep": { "role": "primary", "displayName": "Deep Signal Red", "canonical": "#d1251b" },
+      "red-hover": { "role": "primary", "displayName": "Pressed Red", "canonical": "#e32c21" },
+      "orange": { "role": "secondary", "displayName": "Bank Orange", "canonical": "#ff9a00", "tonalRamp": ["#3d2400", "#6b3f00", "#a35f00", "#d67d00", "#ff9a00", "#ffb340", "#ffcf88", "#ffecd0"] },
+      "yellow": { "role": "secondary", "displayName": "Bank Yellow", "canonical": "#ffe100", "tonalRamp": ["#3d3500", "#6b5d00", "#a38e00", "#d6ba00", "#ffe100", "#ffe94d", "#fff293", "#fffad6"] },
+      "white": { "role": "secondary", "displayName": "Bank White", "canonical": "#ecebe6", "tonalRamp": ["#2b2a27", "#4a4944", "#6e6d67", "#94938c", "#bab9b2", "#d6d5cf", "#ecebe6", "#f8f8f5"] },
+      "led-off": { "role": "neutral", "displayName": "Dark LED", "canonical": "#3a1715" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Two-line hero headline only; Chinese clamp(2.4rem, 5vw, 5rem) at line-height 1.12." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles; Chinese line-height 1.2." },
+      "title": { "displayName": "Title", "purpose": "Rack unit names (28px); chain step names at 24px." },
+      "body": { "displayName": "Body", "purpose": "Hero paragraph and leads at 17px, panel copy at 16px; 52-70ch." },
+      "label": { "displayName": "Silkscreen Label", "purpose": "Uppercase names over controls, readouts, facts and banks." },
+      "button": { "displayName": "Key Legend", "purpose": "Uppercase legends on buttons and hardware keys." }
+    },
+    "shadows": [
+      { "name": "panel-bevel", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.04)", "purpose": "Top highlight on every panel module." },
+      { "name": "control-panel-lift", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 40px rgba(0, 0, 0, 0.45)", "purpose": "Hero control panel only." },
+      { "name": "coloured-key", "value": "inset 0 -5px 0 rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 3px 0 #050505", "purpose": "Step, rack unit and chain keys; the 3px skirt is key travel." },
+      { "name": "coloured-key-pressed", "value": "inset 0 -2px 0 rgba(0, 0, 0, 0.22), 0 0 0 #050505", "purpose": "Step key :active with translateY(3px)." },
+      { "name": "hardware-key", "value": "0 2px 0 #000, 0 3px 6px rgba(0, 0, 0, 0.4)", "purpose": "Square grey keys at rest." },
+      { "name": "hardware-key-pressed", "value": "0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.4)", "purpose": "Square grey keys :active with translateY(2px)." },
+      { "name": "well", "value": "inset 0 2px 6px rgba(0, 0, 0, 0.8)", "purpose": "Recessed readout windows; inputs use inset 0 2px 5px rgba(0,0,0,0.7)." },
+      { "name": "led-red", "value": "0 0 6px 1px rgba(255, 59, 48, 0.55)", "purpose": "Lit red LED, the only red glow." },
+      { "name": "led-white-armed", "value": "0 0 8px 2px rgba(255, 255, 255, 0.55)", "purpose": "Armed step LED." },
+      { "name": "led-white-accent", "value": "0 0 12px 4px rgba(255, 255, 255, 0.85)", "purpose": "Accent step LED." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Shared ease for every state transition." },
+      { "name": "press", "value": "90ms", "purpose": "Key travel and shadow collapse." },
+      { "name": "key-state", "value": "120ms", "purpose": "Hardware key fill, step LED and key brightness." },
+      { "name": "control-state", "value": "150ms", "purpose": "Button colour/border, LED on/off." },
+      { "name": "panel-state", "value": "200ms", "purpose": "Rack unit border warming when its route lights." },
+      { "name": "chase-tempo", "value": "560ms", "purpose": "One clock for the chase light; paused off-screen, hidden tab, or reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "stack-hero", "value": "1180px" },
+      { "name": "collapse-nav", "value": "900px" },
+      { "name": "fold-row", "value": "720px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one send action per context: WhatsApp send under the step row, form submit.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Send 3 jobs on WhatsApp<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M5 11 11 5M6 5h5v5\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 0 20px; font-family: \"Saira Condensed\", \"Arial Narrow\", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(242,242,242,0.26); border-radius: 2px; cursor: pointer; transition: background-color 150ms cubic-bezier(0.16,1,0.3,1), border-color 150ms cubic-bezier(0.16,1,0.3,1), transform 120ms cubic-bezier(0.16,1,0.3,1); } .ds-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid #ffe100; outline-offset: 3px; } .ds-btn-primary { background: #d1251b; border-color: #d1251b; color: #fff; } .ds-btn-primary:hover { background: #e32c21; border-color: #e32c21; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary actions: service WhatsApp links, more about the app, top-bar WhatsApp.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Ask about Assist<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M5 11 11 5M6 5h5v5\"/></svg></a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: transparent; color: #f2f2f2; font-family: \"Saira Condensed\", \"Arial Narrow\", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(242,242,242,0.26); border-radius: 2px; transition: background-color 150ms cubic-bezier(0.16,1,0.3,1), border-color 150ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-outline svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; } .ds-btn-outline:hover { border-color: #f2f2f2; background: rgba(242,242,242,0.06); } .ds-btn-outline:active { transform: translateY(1px); } .ds-btn-outline:focus-visible { outline: 2px solid #ffe100; outline-offset: 3px; }"
+    },
+    {
+      "name": "Hardware Key",
+      "kind": "button",
+      "refersTo": "hw-key",
+      "description": "Square grey machine control; latches red when on (RUN).",
+      "html": "<div style=\"display:flex;gap:10px\"><button class=\"ds-hw-key is-on\" aria-pressed=\"true\">Stop</button><button class=\"ds-hw-key\">Clear</button></div>",
+      "css": ".ds-hw-key { display: inline-grid; place-items: center; min-height: 44px; min-width: 44px; padding: 0 18px; background: #202020; color: #f2f2f2; border: 1px solid rgba(242,242,242,0.26); border-radius: 2px; font-family: \"Saira Condensed\", \"Arial Narrow\", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; box-shadow: 0 2px 0 #000, 0 3px 6px rgba(0,0,0,0.4); transition: background-color 120ms cubic-bezier(0.16,1,0.3,1), transform 90ms cubic-bezier(0.16,1,0.3,1), box-shadow 90ms cubic-bezier(0.16,1,0.3,1); } .ds-hw-key:hover { background: #2a2a2a; } .ds-hw-key:active { transform: translateY(2px); box-shadow: 0 0 0 #000, 0 1px 2px rgba(0,0,0,0.4); } .ds-hw-key:focus-visible { outline: 2px solid #ffe100; outline-offset: 3px; } .ds-hw-key.is-on { background: #d1251b; border-color: #d1251b; color: #fff; }"
+    },
+    {
+      "name": "Step Keys",
+      "kind": "custom",
+      "refersTo": "step-key",
+      "description": "Signature: one key per job, coloured by time-of-day bank; off, armed and accent states.",
+      "html": "<div class=\"ds-steps\"><div class=\"ds-step\"><span class=\"ds-num\">1</span><button class=\"ds-key\" aria-pressed=\"false\"><span class=\"ds-led\"></span><span class=\"ds-dot\"></span></button></div><div class=\"ds-step b1 armed\"><span class=\"ds-num\">5</span><button class=\"ds-key\" aria-pressed=\"true\"><span class=\"ds-led\"></span><span class=\"ds-dot\"></span></button></div><div class=\"ds-step b2 now\"><span class=\"ds-num\">9</span><button class=\"ds-key\" aria-pressed=\"false\"><span class=\"ds-led\"></span><span class=\"ds-dot\"></span></button></div><div class=\"ds-step b3 accent\"><span class=\"ds-num\">13</span><button class=\"ds-key\" aria-pressed=\"true\"><span class=\"ds-led\"></span><span class=\"ds-dot\"></span></button></div></div>",
+      "css": ".ds-steps { display: grid; grid-template-columns: repeat(4, 64px); gap: 8px; padding: 22px; background: #1a1a1a; border: 1px solid rgba(242,242,242,0.26); border-radius: 3px; } .ds-step { display: flex; flex-direction: column; gap: 8px; } .ds-num { text-align: center; font-family: \"Saira Condensed\", sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.14em; color: #bdbdbd; } .ds-key { --key: #ff3b30; position: relative; height: 88px; background: var(--key); border: 0; border-radius: 3px; cursor: pointer; box-shadow: inset 0 -5px 0 rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 0 #050505; transition: transform 90ms cubic-bezier(0.16,1,0.3,1), box-shadow 90ms cubic-bezier(0.16,1,0.3,1), filter 120ms cubic-bezier(0.16,1,0.3,1); } .b1 .ds-key { --key: #ff9a00; } .b2 .ds-key { --key: #ffe100; } .b3 .ds-key { --key: #ecebe6; } .ds-key:hover { filter: brightness(1.08); } .ds-key:active { transform: translateY(3px); box-shadow: inset 0 -2px 0 rgba(0,0,0,0.22), 0 0 0 #050505; } .ds-key:focus-visible { outline: 2px solid #ffe100; outline-offset: 3px; } .ds-led { position: absolute; top: 12px; left: 50%; width: 16px; aspect-ratio: 1.4; transform: translateX(-50%); background: rgba(0,0,0,0.18); } .ds-dot { position: absolute; bottom: 14px; left: 50%; width: 12px; height: 12px; transform: translateX(-50%); background: #111; } .armed .ds-led { background: #fff4f0; box-shadow: 0 0 8px 2px rgba(255,255,255,0.55); } .accent .ds-led { background: #fff; box-shadow: 0 0 12px 4px rgba(255,255,255,0.85); } .accent .ds-key { outline: 3px solid #f2f2f2; outline-offset: 3px; } .now .ds-key { filter: brightness(1.18); } .now .ds-num { color: #ff3b30; }"
+    },
+    {
+      "name": "Readout and Route LEDs",
+      "kind": "custom",
+      "refersTo": "readout-window",
+      "description": "Silkscreen label over a recessed well with red seven-segment digits; route rows with square LEDs.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-readout\"><span class=\"ds-silk\">Armed</span><div class=\"ds-well\"><svg viewBox=\"-2 -1 75 62\" height=\"34\"><g transform=\"skewX(-6)\"><polygon class=\"on\" points=\"6,0 26,0 29,3 26,6 6,6 3,3\"/><polygon class=\"on\" points=\"29,3 32,6 32,26 29,29 26,26 26,6\"/><polygon class=\"on\" points=\"29,30 32,33 32,53 29,56 26,53 26,33\"/><polygon class=\"on\" points=\"6,54 26,54 29,57 26,60 6,60 3,57\"/><polygon class=\"on\" points=\"3,30 6,33 6,53 3,56 0,53 0,33\"/><polygon class=\"on\" points=\"3,3 6,6 6,26 3,29 0,26 0,6\"/><polygon class=\"off\" points=\"6,27 26,27 29,30 26,33 6,33 3,30\"/></g><g transform=\"translate(39 0) skewX(-6)\"><polygon class=\"on\" points=\"6,0 26,0 29,3 26,6 6,6 3,3\"/><polygon class=\"on\" points=\"29,3 32,6 32,26 29,29 26,26 26,6\"/><polygon class=\"on\" points=\"29,30 32,33 32,53 29,56 26,53 26,33\"/><polygon class=\"on\" points=\"6,54 26,54 29,57 26,60 6,60 3,57\"/><polygon class=\"off\" points=\"3,30 6,33 6,53 3,56 0,53 0,33\"/><polygon class=\"off\" points=\"3,3 6,6 6,26 3,29 0,26 0,6\"/><polygon class=\"on\" points=\"6,27 26,27 29,30 26,33 6,33 3,30\"/></g></svg></div></div><ul class=\"ds-routes\"><li class=\"lit\"><span class=\"ds-led\"></span><span class=\"ds-key\">ASSIST</span><span class=\"ds-n\">2</span></li><li><span class=\"ds-led\"></span><span class=\"ds-key\">BUILD</span><span class=\"ds-n\">0</span></li></ul></div>",
+      "css": ".ds-panel { display: flex; gap: 28px; padding: 26px 28px; background: #1a1a1a; border: 1px solid rgba(242,242,242,0.26); border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); } .ds-readout { display: flex; flex-direction: column; gap: 10px; } .ds-silk { font-family: \"Saira Condensed\", sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #bdbdbd; } .ds-well { display: flex; padding: 12px 16px; background: #0b0b0b; border: 1px solid #000; border-radius: 2px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.8); } .ds-well .on { fill: #ff3b30; } .ds-well .off { fill: rgba(255,59,48,0.09); } .ds-routes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; min-width: 200px; } .ds-routes li { display: grid; grid-template-columns: 9px 1fr auto; align-items: center; gap: 12px; padding: 10px 12px; background: #0b0b0b; border: 1px solid #000; border-radius: 2px; } .ds-led { width: 9px; height: 9px; background: #3a1715; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6); transition: background-color 150ms, box-shadow 150ms; } .lit .ds-led { background: #ff3b30; box-shadow: 0 0 6px 1px rgba(255,59,48,0.55); } .ds-key { font-family: \"Saira Condensed\", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #f2f2f2; } .ds-n { font-family: \"Saira Condensed\", sans-serif; font-weight: 700; font-size: 18px; color: #9a9a9a; font-variant-numeric: tabular-nums; } .lit .ds-n { color: #ff3b30; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Recessed black well with silkscreen label and yellow focus ring.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-name\">Your name</label><input id=\"ds-name\" placeholder=\"Name\"></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; max-width: 320px; } .ds-field label { font-family: \"Saira Condensed\", sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #bdbdbd; } .ds-field input { padding: 12px 14px; background: #0b0b0b; color: #f2f2f2; caret-color: #ff3b30; border: 1px solid #000; border-radius: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.7); font: inherit; font-size: 16px; } .ds-field input::placeholder { color: #8a8a8a; } .ds-field input:focus-visible { outline: 2px solid #ffe100; outline-offset: 1px; }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky bar: wordmark, silkscreen nav, language key strip.",
+      "html": "<header class=\"ds-top\"><a class=\"ds-mark\" href=\"#\">SABAH<span>CLICK</span></a><nav class=\"ds-nav\"><a href=\"#\">Learn</a><a href=\"#\">Assist</a><a href=\"#\">Build</a></nav><div class=\"ds-lang\"><button aria-pressed=\"true\">EN</button><button aria-pressed=\"false\">中文</button><button aria-pressed=\"false\">BM</button></div></header>",
+      "css": ".ds-top { display: flex; align-items: center; gap: 24px; min-height: 68px; padding: 0 24px; background: rgba(18,18,18,0.94); border-bottom: 1px solid rgba(242,242,242,0.12); } .ds-mark { font-family: \"Saira Condensed\", sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 0.04em; color: #f2f2f2; text-decoration: none; line-height: 1; } .ds-mark span { color: #ff3b30; } .ds-nav { display: flex; gap: 26px; margin-left: auto; } .ds-nav a { font-family: \"Saira Condensed\", sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: #bdbdbd; text-decoration: none; padding: 8px 0; } .ds-nav a:hover { color: #f2f2f2; } .ds-nav a:focus-visible, .ds-lang button:focus-visible { outline: 2px solid #ffe100; outline-offset: 3px; } .ds-lang { display: flex; border: 1px solid rgba(242,242,242,0.26); border-radius: 2px; } .ds-lang button { min-height: 38px; min-width: 44px; padding: 0 10px; background: transparent; color: #bdbdbd; border: 0; font-family: \"Saira Condensed\", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; } .ds-lang button + button { border-left: 1px solid rgba(242,242,242,0.12); } .ds-lang button[aria-pressed=\"true\"] { background: #f2f2f2; color: #111; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Workday Step Sequencer",
+    "overview": "The site is one piece of hardware: a matte charcoal drum machine whose sixteen step keys are the jobs of a business day, from opening to closing. Everything else on the page is a module on the same chassis: control panel, rack units for the three services, a pattern chain for how work starts, a spec plate for the shipped app, and a contact panel with recessed input wells. The visitor reads it the way they would read a real instrument: silkscreen labels name every control, lit LEDs and red seven-segment digits report state, and coloured keys are the only saturated surfaces.\n\nDensity is that of a front panel, not a brochure. Panels sit on a near-black ground with a faint fractal-noise grain; sections are separated by hairline rules, not by colour bands. The colour story is entirely carried by the four time-of-day banks (red, orange, yellow, white) and by red as the signal colour; every other surface is neutral charcoal and grey. Motion is mechanical and clocked: a chase light walks the row at one tempo and keys flash on press. There is no ambient animation.\n\nThe world explicitly rejects the AI-agency default (headline, three rounded service cards, a robot glow) and the previous dark/lime HUD look it replaced.",
+    "keyCharacteristics": [
+      "Matte charcoal panels on a grained near-black ground; depth from bevels and recessed wells.",
+      "Four-bank key colour by time of day: red (morning), orange (midday), yellow (afternoon), white (closing).",
+      "Red seven-segment readouts and square LEDs are the only light sources.",
+      "Condensed industrial caps (Saira Condensed) for display, buttons and silkscreen labels; system sans and system CJK for reading text.",
+      "Near-square geometry: 2px on controls, 3px on panels and keys, 0 on LEDs."
+    ],
+    "rules": [
+      { "name": "The Only-Glow Rule", "body": "Glow (`box-shadow` bloom) belongs to lit LEDs and nothing else. Seven-segment digits are lit by fill, not by blur. No glowing buttons, cards, borders or text.", "section": "colors" },
+      { "name": "The Bank Order Rule", "body": "Key colour always follows the time-of-day order red, orange, yellow, white. A set of three (routes, chain steps) takes the first three banks in that order. Bank colour is never used as decoration away from a key or key-derived tick.", "section": "colors" },
+      { "name": "The Red-Means-On Rule", "body": "Red text and fills report state (lit, now, armed count, primary action). Do not use red for emphasis in prose or headings.", "section": "colors" },
+      { "name": "The Silkscreen Rule", "body": "A silkscreen label names a control, readout or fact that sits directly under it. It is never a section kicker above a headline; section heads are a headline and a lead, nothing above them.", "section": "typography" },
+      { "name": "The Legible-Chinese Rule", "body": "Under `data-lang=\"cn\"`, display and headline sizes step down and line-height opens to 1.12 to 1.2; tracked caps tighten (nav 0.06em). Chinese is never set in faux-condensed or letter-spaced caps.", "section": "typography" },
+      { "name": "The Key-Travel Rule", "body": "The short dark skirt under a key is key travel, not a decorative offset shadow: it appears only on pressable keys and collapses on `:active`. Panels, text and links never get one.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** build every new module as a panel on the chassis: panel charcoal, 1px strong hairline, 3px corners, panel bevel.",
+      "**Do** colour keys strictly in bank order red, orange, yellow, white, and print legends on them in key-ink.",
+      "**Do** report state with LEDs, seven-segment digits and red text; keep glow on LEDs only.",
+      "**Do** label controls and facts with 13px silkscreen caps directly above or beside what they name.",
+      "**Do** use the yellow 2px focus ring on every interactive element, and keep touch targets at 44px or more.",
+      "**Do** lock any motion to the machine clock or to a press, and stop it under `prefers-reduced-motion`.",
+      "**Do** step down display sizes and open line-height under `data-lang=\"cn\"`."
+    ],
+    "donts": [
+      "**Don't** use rounded cards, pills, or radii above 3px.",
+      "**Don't** add glowing buttons, gradient halos, robot imagery or any ambient animation.",
+      "**Don't** reintroduce the replaced lime (#CCFF00) HUD or terminal styling.",
+      "**Don't** put a silkscreen label above a section headline as a kicker.",
+      "**Don't** give the key-travel skirt to anything that is not a pressable key.",
+      "**Don't** use bank colours as decorative fills, backgrounds or text colours away from keys and their ticks."
+    ]
+  }
+}

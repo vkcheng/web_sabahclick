@@ -17,7 +17,6 @@ export function Footer() {
                 </div>
                 <nav aria-label={t.footer.navigation}>
                     <Link href="/#services">{t.nav.services}</Link>
-                    <Link href="/web-design">{t.nav.web}</Link>
                     <Link href="/apps">{t.nav.apps}</Link>
                     <Link href="/#contact">{t.nav.contact}</Link>
                 </nav>
