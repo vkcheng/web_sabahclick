@@ -277,7 +277,8 @@ export function FxLight() {
     return <i className="fx-light" aria-hidden="true"></i>
 }
 
-const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+=<>/"
+// Narrow-to-medium glyphs only: wide ones (W, M, %, #, &) made the decoded text overflow its box.
+const GLYPHS = "ABCDEFGHJKLNOPRSTUVXYZ0123456789+=<>/"
 
 /* Display-style text decode on hover, like a vacuum-fluorescent readout settling.
    The real text stays in the DOM for assistive tech; the scramble is a visual overlay. */

@@ -118,9 +118,9 @@ svg { display: block; }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--red-deep); border-color: var(--red-deep); color: #fff; }
 .btn-primary:hover { background-color: #e32c21; border-color: #e32c21; }
-.btn-outline { background: transparent; color: var(--ink); }
-.btn-outline:hover { border-color: var(--ink); background: rgba(242, 242, 242, 0.06); }
-.btn-quiet { border-color: transparent; color: var(--silk); padding-inline: 8px; }
+.btn-outline { background: var(--panel); color: var(--ink); }
+.btn-outline:hover { border-color: var(--ink); background: var(--panel-raised); }
+.btn-quiet { background: var(--panel); border-color: var(--rule); color: var(--silk); }
 .btn-quiet:hover { color: var(--ink); }
 
 .hw-key {
@@ -369,7 +369,7 @@ main, .footer { position: relative; z-index: 1; }
 .rack-unit[data-fx-on] .meter span:nth-child(n + 11), .rack-unit[data-lit] .meter span:nth-child(n + 11) { background: var(--red); box-shadow: 0 0 6px rgba(255, 59, 48, 0.55); }
 .add-key { align-self: flex-start; }
 .add-key .led { width: 8px; height: 8px; }
-.add-key[aria-pressed="true"] { border-color: rgba(255, 59, 48, 0.7); background: rgba(255, 59, 48, 0.08); }
+.add-key[aria-pressed="true"] { border-color: rgba(255, 59, 48, 0.7); background-color: #22100e; }
 .add-key[aria-pressed="true"] .led { background: var(--red); box-shadow: 0 0 6px 1px rgba(255, 59, 48, 0.55); }
 
 /* AI training: one panel, three audience keys */
@@ -533,7 +533,7 @@ main, .footer { position: relative; z-index: 1; }
 /* Display-style text decode */
 .scr { position: relative; display: inline-block; }
 .scr[data-live] .scr-text { color: transparent; }
-.scr-live { position: absolute; inset: 0; pointer-events: none; }
+.scr-live { position: absolute; inset: 0; pointer-events: none; white-space: nowrap; overflow: hidden; }
 
 @media (hover: hover) and (pointer: fine) {
   .nav a { position: relative; transition: color 150ms var(--ease); }
@@ -550,7 +550,7 @@ main, .footer { position: relative; z-index: 1; }
     background-size: 260% 100%; background-repeat: no-repeat; background-position: 130% 0;
   }
   .btn-primary:hover { background-position: -30% 0; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(209, 37, 27, 0.45); }
-  .btn-outline:hover { border-color: rgba(255, 59, 48, 0.75); background-color: rgba(255, 59, 48, 0.07); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45); }
+  .btn-outline:hover { border-color: rgba(255, 59, 48, 0.75); background-color: #26100e; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45); }
   .btn:active { transform: translateY(1px); box-shadow: none; }
   .hw-key:hover { transform: translateY(-1px); box-shadow: 0 3px 0 #000, 0 6px 12px rgba(0, 0, 0, 0.5); }
 

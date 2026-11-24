@@ -38,7 +38,7 @@ export function WhatsAppForm({ language, needs, onToggleNeed }: { language: Lang
             <div className="toggles needs">
                 {NEED_IDS.map(id => <button key={id} type="button" className="toggle-key" aria-pressed={needs.has(id)} onClick={() => { onToggleNeed(id); signal.kick(0.35) }}>
                     <span className="led" aria-hidden="true"></span>
-                    <Scramble text={text.needs[id]} />
+                    <span>{text.needs[id]}</span>
                 </button>)}
             </div>
         </fieldset>

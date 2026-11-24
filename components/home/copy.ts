@@ -2,11 +2,11 @@ import type { Language } from "@/lib/i18n/translations"
 import type { Route } from "./workdays"
 
 export type NeedId = "web" | "app" | "flow" | "ai" | "training" | "unsure"
-export type ProblemId = "replies" | "excel" | "stock" | "reports" | "connect" | "skills"
+export type ProblemId = "replies" | "excel" | "stock" | "reports" | "followup" | "skills"
 export type ModuleId = "web" | "app" | "flow"
 
 export const NEED_IDS: NeedId[] = ["web", "app", "flow", "ai", "training", "unsure"]
-export const PROBLEM_IDS: ProblemId[] = ["replies", "excel", "stock", "reports", "connect", "skills"]
+export const PROBLEM_IDS: ProblemId[] = ["replies", "excel", "stock", "reports", "followup", "skills"]
 export const MODULE_IDS: ModuleId[] = ["web", "app", "flow"]
 
 type Module = { key: string; title: string; body: string; items: string[] }
@@ -156,7 +156,7 @@ export const copy: Record<Language, Copy> = {
                 excel: "Typing data into Excel by hand",
                 stock: "Hard to keep track of stock and orders",
                 reports: "Reports take too long",
-                connect: "Our systems don't talk to each other",
+                followup: "Following up with customers",
                 skills: "Our staff don't know how to use AI",
             },
             multi: "Choose any",
@@ -270,7 +270,7 @@ export const copy: Record<Language, Copy> = {
                 excel: "手动把资料打进 Excel",
                 stock: "库存和订单很难跟进",
                 reports: "做报表太花时间",
-                connect: "几个系统之间资料不相通",
+                followup: "跟进客户",
                 skills: "员工不懂得用 AI",
             },
             multi: "可多选",
@@ -384,7 +384,7 @@ export const copy: Record<Language, Copy> = {
                 excel: "Menaip data ke dalam Excel secara manual",
                 stock: "Sukar menjejak stok dan pesanan",
                 reports: "Laporan mengambil masa terlalu lama",
-                connect: "Sistem kami tidak berhubung antara satu sama lain",
+                followup: "Membuat susulan dengan pelanggan",
                 skills: "Staf kami tidak tahu menggunakan AI",
             },
             multi: "Pilih mana-mana",

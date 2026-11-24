@@ -90,7 +90,7 @@ export function Home() {
 
             <section className="band build" id="build" aria-labelledby="build-title">
                 <div className="band-head">
-                    <h2 id="build-title" className="section-title" data-scramble=""><Scramble text={text.build.title} /></h2>
+                    <h2 id="build-title" className="section-title">{text.build.title}</h2>
                     <p className="lead">{text.build.lead}</p>
                 </div>
                 <div className="rack">
@@ -126,7 +126,7 @@ export function Home() {
                 <div className="training-panel" data-fx="">
                     <FxLight />
                     <div className="training-head">
-                        <h2 id="training-title" className="section-title" data-scramble=""><Scramble text={text.training.title} /></h2>
+                        <h2 id="training-title" className="section-title">{text.training.title}</h2>
                         <p className="lead">{text.training.lead}</p>
                         <dl className="training-facts">
                             {text.training.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
@@ -150,7 +150,7 @@ export function Home() {
 
             <section className="band start" aria-labelledby="start-title">
                 <div className="band-head">
-                    <h2 id="start-title" className="section-title" data-scramble=""><Scramble text={text.start.title} /></h2>
+                    <h2 id="start-title" className="section-title">{text.start.title}</h2>
                     <p className="lead">{text.start.lead}</p>
                 </div>
                 <div className="fx-wrap" data-fx="">
@@ -167,7 +167,7 @@ export function Home() {
 
             <section className="band app" id="vkscanner" aria-labelledby="app-title">
                 <div className="app-copy">
-                    <h2 id="app-title" className="section-title" data-scramble=""><Scramble text={text.app.title} /></h2>
+                    <h2 id="app-title" className="section-title">{text.app.title}</h2>
                     <p className="lead">{text.app.body}</p>
                     <div className="actions">
                         <Link className="btn btn-outline" href="/apps"><Scramble text={text.app.more} /><Arrow /></Link>
@@ -188,7 +188,7 @@ export function Home() {
 
             <section className="band contact" id="contact" aria-labelledby="contact-title">
                 <div className="contact-copy">
-                    <h2 id="contact-title" className="section-title" data-scramble=""><Scramble text={text.contact.title} /></h2>
+                    <h2 id="contact-title" className="section-title">{text.contact.title}</h2>
                     <p className="lead">{text.contact.body}</p>
                     <dl className="channels">
                         <div><dt>{text.contact.whatsapp}</dt><dd><a href={wa(text.form.hello)} target="_blank" rel="noopener noreferrer">+60 12-813 1441</a></dd></div>
