@@ -1,5 +1,4 @@
 import type { Language } from "@/lib/i18n/translations"
-import type { Route } from "./workdays"
 
 export type NeedId = "web" | "app" | "flow" | "ai" | "training" | "unsure"
 export type ProblemId = "replies" | "excel" | "stock" | "reports" | "followup" | "skills"
@@ -16,27 +15,7 @@ type MessageParts = { needs: string[]; problems: string[]; name: string; busines
 type Copy = {
     nav: { build: string; training: string; app: string; contact: string; whatsapp: string; menu: string; close: string; language: string; skip: string; home: string }
     hero: { line1: string; line2: string; body: string; primary: string; secondary: string; offers: [string, string][] }
-    machine: {
-        panel: string
-        clock: string
-        pattern: string
-        sample: string
-        prev: string
-        next: string
-        run: string
-        stop: string
-        tempo: string
-        handled: string
-        scope: string
-        routes: string
-        row: string
-        caption: string
-        banks: [string, string, string, string]
-        stepLabel: (n: number, time: string, task: string) => string
-        done: string
-        now: string
-    }
-    route: Record<Route, { key: string; name: string }>
+    face: { idle: string; awake: string; alt: string }
     build: { title: string; lead: string; add: string; added: string; modules: Record<ModuleId, Module> }
     training: { title: string; lead: string; audiences: [string, string][]; facts: [string, string][]; add: string; added: string }
     start: { title: string; lead: string; steps: { title: string; body: string }[] }
@@ -75,31 +54,7 @@ export const copy: Record<Language, Copy> = {
             secondary: "See what we build",
             offers: [["#web", "Web systems"], ["#app", "Mobile apps"], ["#flow", "Workflow systems"], ["#training", "AI training"]],
         },
-        machine: {
-            panel: "A day with AI",
-            clock: "Clock",
-            pattern: "Sample day",
-            sample: "Sample",
-            prev: "Previous sample day",
-            next: "Next sample day",
-            run: "Run",
-            stop: "Stop",
-            tempo: "Tempo",
-            handled: "Handed to AI",
-            scope: "Signal",
-            routes: "Handled by",
-            row: "A sample workday in 16 jobs",
-            caption: "One sample day, sixteen jobs. Watch AI take them one by one, or point at any key.",
-            banks: ["Morning", "Midday", "Afternoon", "Closing"],
-            stepLabel: (n, time, task) => `Job ${n}, ${time}: ${task}`,
-            done: "Handled",
-            now: "Now",
-        },
-        route: {
-            learn: { key: "Train", name: "AI training" },
-            assist: { key: "Flow", name: "Workflow system" },
-            build: { key: "Build", name: "Custom system" },
-        },
+        face: { idle: "SabahClick AI · idle", awake: "SabahClick AI · watching you", alt: "A cartoon girl drawn from digital symbols. Her eyes follow your pointer." },
         build: {
             title: "Custom systems",
             lead: "Software made for the way your business actually runs, with AI built in where it saves time.",
@@ -189,31 +144,7 @@ export const copy: Record<Language, Copy> = {
             secondary: "看看我们做什么",
             offers: [["#web", "网站系统"], ["#app", "手机 App"], ["#flow", "工作流系统"], ["#training", "AI 提效培训"]],
         },
-        machine: {
-            panel: "AI 帮忙的一天",
-            clock: "时间",
-            pattern: "示例行业",
-            sample: "示例",
-            prev: "上一个示例",
-            next: "下一个示例",
-            run: "运行",
-            stop: "停止",
-            tempo: "速度",
-            handled: "交给 AI",
-            scope: "信号",
-            routes: "由谁处理",
-            row: "一天 16 件工作的示例",
-            caption: "示例的一天，16 件工作。看 AI 一件件接手，或指向任一按键看细节。",
-            banks: ["早上", "中午", "下午", "收工"],
-            stepLabel: (n, time, task) => `第 ${n} 件，${time}：${task}`,
-            done: "已处理",
-            now: "进行中",
-        },
-        route: {
-            learn: { key: "培训", name: "AI 培训" },
-            assist: { key: "流程", name: "工作流系统" },
-            build: { key: "定制", name: "定制系统" },
-        },
+        face: { idle: "SabahClick AI · 待机", awake: "SabahClick AI · 正在看你", alt: "用数码符号拼成的卡通女孩，眼睛会跟着你的鼠标看。" },
         build: {
             title: "定制系统",
             lead: "按你生意实际的运作方式开发软件，在能省时间的地方放进 AI。",
@@ -303,31 +234,7 @@ export const copy: Record<Language, Copy> = {
             secondary: "Lihat apa kami bina",
             offers: [["#web", "Sistem web"], ["#app", "Aplikasi mudah alih"], ["#flow", "Sistem aliran kerja"], ["#training", "Latihan AI"]],
         },
-        machine: {
-            panel: "Sehari bersama AI",
-            clock: "Jam",
-            pattern: "Contoh hari",
-            sample: "Contoh",
-            prev: "Contoh sebelumnya",
-            next: "Contoh seterusnya",
-            run: "Mula",
-            stop: "Henti",
-            tempo: "Tempo",
-            handled: "Diserah kepada AI",
-            scope: "Isyarat",
-            routes: "Dikendalikan oleh",
-            row: "Contoh hari kerja dalam 16 tugas",
-            caption: "Satu contoh hari, enam belas tugas. Lihat AI mengambilnya satu demi satu, atau tuding mana-mana kekunci.",
-            banks: ["Pagi", "Tengah hari", "Petang", "Tutup kedai"],
-            stepLabel: (n, time, task) => `Tugas ${n}, ${time}: ${task}`,
-            done: "Selesai",
-            now: "Sekarang",
-        },
-        route: {
-            learn: { key: "Latih", name: "Latihan AI" },
-            assist: { key: "Aliran", name: "Sistem aliran kerja" },
-            build: { key: "Bina", name: "Sistem tersuai" },
-        },
+        face: { idle: "SabahClick AI · sedia", awake: "SabahClick AI · sedang memerhati", alt: "Gadis kartun yang dibina daripada simbol digital. Matanya mengikut penuding anda." },
         build: {
             title: "Sistem tersuai",
             lead: "Perisian yang dibina mengikut cara perniagaan anda berjalan, dengan AI di tempat yang menjimatkan masa.",

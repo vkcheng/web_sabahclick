@@ -7,7 +7,7 @@ import type { Language } from "@/lib/i18n/translations"
 import { contactEmail, whatsAppUrl } from "@/lib/site"
 import { copy, MODULE_IDS, type NeedId } from "./copy"
 import { FxLayer, FxLight, Scramble, signal } from "./fx"
-import { StepMachine } from "./step-machine"
+import { PixelFace } from "./pixel-face"
 import { WhatsAppForm } from "./whatsapp-form"
 
 const LANGS: [Language, string][] = [["en", "EN"], ["cn", "中文"], ["bm", "BM"]]
@@ -85,7 +85,7 @@ export function Home() {
                         </a>
                     </div>
                 </div>
-                <StepMachine language={language} />
+                <PixelFace language={language} />
             </section>
 
             <section className="band build" id="build" aria-labelledby="build-title">
